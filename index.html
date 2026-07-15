@@ -4,12 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>tebScribe — The Future of Clinical Intelligence</title>
-<meta name="description" content="tebScribe builds AI that thinks like a clinician. Maker of tebIQ — the AI clinical scribe built by a practicing ER doctor. Private by default. Engineered for the way medicine actually works." />
+<meta name="description" content="tebScribe builds AI that thinks like a clinician. Maker of tebIQ — the AI clinical scribe built by a practicing ER doctor — plus tebChart and tebDictate. Turn any phone into a wireless microphone for any computer, free." />
 <meta name="theme-color" content="#06070C" />
 
 <!-- Open Graph -->
 <meta property="og:title" content="tebScribe — The Future of Clinical Intelligence" />
-<meta property="og:description" content="AI that thinks like a clinician. Maker of tebIQ — built by a practicing ER doctor, private by default." />
+<meta property="og:description" content="AI that thinks like a clinician. Maker of tebIQ, tebChart, and tebDictate — built by a practicing ER doctor, private by default. Free QR dictation: your phone, any computer." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://tebscribe.com" />
 
@@ -266,8 +266,44 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
 .foot-bottom a:hover{color:var(--fg-2)}
 .disclaimer{font-size:12px;color:var(--fg-3);margin-top:20px;max-width:760px;line-height:1.6;font-weight:350}
 
+/* ---- product cards ---------------------------------------------------- */
+.prod{display:flex;flex-direction:column}
+.prod-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px}
+.prod .ico{margin-bottom:0}
+.badge{flex:0 0 auto;font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+  padding:6px 11px;border-radius:999px;white-space:nowrap;border:1px solid var(--hair);
+  color:var(--fg-3);background:var(--panel-2)}
+.badge.live{color:#30D158;border-color:rgba(48,209,88,.34);background:rgba(48,209,88,.10)}
+.badge.soon{color:#7AB8FF;border-color:rgba(122,184,255,.30);background:rgba(10,132,255,.10)}
+.prod-tag{font-size:13px;font-weight:500;color:var(--fg-3);margin:-5px 0 12px;letter-spacing:-.01em}
+.prod p{flex:1}
+.prod-link{display:inline-flex;align-items:center;gap:7px;margin-top:22px;font-size:14.5px;
+  font-weight:550;color:#7AB8FF;transition:gap .25s var(--ease)}
+.prod-link:hover{gap:11px}
+.prod-link.muted{color:var(--fg-3)}
+
+/* ---- free dictation band ---------------------------------------------- */
+.dict-band{position:relative;border-radius:30px;overflow:hidden;margin-top:26px;padding:52px 46px;
+  border:1px solid var(--hair-strong);background:var(--bg-3);
+  display:grid;grid-template-columns:1.3fr .7fr;gap:44px;align-items:center}
+.dict-band::before{content:"";position:absolute;inset:0;background:var(--grad-soft);opacity:.75}
+.dict-band>*{position:relative}
+.dict-band h3{font-size:clamp(24px,3.1vw,36px);font-weight:700;letter-spacing:-.035em;
+  line-height:1.1;margin-bottom:14px}
+.dict-band p{color:var(--fg-2);font-size:16px;font-weight:350;max-width:540px}
+.dict-steps{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0 26px}
+.dict-step{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--fg-2);
+  background:var(--panel-2);border:1px solid var(--hair);border-radius:999px;padding:7px 14px}
+.dict-step b{color:var(--fg);font-weight:700}
+.dict-fine{font-size:12.5px;color:var(--fg-3);margin-top:18px;max-width:520px;line-height:1.55}
+.dict-art{display:grid;place-items:center}
+.dict-art svg{width:100%;max-width:230px;height:auto}
+
 /* ---- responsive ------------------------------------------------------- */
 @media(max-width:880px){
+  .dict-band{grid-template-columns:1fr;padding:38px 26px;gap:30px}
+  .dict-art{order:-1}
+  .dict-art svg{max-width:180px}
   .navlinks{display:none}
   .menu-toggle{display:block}
   .flag-inner{grid-template-columns:1fr;gap:40px;padding:36px 28px}
@@ -326,10 +362,11 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
       <span class="lin">teb<span class="strong">Scribe</span></span>
     </a>
     <div class="navlinks">
-      <a href="#flagship">Flagship</a>
+      <a href="#products">Products</a>
       <a href="#platform">Platform</a>
       <a href="#principles">Why we're different</a>
       <a href="#vision">Vision</a>
+      <a class="btn btn-ghost" href="https://tebchart.com/dictate" target="_blank" rel="noopener">Free dictation</a>
       <a class="btn btn-primary" href="https://tebiq.com" target="_blank" rel="noopener">
         Try tebIQ <span class="arr">→</span>
       </a>
@@ -342,10 +379,11 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
 
 <div class="sheet" id="sheet">
   <button class="close" id="closeBtn" aria-label="Close menu">&times;</button>
-  <a href="#flagship">Flagship</a>
+  <a href="#products">Products</a>
   <a href="#platform">Platform</a>
   <a href="#principles">Why we're different</a>
   <a href="#vision">Vision</a>
+  <a class="btn btn-ghost btn-lg" href="https://tebchart.com/dictate" target="_blank" rel="noopener">Free dictation →</a>
   <a class="btn btn-primary btn-lg" href="https://tebiq.com" target="_blank" rel="noopener">Try tebIQ →</a>
 </div>
 
@@ -360,14 +398,16 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
       </h1>
       <p class="hero-sub reveal d2">
         tebScribe is the company behind <strong style="color:var(--fg);font-weight:600">tebIQ</strong> — the AI clinical scribe
-        engineered by a practicing ER doctor for the way medicine actually works. Private by default.
-        Defensible by design. The foundation of a future healthcare platform.
+        engineered by a practicing ER doctor for the way medicine actually works — with
+        <strong style="color:var(--fg);font-weight:600">tebChart</strong> and
+        <strong style="color:var(--fg);font-weight:600">tebDictate</strong> close behind.
+        Private by default. Defensible by design.
       </p>
       <div class="hero-cta reveal d3">
         <a class="btn btn-primary btn-lg" href="https://tebiq.com" target="_blank" rel="noopener">
           Explore tebIQ <span class="arr">→</span>
         </a>
-        <a class="btn btn-ghost btn-lg" href="#platform">See the platform</a>
+        <a class="btn btn-ghost btn-lg" href="#products">See all products</a>
       </div>
       <div class="trust-row reveal d4">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5l-8-3Z"/></svg> On-device privacy</span>
@@ -458,6 +498,93 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
   </section>
 
   <!-- ===================== PLATFORM / FEATURES ===================== -->
+  <!-- ===================== PRODUCTS ===================== -->
+  <section id="products">
+    <div class="wrap">
+      <div class="center reveal" style="margin-bottom:8px">
+        <div class="sec-eyebrow">The product family</div>
+        <h2 class="sec-title">Three products. One clinical engine.</h2>
+        <p class="sec-lead">tebIQ is the flagship for clinicians. tebChart brings the same engineering to everyone's own health records. tebDictate turns any phone into a wireless microphone — and it's free to use right now.</p>
+      </div>
+      <div class="grid3">
+
+        <!-- tebIQ -->
+        <div class="card prod reveal d1">
+          <div class="prod-head">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v4"/></svg></div>
+            <span class="badge live">Available now</span>
+          </div>
+          <h4>tebIQ</h4>
+          <div class="prod-tag">The clinician's scribe</div>
+          <p>The AI clinical scribe built by a practicing ER doctor. Ambient documentation with real clinical scaffolding — screening tools, scoring, and specialty-aware notes that finish on shift, not at midnight.</p>
+          <a class="prod-link" href="https://tebiq.com" target="_blank" rel="noopener">Explore tebIQ <span class="arr">→</span></a>
+        </div>
+
+        <!-- tebChart -->
+        <div class="card prod reveal d2">
+          <div class="prod-head">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 5a4.5 4.5 0 0 0-7 .8A4.5 4.5 0 0 0 5 5C2.8 6.4 2.3 9.5 4 11.6L12 20l8-8.4c1.7-2.1 1.2-5.2-1-6.6Z"/></svg></div>
+            <span class="badge soon">Coming soon</span>
+          </div>
+          <h4>tebChart</h4>
+          <div class="prod-tag">Everyone's medical vault</div>
+          <p>Your health records, in your pocket. Visits, medications, and discharge instructions — organized, readable, and kept on your own device. The same privacy engineering as the clinical product, built for patients and families.</p>
+          <a class="prod-link" href="https://tebchart.com" target="_blank" rel="noopener">Visit tebchart.com <span class="arr">→</span></a>
+        </div>
+
+        <!-- tebDictate -->
+        <div class="card prod reveal d3">
+          <div class="prod-head">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3zM19 19h2v2h-2z"/></svg></div>
+            <span class="badge soon">Apps coming</span>
+          </div>
+          <h4>tebDictate</h4>
+          <div class="prod-tag">Your phone is the microphone</div>
+          <p>Scan a QR code and your phone becomes a wireless microphone for any computer. Speak, and your words type themselves onto the screen — into any text box, on any system. Free on the web today; iPhone and Android apps are on the way.</p>
+          <a class="prod-link" href="https://tebchart.com/dictate" target="_blank" rel="noopener">Use it free <span class="arr">→</span></a>
+        </div>
+      </div>
+
+      <!-- free dictation band -->
+      <div class="dict-band reveal">
+        <div>
+          <div class="sec-eyebrow" style="margin-bottom:14px">Free · No sign-up · Available today</div>
+          <h3>Turn any phone into a wireless mic for any computer.</h3>
+          <p>Open the page on your computer, scan the code with your phone, and start talking. Your words appear on the computer as you speak. Nothing to install, no account to create — it works on the phone you already have.</p>
+          <div class="dict-steps">
+            <span class="dict-step"><b>1</b> Open it on your computer</span>
+            <span class="dict-step"><b>2</b> Scan the code with your phone</span>
+            <span class="dict-step"><b>3</b> Talk — it types</span>
+          </div>
+          <a class="btn btn-primary btn-lg" href="https://tebchart.com/dictate" target="_blank" rel="noopener">
+            Start dictating — free <span class="arr">→</span>
+          </a>
+          <p class="dict-fine">Speech is recognized on your phone. Encrypted in transit and at rest (AES). Never used for training. Never sold.</p>
+        </div>
+        <div class="dict-art" aria-hidden="true">
+          <svg viewBox="0 0 240 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="dg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#0A84FF"/><stop offset="100%" stop-color="#5E5CE6"/></linearGradient></defs>
+            <rect x="10" y="34" width="56" height="102" rx="11" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.18)"/>
+            <rect x="16" y="42" width="44" height="86" rx="6" fill="rgba(10,132,255,.10)"/>
+            <circle cx="38" cy="85" r="13" fill="url(#dg)"/>
+            <path d="M38 79v8M34 83v1.5M42 83v1.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            <path d="M74 74a22 22 0 0 1 0 22M84 66a34 34 0 0 1 0 38" stroke="url(#dg)" stroke-width="2.5" stroke-linecap="round" opacity=".85"/>
+            <path d="M98 85h30" stroke="rgba(255,255,255,.28)" stroke-width="2" stroke-dasharray="4 4"/>
+            <path d="M126 80l6 5-6 5" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="142" y="44" width="90" height="62" rx="6" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.18)"/>
+            <rect x="148" y="50" width="78" height="50" rx="3" fill="rgba(94,92,230,.10)"/>
+            <path d="M134 112h106l-7 9H141z" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.16)"/>
+            <rect x="154" y="59" width="56" height="4" rx="2" fill="url(#dg)"/>
+            <rect x="154" y="69" width="42" height="4" rx="2" fill="rgba(255,255,255,.26)"/>
+            <rect x="154" y="79" width="64" height="4" rx="2" fill="rgba(255,255,255,.18)"/>
+            <rect x="154" y="89" width="28" height="4" rx="2" fill="rgba(255,255,255,.12)"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="platform">
     <div class="wrap">
       <div class="center reveal" style="margin-bottom:8px">
@@ -639,12 +766,13 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
           </svg>
           <span class="lin">teb<span class="strong">Scribe</span></span>
         </a>
-        <p>Building AI that thinks like a clinician. Maker of tebIQ — private, reasoning-first clinical intelligence.</p>
+        <p>Building AI that thinks like a clinician. Maker of tebIQ, tebChart, and tebDictate — private, reasoning-first clinical intelligence.</p>
       </div>
       <div class="foot-col">
-        <h5>Product</h5>
+        <h5>Products</h5>
         <a href="https://tebiq.com" target="_blank" rel="noopener">tebIQ →</a>
-        <a href="#flagship">Flagship</a>
+        <a href="https://tebchart.com" target="_blank" rel="noopener">tebChart →</a>
+        <a href="https://tebchart.com/dictate" target="_blank" rel="noopener">tebDictate — free →</a>
         <a href="#platform">Platform</a>
         <a href="#vision">Vision</a>
       </div>
