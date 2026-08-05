@@ -312,7 +312,11 @@ section{padding:110px 0}
 /* ---- footer ----------------------------------------------------------- */
 footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
 .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
-.foot-family{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;
+/* The global `nav{position:sticky;top:0;z-index:50}` rule above matches ANY <nav>,
+   including this one in the footer — without this reset the block pins itself over
+   the header. Keep these four declarations if you touch this rule. */
+.foot-family{position:static;top:auto;z-index:auto;backdrop-filter:none;
+             display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;
              padding:22px 0;margin-bottom:26px;
              border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
 .foot-family-label{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
