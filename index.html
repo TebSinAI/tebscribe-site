@@ -13,6 +13,48 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://tebscribe.com" />
 
+<!-- Unified entity graph. @id "https://tebscribe.com/#org" is the ONE canonical
+     identifier for the company; every other TebScribe site must reference this exact
+     @id rather than redeclaring an Organization, or engines resolve four companies.
+     Must stay byte-identical to the Organization node in products.html.
+     No AggregateRating / Review / medical-claim markup — ever. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://tebscribe.com/#org",
+      "name": "TebScribe LLC",
+      "alternateName": "TebScribe",
+      "url": "https://tebscribe.com",
+      "description": "TebScribe LLC is a New York limited liability company founded by a practicing emergency medicine physician. It builds tebIQ (an AI clinical scribe), tebChart (a private health-records app for patients), and tebDictate (free QR-paired dictation).",
+      "founder": {
+        "@type": "Person",
+        "name": "Mohammad Chelehmalzadeh",
+        "honorificSuffix": "MD",
+        "jobTitle": "Founder & CEO",
+        "description": "Practicing emergency medicine physician"
+      },
+      "email": "mchelehmal@tebscribe.com",
+      "sameAs": [
+        "https://tebiq.com",
+        "https://tebchart.com",
+        "https://tebdictate.com",
+        "https://apps.apple.com/us/app/id6756632709"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://tebscribe.com/#website",
+      "name": "TebScribe",
+      "url": "https://tebscribe.com",
+      "publisher": { "@id": "https://tebscribe.com/#org" }
+    }
+  ]
+}
+</script>
+
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%230A84FF'/%3E%3Cstop offset='100%25' stop-color='%235E5CE6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M32 2c20 0 30 10 30 30s-10 30-30 30S2 52 2 32 12 2 32 2Z' fill='url(%23g)'/%3E%3Ccircle cx='32' cy='32' r='13' fill='none' stroke='white' stroke-width='3.4'/%3E%3Cpath d='M40 40 L48 48' stroke='white' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E" />
 
 <!-- Google Analytics (GA4) — tebscribe.com ONLY. Never copy this tag to any other
@@ -270,6 +312,13 @@ section{padding:110px 0}
 /* ---- footer ----------------------------------------------------------- */
 footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
 .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
+.foot-family{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;
+             padding:22px 0;margin-bottom:26px;
+             border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.foot-family-label{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
+                   color:var(--fg-3);font-weight:550}
+.foot-family a{font-size:14px;color:var(--fg-2);transition:color .2s}
+.foot-family a:hover{color:var(--fg)}
 .foot-brand .brand{margin-bottom:16px}
 .foot-brand p{color:var(--fg-2);font-size:14.5px;font-weight:350;max-width:300px;line-height:1.6}
 .foot-col h5{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);
@@ -380,6 +429,7 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
     </a>
     <div class="navlinks">
       <a href="#products">Products</a>
+      <a href="/products.html">Product hub</a>
       <a href="#platform">Platform</a>
       <a href="#principles">Why we're different</a>
       <a href="#vision">Vision</a>
@@ -789,7 +839,7 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
         <h5>Products</h5>
         <a href="https://tebiq.com" target="_blank" rel="noopener">tebIQ →</a>
         <a href="https://tebchart.com" target="_blank" rel="noopener">tebChart →</a>
-        <a href="https://tebchart.com/dictate" target="_blank" rel="noopener">tebDictate — free →</a>
+        <a href="https://tebdictate.com" target="_blank" rel="noopener">tebDictate — free →</a>
         <a href="#platform">Platform</a>
         <a href="#vision">Vision</a>
       </div>
@@ -808,6 +858,16 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
         <a href="mailto:mchelehmal@tebscribe.com">Security</a>
       </div>
     </div>
+    <!-- "More from TebScribe" cross-link block. Entity consolidation: these anchors are
+         the human/crawler-visible half of the Organization @id graph declared in <head>. -->
+    <nav class="foot-family" aria-label="More from TebScribe">
+      <span class="foot-family-label">More from TebScribe</span>
+      <a href="/products.html">All products</a>
+      <a href="https://tebiq.com" target="_blank" rel="noopener">tebIQ — AI scribe for clinicians</a>
+      <a href="https://tebchart.com" target="_blank" rel="noopener">tebChart — your records, organized</a>
+      <a href="https://tebdictate.com" target="_blank" rel="noopener">tebDictate — free dictation</a>
+    </nav>
+
     <p class="disclaimer">
       tebIQ is a clinical documentation assistant for licensed healthcare professionals. It supports — and never replaces —
       clinical judgment. tebIQ does not diagnose, treat, or make medical decisions; the clinician is always responsible for the note.

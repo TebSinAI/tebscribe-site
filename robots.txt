@@ -1,0 +1,37 @@
+# tebscribe.com — robots.txt
+# Served from the root of TebSinAI/tebscribe-site (GitHub Pages serves repo-root
+# files as-is).
+#
+# Deliberately permissive: AI answer engines are a primary discovery channel for
+# us and nothing here blocks GPTBot, ClaudeBot, PerplexityBot, or Google-Extended.
+# The explicit Allow lines below are documentation of that intent, not a
+# restriction — a crawler not listed still matches "User-agent: *".
+
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://tebscribe.com/sitemap.xml

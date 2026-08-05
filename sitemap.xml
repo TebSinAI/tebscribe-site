@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- tebscribe.com sitemap.
+
+     Only two URLs, and both exist. Probed and confirmed ABSENT on 2026-08-05, so
+     deliberately NOT listed: /privacy, /privacy.html, /terms, /terms.html,
+     /llms.txt, /404.html — there are no other pages on this site to list.
+
+     Update lastmod when either page changes. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tebscribe.com/</loc>
+    <lastmod>2026-08-02</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tebscribe.com/products.html</loc>
+    <lastmod>2026-08-05</lastmod>
+    <priority>0.9</priority>
+  </url>
+</urlset>
