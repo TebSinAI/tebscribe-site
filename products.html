@@ -118,6 +118,10 @@ nav .bar{display:flex;align-items:center;justify-content:space-between;
 .prod-link{display:inline-flex;align-items:center;gap:7px;margin-top:22px;font-size:14.5px;
            font-weight:550;color:#7AB8FF;transition:gap .25s var(--ease)}
 .prod-link:hover{gap:11px}
+.dict-cta{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+.appstore-link{display:inline-flex;border-radius:8px;transition:transform .3s var(--ease),filter .3s var(--ease)}
+.appstore-link:hover{transform:translateY(-2px);filter:brightness(1.15)}
+.appstore-badge{height:40px;width:auto;aspect-ratio:120/40;display:block}
 
 .answer{background:var(--grad-soft);border:1px solid var(--hair);border-radius:20px;
         padding:30px 34px;max-width:820px;margin:0 auto}
@@ -227,13 +231,24 @@ footer nav a:hover{color:var(--fg)}
           </div>
           <h3>tebDictate</h3>
           <div class="prod-tag">Your phone is the microphone</div>
-          <p>Open the page on your computer, scan the QR code with your phone, and start talking — your words type themselves into whatever text box is in front of you. End-to-end encrypted, no account, nothing to install. It works on the phone you already have.</p>
+          <p>Open the page on your computer, scan the QR code with your phone, and start talking — your words type themselves into whatever text box is in front of you. Free, on-device speech, end-to-end encrypted, no account, nothing to install. Also available as a free iPhone app.</p>
           <ul class="prod-meta">
             <li><b>Who it's for</b><span>Anyone who would rather talk than type</span></li>
-            <li><b>Where it runs</b><span>Any phone browser paired to any computer</span></li>
+            <li><b>Where it runs</b><span>Any phone browser paired to any computer, or the free iPhone app</span></li>
             <li><b>Privacy</b><span>End-to-end encrypted; speech is recognized on your phone</span></li>
           </ul>
-          <a class="prod-link" href="https://tebdictate.com" target="_blank" rel="noopener">Use it free at tebdictate.com <span class="arr">→</span></a>
+          <div class="dict-cta">
+            <a class="appstore-link" href="https://apps.apple.com/us/app/tebdictate/id6790673075" target="_blank" rel="noopener" aria-label="Download tebDictate on the App Store">
+              <svg class="appstore-badge" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Download on the App Store">
+                <rect x="0.5" y="0.5" width="119" height="39" rx="8" fill="#000" stroke="#a6a6a6" stroke-width="0.6"/>
+                <path fill="#fff" d="M25.6 20.3c-.03-2.9 2.37-4.3 2.48-4.37-1.36-1.98-3.47-2.25-4.22-2.28-1.8-.19-3.5 1.06-4.41 1.06-.92 0-2.32-1.03-3.83-1-1.95.03-3.75 1.14-4.75 2.87-2.03 3.5-.52 8.7 1.46 11.55.97 1.4 2.12 2.98 3.63 2.92 1.46-.06 2.01-.94 3.78-.94 1.76 0 2.26.94 3.8.9 1.57-.02 2.56-1.42 3.52-2.83.5-.72 1.13-1.63 1.32-2.62-.03-.01-.02-.02 0-.02-2.53-.96-2.9-.03-2.78-4.24z"/>
+                <path fill="#fff" d="M23.2 12.1c.8-.98 1.34-2.33 1.19-3.68-1.15.05-2.55.77-3.38 1.75-.74.86-1.4 2.26-1.22 3.58 1.3.1 2.62-.66 3.41-1.65z"/>
+                <text x="34" y="17" fill="#fff" font-family="Helvetica Neue,Arial,sans-serif" font-size="8.2" letter-spacing=".2">Download on the</text>
+                <text x="34" y="30.5" fill="#fff" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" font-weight="600">App Store</text>
+              </svg>
+            </a>
+            <a class="prod-link" href="https://tebchart.com/dictate" target="_blank" rel="noopener">Use in browser <span class="arr">→</span></a>
+          </div>
         </div>
 
       </div>
@@ -281,7 +296,7 @@ footer nav a:hover{color:var(--fg)}
         </details>
         <details>
           <summary>Where can I get the apps?</summary>
-          <p>tebIQ is available in a web browser at tebiq.com and on the App Store for iPhone and Apple Watch. tebDictate works in any phone browser at tebdictate.com — nothing to install. The tebChart iPhone app has not been released yet; tebchart.com is the place to follow it.</p>
+          <p>tebIQ is available in a web browser at tebiq.com and on the App Store for iPhone and Apple Watch. tebDictate works in any phone browser at tebdictate.com — nothing to install — and is also available as a free app on the App Store for iPhone. The tebChart iPhone app has not been released yet; tebchart.com is the place to follow it.</p>
         </details>
       </div>
     </div>
@@ -296,6 +311,7 @@ footer nav a:hover{color:var(--fg)}
       <a href="https://tebiq.com" target="_blank" rel="noopener">tebIQ</a>
       <a href="https://tebchart.com" target="_blank" rel="noopener">tebChart</a>
       <a href="https://tebdictate.com" target="_blank" rel="noopener">tebDictate — free</a>
+      <a href="https://apps.apple.com/us/app/tebdictate/id6790673075" target="_blank" rel="noopener">tebDictate — App Store</a>
       <a href="/#platform">Platform</a>
       <a href="/#vision">Vision</a>
       <a href="/#principles">Why we're different</a>
@@ -383,9 +399,11 @@ footer nav a:hover{color:var(--fg)}
       "@id": "https://tebdictate.com/#app",
       "name": "tebDictate",
       "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "Any device with a modern web browser",
+      "operatingSystem": "iOS, Web browser",
       "url": "https://tebdictate.com",
-      "description": "Turn any phone into an end-to-end encrypted wireless microphone. Scan a QR code on your computer and dictate into any application. Free to use, no account, nothing to install.",
+      "installUrl": "https://apps.apple.com/us/app/tebdictate/id6790673075",
+      "downloadUrl": "https://apps.apple.com/us/app/tebdictate/id6790673075",
+      "description": "Turn any phone into an end-to-end encrypted wireless microphone. Scan a QR code on your computer and dictate into any application. Free to use, no account, nothing to install. Available on the App Store for iPhone.",
       "publisher": { "@id": "https://tebscribe.com/#org" },
       "isPartOf": { "@id": "https://tebscribe.com/#org" },
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -418,7 +436,7 @@ footer nav a:hover{color:var(--fg)}
         {
           "@type": "Question",
           "name": "Where can I get the apps?",
-          "acceptedAnswer": { "@type": "Answer", "text": "tebIQ is available in a web browser at tebiq.com and on the App Store for iPhone and Apple Watch. tebDictate works in any phone browser at tebdictate.com — nothing to install. The tebChart iPhone app has not been released yet; tebchart.com is the place to follow it." }
+          "acceptedAnswer": { "@type": "Answer", "text": "tebIQ is available in a web browser at tebiq.com and on the App Store for iPhone and Apple Watch. tebDictate works in any phone browser at tebdictate.com — nothing to install — and is also available as a free app on the App Store for iPhone. The tebChart iPhone app has not been released yet; tebchart.com is the place to follow it." }
         }
       ]
     }

@@ -51,6 +51,20 @@
       "name": "TebScribe",
       "url": "https://tebscribe.com",
       "publisher": { "@id": "https://tebscribe.com/#org" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://tebdictate.com/#app",
+      "name": "tebDictate",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "iOS, Web browser",
+      "url": "https://tebdictate.com",
+      "installUrl": "https://apps.apple.com/us/app/tebdictate/id6790673075",
+      "downloadUrl": "https://apps.apple.com/us/app/tebdictate/id6790673075",
+      "description": "Turn any phone into an end-to-end encrypted wireless microphone. Scan a QR code on your computer and dictate into any application. Free to use, no account, nothing to install. Available on the App Store for iPhone.",
+      "publisher": { "@id": "https://tebscribe.com/#org" },
+      "isPartOf": { "@id": "https://tebscribe.com/#org" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
   ]
 }
@@ -361,10 +375,16 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
 .dict-band h3{font-size:clamp(24px,3.1vw,36px);font-weight:700;letter-spacing:-.035em;
   line-height:1.1;margin-bottom:14px}
 .dict-band p{color:var(--fg-2);font-size:16px;font-weight:350;max-width:540px}
+.dict-band p.dict-pitch{color:var(--fg);font-weight:550;margin-bottom:10px}
 .dict-steps{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0 26px}
 .dict-step{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--fg-2);
   background:var(--panel-2);border:1px solid var(--hair);border-radius:999px;padding:7px 14px}
 .dict-step b{color:var(--fg);font-weight:700}
+.dict-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.appstore-link{display:inline-flex;border-radius:9px;transition:transform .3s var(--ease),filter .3s var(--ease)}
+.appstore-link:hover{transform:translateY(-2px);filter:brightness(1.15)}
+.appstore-badge{height:46px;width:auto;aspect-ratio:120/40;display:block}
+.appstore-badge.sm{height:38px}
 .dict-fine{font-size:12.5px;color:var(--fg-3);margin-top:18px;max-width:520px;line-height:1.55}
 .dict-art{display:grid;place-items:center}
 .dict-art svg{width:100%;max-width:230px;height:auto}
@@ -608,12 +628,13 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
         <div class="card prod reveal d3">
           <div class="prod-head">
             <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3zM19 19h2v2h-2z"/></svg></div>
-            <span class="badge soon">Apps coming</span>
+            <span class="badge live">Free · iPhone app</span>
           </div>
           <h4>tebDictate</h4>
           <div class="prod-tag">Your phone is the microphone</div>
-          <p>Scan a QR code and your phone becomes a wireless microphone for any computer. Speak, and your words type themselves onto the screen — into any text box, on any system. Free on the web today; iPhone and Android apps are on the way.</p>
+          <p>Scan a QR code and your phone becomes a wireless microphone for any computer. Speak, and your words type themselves onto the screen — into any text box, on any system. Free, on-device speech, end-to-end encrypted — on the web, or as a free iPhone app.</p>
           <a class="prod-link" href="https://tebchart.com/dictate" target="_blank" rel="noopener">Use it free <span class="arr">→</span></a>
+          <a class="prod-link" href="https://apps.apple.com/us/app/tebdictate/id6790673075" target="_blank" rel="noopener">Get the iPhone app <span class="arr">→</span></a>
         </div>
       </div>
 
@@ -622,15 +643,27 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
         <div>
           <div class="sec-eyebrow" style="margin-bottom:14px">Free · No sign-up · Available today</div>
           <h3>Turn any phone into a wireless mic for any computer.</h3>
-          <p>Open the page on your computer, scan the code with your phone, and start talking. Your words appear on the computer as you speak. Nothing to install, no account to create — it works on the phone you already have.</p>
+          <p class="dict-pitch">Free. On-device speech. End-to-end encrypted.</p>
+          <p>Open the page on your computer, scan the code with your phone, and start talking. Your words appear on the computer as you speak. Nothing to install, no account to create — it works on the phone you already have. Now also available as a free iPhone app.</p>
           <div class="dict-steps">
             <span class="dict-step"><b>1</b> Open it on your computer</span>
             <span class="dict-step"><b>2</b> Scan the code with your phone</span>
             <span class="dict-step"><b>3</b> Talk — it types</span>
           </div>
-          <a class="btn btn-primary btn-lg" href="https://tebchart.com/dictate" target="_blank" rel="noopener">
-            Start dictating — free <span class="arr">→</span>
-          </a>
+          <div class="dict-cta">
+            <a class="appstore-link" href="https://apps.apple.com/us/app/tebdictate/id6790673075" target="_blank" rel="noopener" aria-label="Download tebDictate on the App Store">
+              <svg class="appstore-badge" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Download on the App Store">
+                <rect x="0.5" y="0.5" width="119" height="39" rx="8" fill="#000" stroke="#a6a6a6" stroke-width="0.6"/>
+                <path fill="#fff" d="M25.6 20.3c-.03-2.9 2.37-4.3 2.48-4.37-1.36-1.98-3.47-2.25-4.22-2.28-1.8-.19-3.5 1.06-4.41 1.06-.92 0-2.32-1.03-3.83-1-1.95.03-3.75 1.14-4.75 2.87-2.03 3.5-.52 8.7 1.46 11.55.97 1.4 2.12 2.98 3.63 2.92 1.46-.06 2.01-.94 3.78-.94 1.76 0 2.26.94 3.8.9 1.57-.02 2.56-1.42 3.52-2.83.5-.72 1.13-1.63 1.32-2.62-.03-.01-.02-.02 0-.02-2.53-.96-2.9-.03-2.78-4.24z"/>
+                <path fill="#fff" d="M23.2 12.1c.8-.98 1.34-2.33 1.19-3.68-1.15.05-2.55.77-3.38 1.75-.74.86-1.4 2.26-1.22 3.58 1.3.1 2.62-.66 3.41-1.65z"/>
+                <text x="34" y="17" fill="#fff" font-family="Helvetica Neue,Arial,sans-serif" font-size="8.2" letter-spacing=".2">Download on the</text>
+                <text x="34" y="30.5" fill="#fff" font-family="Helvetica Neue,Arial,sans-serif" font-size="16" font-weight="600">App Store</text>
+              </svg>
+            </a>
+            <a class="btn btn-ghost btn-lg" href="https://tebchart.com/dictate" target="_blank" rel="noopener">
+              Use in browser <span class="arr">→</span>
+            </a>
+          </div>
           <p class="dict-fine">Speech is recognized on your phone. Encrypted in transit and at rest (AES). Never used for training. Never sold.</p>
         </div>
         <div class="dict-art" aria-hidden="true">
@@ -845,6 +878,7 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
         <a href="https://tebiq.com" target="_blank" rel="noopener">tebIQ →</a>
         <a href="https://tebchart.com" target="_blank" rel="noopener">tebChart →</a>
         <a href="https://tebdictate.com" target="_blank" rel="noopener">tebDictate — free →</a>
+        <a href="https://apps.apple.com/us/app/tebdictate/id6790673075" target="_blank" rel="noopener">tebDictate — App Store →</a>
         <a href="#platform">Platform</a>
         <a href="#vision">Vision</a>
       </div>
