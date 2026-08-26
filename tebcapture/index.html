@@ -1,0 +1,1162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>tebCapture — your phone is an encrypted camera</title>
+<meta name="robots" content="noindex" />
+<script>
+/* Orient <html lang/dir> before first paint so Farsi never flashes LTR.
+   Two languages only (en + fa); the full string swap runs after DOM ready
+   (tebcapture-i18n.js). Dependency-free, no fetch — English is baked in. */
+(function(){
+  try{
+    var qs=new URLSearchParams(location.search).get("lang");
+    var saved=null; try{ saved=localStorage.getItem("tebcapture.lang"); }catch(e){}
+    var cands=[qs,saved].concat(navigator.languages||[navigator.language||""]);
+    var loc="en";
+    for(var i=0;i<cands.length;i++){ var c=String(cands[i]||"").trim().toLowerCase().split("-")[0];
+      if(c==="fa"||c==="per"||c==="fas"){ loc="fa"; break; } if(c==="en"){ loc="en"; break; } }
+    var el=document.documentElement; el.lang=loc; el.dir=(loc==="fa")?"rtl":"ltr";
+  }catch(e){}
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600&display=swap" rel="stylesheet" />
+<style>
+/* =====================================================================
+   tebCapture desktop receiver — "Big Steps" (Concept 2, approved 2026-08-19).
+   One thing per screen, one green button per screen, 22px body, four-segment
+   rail. Ready/Recording/Saved lift Concept 3's giant Fraunces status word (those
+   screens stay open for hours and get glanced at across a room). Forest+brass,
+   lens/aperture mark — deliberately NOT tebDictate's navy mic.
+   All colour pairs ≥7:1 (see DESIGN-NOTES.md); nothing under 16px.
+   ===================================================================== */
+:root{
+  color-scheme: light;
+  --bg:#FBF9F3; --panel:#FFFFFF; --panel-2:#F3F0E6;
+  --ink:#101713; --muted:#3F4C44;                 /* 17.28 : 8.57 on bg */
+  --green:#0F5C3E; --green-text:#0F5C3E;          /* white on green 8.01; text 7.61 */
+  --green-soft:rgba(15,92,62,.10);
+  --brass:#A9762A; --brass-text:#6E4A12;
+  --line:#B9C2BC; --line-strong:#101713;
+  --danger-text:#8A2222; --warn-text:#744309; --ok-text:#0F5C3E;
+  --danger-soft:rgba(138,34,34,.08); --warn-soft:rgba(116,67,9,.10);
+  --rec:#B3261E; --focus:#0F5C3E; --on-green:#FFFFFF;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --base:22px; --measure:52ch;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0E1512; --panel:#141D18; --panel-2:#1A2520;
+    --ink:#F3F6F2; --muted:#B5C3B9;               /* 16.99 : 10.11 on bg */
+    --green:#58C793; --green-text:#7FD9AA;        /* ink on green 8.97; text 10.94 */
+    --green-soft:rgba(88,199,147,.14);
+    --brass:#CAA24A; --brass-text:#E9CB78;
+    --line:#3A4A41; --line-strong:#F3F6F2;
+    --danger-text:#F5A0A0; --warn-text:#F2C06A; --ok-text:#7FD9AA;
+    --danger-soft:rgba(245,160,160,.10); --warn-soft:rgba(242,192,106,.10);
+    --rec:#FF8A80; --focus:#7FD9AA; --on-green:#07140E;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark; --bg:#0E1512; --panel:#141D18; --panel-2:#1A2520; --ink:#F3F6F2; --muted:#B5C3B9;
+  --green:#58C793; --green-text:#7FD9AA; --green-soft:rgba(88,199,147,.14); --brass:#CAA24A; --brass-text:#E9CB78;
+  --line:#3A4A41; --line-strong:#F3F6F2; --danger-text:#F5A0A0; --warn-text:#F2C06A; --ok-text:#7FD9AA;
+  --danger-soft:rgba(245,160,160,.10); --warn-soft:rgba(242,192,106,.10); --rec:#FF8A80; --focus:#7FD9AA; --on-green:#07140E;
+}
+@media (prefers-contrast: more){ :root{ --line:var(--ink); --muted:var(--ink); --green-soft:transparent; } .panel,.big-btn,.choice{ border-width:3px !important; } }
+:root[data-contrast="more"]{ --line:var(--ink); --muted:var(--ink); --green-soft:transparent; }
+:root[data-contrast="more"] .panel, :root[data-contrast="more"] .big-btn, :root[data-contrast="more"] .choice{ border-width:3px !important; }
+
+/* Larger text: already single column; bump to ~125% and simplify */
+html.easy{ --base:27px; --measure:40ch; }
+html.easy .easy-hide{ display:none !important; }
+html.easy .rail{ display:none; }
+
+*{ box-sizing:border-box; }
+html{ font-size:var(--base); }
+body{ margin:0; font:1rem/1.55 var(--sans); background:var(--bg); color:var(--ink); min-height:100vh; display:flex; flex-direction:column; }
+a{ color:var(--green-text); text-decoration-thickness:2px; text-underline-offset:4px; }
+:focus-visible{ outline:3px solid var(--focus); outline-offset:4px; border-radius:8px; }
+h2[tabindex="-1"]:focus{ outline:none; }
+.skip{ position:absolute; left:-999px; top:8px; background:var(--panel); color:var(--ink); padding:12px 16px; border:2px solid var(--line-strong); border-radius:10px; z-index:50; font-weight:700; }
+.skip:focus{ left:12px; }
+.sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+p,li{ max-width:var(--measure); }
+
+/* ---- top bar: tiny chrome, big targets ---- */
+header{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:16px 24px; border-bottom:2px solid var(--line); }
+.brand{ display:flex; flex-direction:column; gap:2px; }
+.wordmark{ display:flex; align-items:center; gap:12px; font-family:var(--display); font-weight:700; font-size:1.2rem; }
+.wordmark svg{ width:38px; height:38px; }
+.eyebrow{ font-weight:700; font-size:.86rem; letter-spacing:.03em; color:var(--brass-text); margin:0; }
+.tools{ display:flex; gap:8px; flex-wrap:wrap; }
+.btn{ font:inherit; font-weight:700; font-size:.95rem; min-height:48px; padding:8px 18px; border-radius:12px; border:2px solid var(--line-strong); background:var(--panel); color:var(--ink); cursor:pointer; display:inline-flex; gap:10px; align-items:center; }
+.btn[aria-pressed="true"]{ background:var(--green-soft); border-color:var(--green); }
+.btn .ic{ width:1.2em; height:1.2em; }
+
+/* ---- progress rail ---- */
+.rail{ display:flex; justify-content:center; gap:10px; padding:22px 24px 0; }
+.rail span{ width:clamp(44px,8vw,90px); height:10px; border-radius:999px; background:var(--line); }
+.rail span[aria-current="step"]{ background:var(--green); }
+.rail span.done{ background:var(--green); opacity:.55; }
+.rail-text{ text-align:center; font-weight:700; color:var(--muted); margin:14px 0 0; font-size:.95rem; }
+
+/* ---- the one panel ---- */
+main{ flex:1; display:flex; flex-direction:column; align-items:center; padding:18px 24px 40px; }
+.panel{ width:100%; max-width:760px; background:var(--panel); border:2px solid var(--line); border-radius:24px; padding:clamp(26px,4vw,46px) clamp(22px,4vw,46px); margin-top:18px; }
+.panel[hidden]{ display:none; }
+.step-no{ font:700 1rem var(--sans); letter-spacing:.06em; text-transform:uppercase; color:var(--green-text); margin:0 0 10px; }
+.panel h2{ font-family:var(--display); font-weight:700; font-size:clamp(2rem,4.6vw,2.9rem); line-height:1.1; margin:0 0 16px; letter-spacing:-.015em; }
+/* the giant glance-across-the-room status word (Ready / Recording / Saved).
+   Selector carries .panel so it outranks `.panel p{font-size:1.08rem}`. */
+.panel p.statusword{ font-family:var(--display); font-weight:700; font-size:clamp(3.2rem,9vw,5.5rem); line-height:1; letter-spacing:-.02em; margin:6px 0 16px; max-width:none; }
+.panel p{ font-size:1.08rem; margin:0 0 14px; }
+.muted{ color:var(--muted); }
+ol.steps{ margin:16px 0 0; padding:0; list-style:none; counter-reset:s; }
+ol.steps li{ counter-increment:s; position:relative; padding:10px 0 10px 64px; font-size:1.08rem; }
+ol.steps li::before{ content:counter(s); position:absolute; left:0; top:6px; width:46px; height:46px; border-radius:50%; border:2px solid var(--line-strong); display:grid; place-items:center; font-family:var(--display); font-weight:700; font-size:1.3rem; }
+.big-btn{ font:inherit; font-weight:800; font-size:1.25rem; min-height:72px; width:100%; padding:14px 26px; border-radius:18px; border:2px solid var(--green); background:var(--green); color:var(--on-green); cursor:pointer; display:flex; align-items:center; justify-content:center; gap:14px; margin-top:26px; }
+.big-btn .ic{ width:1.3em; height:1.3em; }
+.big-btn.secondary{ background:var(--panel); color:var(--ink); border-color:var(--line-strong); }
+.big-btn[hidden]{ display:none; }
+.back{ display:inline-flex; align-items:center; gap:8px; min-height:48px; margin-top:14px; color:var(--ink); font-weight:700; text-decoration:underline; text-underline-offset:4px; background:none; border:0; font:inherit; font-weight:700; cursor:pointer; padding:6px 4px; }
+.path{ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.95rem; background:var(--panel-2); padding:4px 10px; border-radius:8px; border:1px solid var(--line); overflow-wrap:anywhere; }
+.callout{ display:flex; gap:14px; align-items:flex-start; border-left:6px solid var(--green); background:var(--green-soft); padding:14px 16px; border-radius:0 12px 12px 0; margin-top:20px; }
+.callout .ic{ width:1.5em; height:1.5em; flex:none; color:var(--green-text); }
+.callout p{ margin:0; }
+
+/* ---- choices (pair mode) ---- */
+.choices{ display:grid; gap:14px; margin-top:8px; }
+.choice{ display:grid; grid-template-columns:34px 1fr; gap:16px; align-items:start; border:2px solid var(--line); border-radius:18px; padding:18px 20px; background:var(--panel); cursor:pointer; }
+.choice[hidden]{ display:none; }
+.choice input{ width:30px; height:30px; margin:4px 0 0; accent-color:var(--green); }
+.choice b{ font-size:1.2rem; display:block; }
+.choice span{ display:block; color:var(--muted); margin-top:4px; }
+.choice:has(input:checked){ border-color:var(--green); background:var(--green-soft); }
+.choice:has(input:focus-visible){ outline:3px solid var(--focus); outline-offset:4px; }
+.name-row[hidden]{ display:none; }
+.name-row{ display:grid; gap:8px; margin-top:16px; }
+.name-row label{ font-weight:700; }
+.name-row input{ font:inherit; font-size:1.1rem; min-height:56px; padding:8px 14px; border-radius:12px; border:2px solid var(--line-strong); background:var(--panel); color:var(--ink); max-width:20ch; }
+
+/* ---- QR ---- */
+.qr-wrap{ display:grid; justify-items:center; gap:16px; margin-top:18px; text-align:center; }
+.qr-frame{ position:relative; width:400px; max-width:100%; aspect-ratio:1; background:#FFFFFF; border:2px solid var(--line); border-radius:22px; padding:26px; }
+.qr-frame svg{ width:100%; height:100%; display:block; }
+.qr-frame.expired svg{ opacity:.1; }
+.qr-cover{ display:none; position:absolute; inset:0; flex-direction:column; align-items:center; justify-content:center; gap:12px; padding:26px; text-align:center; color:#0B1410; }
+.qr-frame.expired .qr-cover{ display:flex; }
+.qr-cover b{ font-family:var(--display); font-size:1.5rem; }
+.qr-cover .btn{ color:#0B1410; border-color:#0F5C3E; background:#fff; }
+.code{ font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:2rem; font-weight:700; letter-spacing:.14em; white-space:nowrap; border:2px solid var(--line-strong); border-radius:12px; padding:8px 18px; }
+.timer{ color:var(--muted); font-variant-numeric:tabular-nums; }
+
+/* ---- status badge: icon + word, never colour alone ---- */
+.badge{ display:inline-flex; align-items:center; gap:12px; min-height:52px; padding:8px 18px; border-radius:999px; border:2px solid currentColor; font-weight:800; font-size:1.1rem; }
+.badge .ic{ width:1.2em; height:1.2em; }
+.badge.ok{ color:var(--ok-text); } .badge.warn{ color:var(--warn-text); background:var(--warn-soft); } .badge.danger{ color:var(--danger-text); background:var(--danger-soft); }
+.badge.rec{ color:var(--ink); border-color:var(--rec); }
+.rec-dot{ width:16px; height:16px; border-radius:50%; background:var(--rec); animation:breathe 2.4s ease-in-out infinite; }
+@keyframes breathe{ 0%,100%{opacity:1} 50%{opacity:.4} }
+@media (prefers-reduced-motion: reduce){ .rec-dot{ animation:none; } }
+.facts{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:18px; }
+@media (max-width:620px){ .facts{ grid-template-columns:1fr; } }
+.fact{ border:2px solid var(--line); border-radius:14px; padding:12px 14px; }
+.fact .n{ font-family:var(--display); font-weight:700; font-size:1.7rem; font-variant-numeric:tabular-nums; line-height:1.1; }
+.fact .l{ color:var(--muted); font-size:1rem; }
+.problem{ border-color:var(--danger-text); border-width:3px; }
+.problem.warnish{ border-color:var(--warn-text); }
+
+/* ---- Recent panel (Ready / Saved screens): last 20 finished items ---- */
+.recent{ width:100%; max-width:760px; margin:22px auto 0; }
+.recent[hidden]{ display:none; }
+.recent-h{ font-family:var(--display); font-weight:700; font-size:1.5rem; margin:0 0 6px; }
+.recent-sub{ color:var(--muted); font-size:1rem; margin:0 0 14px; }
+.recent-list{ list-style:none; margin:0; padding:0; display:grid; gap:12px; }
+.recent-item{ display:grid; grid-template-columns:96px 1fr auto; gap:16px; align-items:center; border:2px solid var(--line); border-radius:16px; padding:12px 14px; background:var(--panel); }
+@media (max-width:620px){ .recent-item{ grid-template-columns:72px 1fr; } .recent-item .ri-actions{ grid-column:1 / -1; } }
+.ri-thumb{ width:96px; height:64px; border-radius:10px; overflow:hidden; background:var(--panel-2); border:1px solid var(--line); display:grid; place-items:center; }
+.ri-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+.ri-thumb svg{ width:34px; height:34px; color:var(--muted); }
+.ri-meta{ min-width:0; }
+.ri-title{ font-weight:800; font-size:1.15rem; overflow-wrap:anywhere; }
+.ri-where{ color:var(--muted); font-size:1rem; overflow-wrap:anywhere; }
+.ri-actions{ display:flex; flex-direction:column; gap:8px; align-items:flex-end; }
+.ri-badge{ display:inline-flex; align-items:center; gap:8px; font-weight:800; font-size:1rem; padding:4px 12px; border-radius:999px; border:2px solid currentColor; }
+.ri-badge .ic{ width:1.1em; height:1.1em; }
+.ri-badge.ok{ color:var(--ok-text); } .ri-badge.work{ color:var(--warn-text); background:var(--warn-soft); } .ri-badge.bad{ color:var(--danger-text); background:var(--danger-soft); }
+.ri-open{ font:inherit; font-weight:700; font-size:1rem; min-height:44px; padding:6px 14px; border-radius:10px; border:2px solid var(--line-strong); background:var(--panel); color:var(--ink); cursor:pointer; }
+
+footer{ border-top:2px solid var(--line); padding:16px 24px 22px; color:var(--muted); font-size:.9rem; line-height:1.5; text-align:center; }
+footer p{ margin:4px auto; max-width:none; }
+
+dialog{ border:2px solid var(--line-strong); border-radius:22px; background:var(--panel); color:var(--ink); padding:0; width:min(92vw,680px); }
+dialog::backdrop{ background:rgba(0,0,0,.55); }
+.dlg{ padding:28px 30px; }
+.dlg h2{ font-family:var(--display); font-size:1.9rem; margin:0 0 12px; }
+.dlg p{ margin:0 0 14px; font-size:1.05rem; }
+
+#printSheet{ display:none; }
+@media print{
+  body > *:not(#printSheet){ display:none !important; }
+  #printSheet{ display:block; color:#000; background:#fff; font:15pt/1.5 Georgia,serif; }
+  #printSheet h1{ font:700 30pt/1.1 Georgia,serif; margin:0 0 8pt; }
+  #printSheet ol{ padding:0; list-style:none; counter-reset:p; }
+  #printSheet li{ counter-increment:p; position:relative; padding:8pt 0 8pt 48pt; font-size:17pt; page-break-inside:avoid; }
+  #printSheet li::before{ content:counter(p); position:absolute; left:0; top:5pt; width:34pt; height:34pt; border:2.5pt solid #000; border-radius:50%; display:grid; place-items:center; font-weight:700; font-size:17pt; }
+  #printSheet .box{ border:2.5pt solid #000; padding:10pt 14pt; margin-top:12pt; }
+}
+html.show-print #printSheet{ display:block; background:#fff; color:#000; max-width:820px; margin:24px auto; padding:28px; border:2px solid #000; font:20px/1.5 Georgia,serif; }
+html.show-print #printSheet h1{ font:700 36px/1.1 Georgia,serif; margin:0 0 8px; }
+html.show-print #printSheet ol{ padding:0; list-style:none; counter-reset:p; }
+html.show-print #printSheet li{ counter-increment:p; position:relative; padding:10px 0 10px 64px; font-size:22px; }
+html.show-print #printSheet li::before{ content:counter(p); position:absolute; left:0; top:8px; width:46px; height:46px; border:2.5px solid #000; border-radius:50%; display:grid; place-items:center; font-weight:700; }
+html.show-print #printSheet .box{ border:2.5px solid #000; padding:14px 18px; margin-top:16px; }
+
+/* ---- RTL (Farsi): mirror the direction-bearing bits. Fonts/sizes unchanged. ---- */
+[dir="rtl"] ol.steps li{ padding:10px 64px 10px 0; }
+[dir="rtl"] ol.steps li::before{ left:auto; right:0; }
+[dir="rtl"] .callout{ border-left:0; border-right:6px solid var(--green); border-radius:12px 0 0 12px; }
+[dir="rtl"] .skip{ left:auto; right:-999px; }
+[dir="rtl"] .skip:focus{ left:auto; right:12px; }
+[dir="rtl"] #printSheet li{ padding:8pt 48pt 8pt 0; }
+[dir="rtl"] #printSheet li::before{ left:auto; right:0; }
+html.show-print[dir="rtl"] #printSheet li{ padding:10px 64px 10px 0; }
+html.show-print[dir="rtl"] #printSheet li::before{ left:auto; right:0; }
+#langBtn{ font-family:var(--sans); }
+</style>
+</head>
+<body data-saved-receivers="true">
+<a class="skip" href="#main" data-i18n="skip">Skip to the main content</a>
+
+<header>
+  <div class="brand">
+    <div class="wordmark">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="none" stroke="var(--green)" stroke-width="3"/><circle cx="24" cy="24" r="8.5" fill="none" stroke="var(--brass)" stroke-width="2.6"/><g stroke="var(--green)" stroke-width="3" stroke-linecap="round"><path d="M24 6 L24 15.5"/><path d="M39.6 15 L31.4 19.75"/><path d="M39.6 33 L31.4 28.25"/><path d="M24 42 L24 32.5"/><path d="M8.4 33 L16.6 28.25"/><path d="M8.4 15 L16.6 19.75"/></g></svg>
+      tebCapture
+    </div>
+    <p class="eyebrow" data-i18n="eyebrow">tebCapture · phone camera → this computer</p>
+  </div>
+  <div class="tools" role="group" aria-label="Display options" data-i18n-attr="aria-label=tools_label">
+    <button class="btn" id="langBtn" type="button" aria-label="Change language">فارسی</button>
+    <button class="btn" id="easyBtn" aria-pressed="false"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 19 L10 5 L16 19 M6.5 14 L13.5 14 M17 19 L19.5 13 L22 19"/></svg><span data-i18n="tool_larger">Larger text</span></button>
+    <button class="btn" id="themeBtn" aria-pressed="false"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6 19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></svg><span>Dark</span></button>
+    <button class="btn" id="helpBtn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="10"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7M12 17h.01"/></svg><span data-i18n="tool_help">Help me</span></button>
+  </div>
+</header>
+
+<main id="main">
+  <h1 class="sr" data-i18n="h1_sr">tebCapture — your phone is an encrypted camera. Send video to this computer.</h1>
+  <p class="sr" id="live" aria-live="polite" aria-atomic="true"></p>
+  <div class="rail" aria-hidden="true" id="rail">
+    <span data-i="1"></span><span data-i="2"></span><span data-i="3"></span><span data-i="4"></span>
+  </div>
+  <p class="rail-text" id="railText">Step 1 of 4</p>
+
+  <!-- 1 · Folder -->
+  <section class="panel" data-stage="first" aria-labelledby="h1-">
+    <p class="step-no" data-i18n="s1_no">Step 1 of 4</p>
+    <h2 id="h1-" data-i18n="s1_h">Where should your videos go?</h2>
+    <p data-i18n-html="s1_p_html">Pick a folder on this computer. Every video from your phone will land there. <b>You only do this once.</b></p>
+    <ol class="steps">
+      <li data-i18n="s1_li1">Click the green button.</li>
+      <li data-i18n-html="s1_li2_html">Pick <b>Movies</b> (or any folder you like).</li>
+      <li data-i18n-html="s1_li3_html">Click <b>Allow</b> when asked.</li>
+    </ol>
+    <button class="big-btn" id="pickFolderBtn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span data-i18n="s1_pick">Choose a folder</span></button>
+    <div class="callout" id="safariNote"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
+      <p data-i18n-html="s1_safari_html">Using <b>Safari</b>? It can't save video to a folder. No problem — we'll offer a download each time you stop recording. Click <b>Skip this step</b>.</p></div>
+    <button class="back" data-go="pair" id="skipFolderBtn" data-i18n="s1_skip">Skip this step (Safari)</button>
+  </section>
+
+  <!-- 2 · Pair -->
+  <section class="panel" data-stage="pair" aria-labelledby="h2-" hidden>
+    <p class="step-no" data-i18n="s2_no">Step 2 of 4</p>
+    <h2 id="h2-" data-i18n="s2_h">Show this code to your phone.</h2>
+    <p data-i18n-html="s2_p_html">Open <b>tebCapture</b> on your iPhone, tap <b>Pair</b>, and point it at the square below. Wait for the green check.</p>
+    <fieldset id="modeFieldset" style="border:0;padding:0;margin:0" hidden>
+      <legend style="font-weight:700;margin-bottom:10px" data-i18n="s2_legend">How long should this computer remember your phone?</legend>
+      <div class="choices">
+        <label class="choice"><input type="radio" name="mode" value="guest" checked><div><b data-i18n="s2_guest_t">Just this once</b><span data-i18n="s2_guest_d">Forget the phone when you close this window.</span></div></label>
+        <label class="choice" id="rememberChoice"><input type="radio" name="mode" value="remember"><div><b data-i18n="s2_remember_t">Remember this computer</b><span data-i18n="s2_remember_d">Next time, the phone finds this computer by itself. No code.</span></div></label>
+      </div>
+    </fieldset>
+    <div class="name-row" id="nameRow" hidden>
+      <label for="compName" data-i18n="s2_name_label">What should your phone call this computer?</label>
+      <input type="text" id="compName" value="This Mac">
+    </div>
+    <div class="qr-wrap">
+      <div class="qr-frame" id="qrFrame" role="img" aria-label="Pairing code. If you can't scan it, type the code below into the app." data-i18n-attr="aria-label=qr_aria">
+        <svg id="qrSvg" viewBox="0 0 33 33" shape-rendering="crispEdges"><rect width="33" height="33" fill="#fff"/></svg>
+        <div class="qr-cover"><b data-i18n="qr_expired_t">This code has expired</b><span data-i18n="qr_expired_d">Nothing was lost — make a new code.</span><button class="btn" data-newcode data-i18n="newcode">Make a new code</button></div>
+      </div>
+      <p style="margin:0" data-i18n-html="s2_cantscan_html"><b>Can't scan? Or type this code in the app:</b></p>
+      <span class="code" id="textCode">····-····</span>
+      <p class="timer" style="margin:0" data-i18n-html="s2_goodfor_html">Good for <b id="timer">10:00</b>.</p>
+      <button class="btn" data-newcode data-i18n="newcode">Make a new code</button>
+    </div>
+    <button class="back" data-go="first" data-i18n="back_pair_to_first">← Back</button>
+  </section>
+
+  <!-- 3 · Ready -->
+  <section class="panel" data-stage="ready" aria-labelledby="h3-" hidden>
+    <p class="step-no" data-i18n="s3_no">Step 3 of 4</p>
+    <p class="statusword" aria-hidden="true" data-i18n="s3_ready_word">Ready</p>
+    <span class="badge ok"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span id="pairedWith" data-i18n="paired">Paired with your phone</span></span>
+    <h2 id="h3-" style="margin-top:18px" data-i18n-html="s3_h_html">This computer is ready.<br>Leave this window open.</h2>
+    <p data-i18n-html="s3_p_html">Now press <b>Record</b> on your phone whenever you like. The video comes here by itself. Videos save to <span class="path" id="readyPath">the folder you chose</span>.</p>
+<!--GW-START-->
+    <style>
+      /* Personal Model Gateway panel — elderly-safe: ≥18px text, ≥7:1 tokens, icon+word,
+         keyboard-reachable, aria-live status. Scoped to .gw so it never touches /dictate. */
+      .gw{ margin-top:30px; border-top:2px solid var(--line); padding-top:26px; }
+      .gw h3{ font-family:var(--display); font-weight:700; font-size:1.5rem; margin:0 0 6px; display:flex; align-items:center; gap:12px; }
+      .gw h3 .ic{ width:1.4em; height:1.4em; color:var(--brass-text); flex:none; }
+      .gw p{ font-size:1.125rem; }               /* 18px floor */
+      .gw .gw-note{ color:var(--muted); }
+      .gw label{ display:block; font-weight:700; font-size:1.125rem; margin:16px 0 6px; }
+      .gw input, .gw select{ font:inherit; font-size:1.125rem; min-height:56px; padding:10px 14px; border-radius:12px; border:2px solid var(--line-strong); background:var(--panel); color:var(--ink); width:100%; max-width:34ch; }
+      .gw .gw-row{ display:flex; flex-wrap:wrap; gap:14px; align-items:flex-end; }
+      .gw .gw-btn{ font:inherit; font-weight:800; font-size:1.125rem; min-height:56px; padding:12px 22px; border-radius:14px; border:2px solid var(--green); background:var(--green); color:var(--on-green); cursor:pointer; display:inline-flex; align-items:center; gap:10px; }
+      .gw .gw-btn.ghost{ background:var(--panel); color:var(--ink); border-color:var(--line-strong); }
+      .gw .gw-provs{ list-style:none; padding:0; margin:16px 0 0; display:grid; gap:12px; }
+      .gw .gw-provs li{ display:flex; justify-content:space-between; align-items:center; gap:12px; border:2px solid var(--line); border-radius:14px; padding:12px 16px; font-size:1.125rem; }
+      .gw .gw-provs .st-yes{ color:var(--ok-text); font-weight:800; }
+      .gw .gw-provs .st-no{ color:var(--muted); font-weight:700; }
+      .gw .gw-limits{ margin-top:18px; color:var(--muted); font-size:1.0625rem; }
+      .gw .gw-ledger{ list-style:none; padding:0; margin:10px 0 0; display:grid; gap:8px; font-size:1.0625rem; }
+      .gw [hidden]{ display:none !important; }
+      .gw .gw-status{ margin-top:12px; font-weight:700; min-height:1.4em; }
+      .gw .gw-status.err{ color:var(--danger-text); }
+      .gw .gw-status.ok{ color:var(--ok-text); }
+    </style>
+    <section class="gw" id="gwPanel" aria-labelledby="gwH">
+      <h3 id="gwH"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.4"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg><span data-i18n="gw_h">Personal models — optional</span></h3>
+      <p data-i18n-html="gw_p_html">Your phone asks; <b>this computer answers using YOUR key.</b> Your key is encrypted and stays on this computer — it is never sent to your phone or the relay. Model providers see the request text under their own terms.</p>
+      <p class="gw-note" id="gwSaved" role="note" hidden data-i18n-html="gw_saved_html">To use personal models, pair with <b>“Remember this computer.”</b> Guest codes can’t sign these requests.</p>
+
+      <div id="gwLocked">
+        <label for="gwPass" data-i18n="gw_pass_label">Passphrase to protect your keys on this computer</label>
+        <div class="gw-row">
+          <input type="password" id="gwPass" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Choose or enter passphrase" data-i18n-attr="placeholder=gw_pass_ph">
+          <button class="gw-btn" id="gwUnlockBtn" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" style="width:1.3em;height:1.3em"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0"/></svg><span data-i18n="gw_unlock">Unlock</span></button>
+        </div>
+      </div>
+
+      <div id="gwUnlocked" hidden>
+        <div class="gw-row">
+          <div>
+            <label for="gwProvider" data-i18n="gw_provider">Provider</label>
+            <select id="gwProvider"></select>
+          </div>
+          <div>
+            <label for="gwModel" data-i18n="gw_model">Model</label>
+            <select id="gwModel"></select>
+          </div>
+        </div>
+        <div id="gwKeyRow">
+          <label for="gwKey" data-i18n="gw_key_label">API key (stays on this computer)</label>
+          <div class="gw-row">
+            <input type="password" id="gwKey" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Paste your provider API key" data-i18n-attr="placeholder=gw_key_ph">
+            <button class="gw-btn" id="gwSaveBtn" type="button" data-i18n="gw_save">Save key</button>
+          </div>
+        </div>
+        <ul class="gw-provs" id="gwProviderList" aria-label="Providers set up on this computer" data-i18n-attr="aria-label=gw_providers_aria"></ul>
+        <p class="gw-limits" id="gwLimits"></p>
+        <h4 style="font-size:1.125rem;margin:18px 0 4px" data-i18n="gw_answered_h">Requests answered</h4>
+        <ul class="gw-ledger" id="gwLedger" aria-live="polite"><li class="gw-note" data-i18n="gw_no_requests">No requests yet.</li></ul>
+        <div class="gw-row" style="margin-top:18px">
+          <button class="gw-btn ghost" id="gwLockBtn" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" style="width:1.3em;height:1.3em"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span data-i18n="gw_lock">Lock keys</span></button>
+        </div>
+      </div>
+      <p class="gw-status" id="gwStatus" role="status" aria-live="polite"></p>
+    </section>
+<!--GW-END-->
+    <button class="back" data-go="pair" data-i18n="back_ready_to_pair">← Pair a different phone</button>
+  </section>
+
+  <!-- 4 · Recording -->
+  <section class="panel" data-stage="rec" aria-labelledby="h4-" hidden>
+    <p class="step-no" data-i18n="s4_no">Step 4 of 4</p>
+    <p class="statusword" aria-hidden="true" data-i18n="s4_recording_word">Recording</p>
+    <span class="badge rec"><span class="rec-dot" aria-hidden="true"></span><span data-i18n="s4_recording_word">Recording</span></span>
+    <h2 id="h4-" style="margin-top:14px" data-i18n="s4_h">Video is arriving. Nothing to click.</h2>
+    <p data-i18n-html="s4_p_html">Your phone is sending encrypted video right now. Stop the recording <b>on your phone</b> when you're done.</p>
+    <p class="muted" data-i18n-html="s4_writing_html">Writing to <span class="path" id="recPath">your folder</span></p>
+    <div class="facts" aria-label="Live transfer details" data-i18n-attr="aria-label=facts_aria">
+      <div class="fact"><div class="n" id="stBytes">0 MB</div><div class="l" data-i18n="fact_received">received so far</div></div>
+      <div class="fact"><div class="n" id="stChunks">0</div><div class="l" data-i18n="fact_pieces">pieces</div></div>
+      <div class="fact"><div class="n" id="stAck">—</div><div class="l" data-i18n="fact_confirmed">last confirmed</div></div>
+    </div>
+  </section>
+
+  <!-- 5 · Saved -->
+  <section class="panel" data-stage="done" aria-labelledby="h5-" hidden>
+    <p class="step-no" data-i18n="done_word">Done</p>
+    <p class="statusword" aria-hidden="true" data-i18n="s5_saved_word">Saved</p>
+    <span class="badge ok"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-i18n="s5_saved_word">Saved</span></span>
+    <h2 id="h5-" style="margin-top:14px" data-i18n="s5_h">Your video is on this computer.</h2>
+    <p><span class="path" id="donePath" data-i18n="donePath_default">your folder</span></p>
+    <p class="muted" id="doneStats" data-i18n="doneStats_default">Every piece confirmed.</p>
+    <a class="big-btn" id="downloadLink" download hidden><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 3v12M7 11l5 5 5-5M4 21h16"/></svg><span data-i18n="save_mp4">Save video (.mp4)</span></a>
+    <button class="big-btn secondary" data-go="ready" data-i18n="record_another">Record another</button>
+  </section>
+
+  <!-- 6a · relay unreachable -->
+  <section class="panel problem" data-stage="p-relay" aria-labelledby="h6a" hidden>
+    <span class="badge danger"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M12 3l9.5 17h-19z M12 10v4M12 17.5h.01"/></svg><span data-i18n="p_relay_badge">Can't reach the relay</span></span>
+    <h2 id="h6a" style="margin-top:14px" data-i18n="p_relay_h">Can't reach the relay.</h2>
+    <p data-i18n-html="p_relay_p_html">Check this computer's internet, then try again. <b>Nothing on the phone is lost</b> — the phone keeps any video and sends it when this computer is online again.</p>
+    <ol class="steps"><li data-i18n="p_relay_li1">Check that Wi-Fi is on.</li><li data-i18n="p_relay_li2">Click the green button.</li></ol>
+    <button class="big-btn" id="retryRelayBtn" data-i18n="retry">Retry</button>
+  </section>
+  <!-- 6b · folder permission lost -->
+  <section class="panel problem warnish" data-stage="p-folder" aria-labelledby="h6b" hidden>
+    <span class="badge warn"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M12 10v4M12 17h.01"/></svg><span data-i18n="p_folder_badge">Needs one click</span></span>
+    <h2 id="h6b" style="margin-top:14px" data-i18n="p_folder_h">This browser needs permission to write to your folder again.</h2>
+    <p data-i18n-html="p_folder_p_html">Browsers sometimes forget after a restart. <b>Your video is safe on your phone.</b> Everything received so far is already in the folder. Choose the folder again and it will keep arriving.</p>
+    <button class="big-btn" id="regrantBtn" data-i18n="p_folder_btn">Choose the folder again</button>
+  </section>
+  <!-- 6c · disk full -->
+  <section class="panel problem" data-stage="p-disk" aria-labelledby="h6c" hidden>
+    <span class="badge danger"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 12h18M7 16h.01M7 8.5h.01"/></svg><span data-i18n="p_disk_badge">Out of space</span></span>
+    <h2 id="h6c" style="margin-top:14px" data-i18n="p_disk_h">This computer is out of space.</h2>
+    <p data-i18n-html="p_disk_p_html">Free up space or pick another drive. <b>Your phone is holding the rest until there is room.</b></p>
+    <ol class="steps"><li data-i18n="p_disk_li1">Empty the Trash, or move some files to another drive.</li><li data-i18n="p_disk_li2">Click the green button.</li></ol>
+    <button class="big-btn" id="diskRetryBtn" data-i18n="p_disk_btn">Choose another folder</button>
+  </section>
+
+  <!-- Recent: the last 20 finished photos/videos, mirrored into your folder -->
+  <section class="recent" id="recentPanel" aria-labelledby="recentH" hidden>
+    <h2 id="recentH" class="recent-h" data-i18n="recent_h">Recent</h2>
+    <p class="recent-sub" id="recentSub" data-i18n="recent_sub">The latest photos and videos from your phone, in your folder.</p>
+    <ul class="recent-list" id="recentList" aria-live="polite"></ul>
+  </section>
+
+  <!-- persistent reassurance strip, under every screen -->
+  <p class="muted" style="margin:22px 0 0;text-align:center;max-width:44ch" data-i18n="reassure">If this computer is asleep, the phone keeps the video and sends it when you're back.</p>
+  <p class="easy-hide" style="margin:6px 0 0;text-align:center" data-i18n-html="dictate_hint_html"><a href="/dictate">Looking for dictation? That's tebDictate.</a></p>
+</main>
+
+<footer>
+  <p data-i18n="footer_claim">End-to-end encrypted between your phone and this computer. Encrypted in transit and at rest (AES). Never used for training. Never sold.</p>
+  <p data-i18n="footer_by">tebCapture · by tebIQ</p>
+</footer>
+
+<dialog id="help" aria-labelledby="helpTitle">
+  <div class="dlg">
+    <h2 id="helpTitle" data-i18n="help_title">Help me</h2>
+    <p data-i18n-html="help_p1_html"><b>The idea:</b> your phone is the camera. This computer is where the video goes. The square code tells the phone which computer is yours.</p>
+    <p data-i18n-html="help_p2_html"><b>Code won't scan?</b> Type the letters under it into the app. Same thing.</p>
+    <p data-i18n-html="help_p3_html"><b>Pressed Record and nothing happened?</b> Look here. It should say <b>Recording</b> with a red dot. If not, check this window is open and the computer is online.</p>
+    <p data-i18n-html="help_p4_html"><b>Computer was asleep?</b> Relax. The phone kept the video and sends it when you're back.</p>
+    <p data-i18n-html="help_p5_html"><b>Still stuck?</b> Print the setup sheet and hand it to whoever helps you with computers. There is nothing on this page they can break.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:space-between;margin-top:18px">
+      <button class="btn" onclick="window.print()" data-i18n="help_print">Print setup sheet</button>
+      <button class="btn" id="helpClose" style="background:var(--green);color:var(--on-green);border-color:var(--green)" data-i18n="help_close">Close</button>
+    </div>
+  </div>
+</dialog>
+
+<section id="printSheet" aria-label="Printable setup sheet">
+  <h1 data-i18n="print_h1">How to set up your computer for tebCapture</h1>
+  <p data-i18n="print_intro">Four steps. About two minutes. Do this once.</p>
+  <ol>
+    <li data-i18n-html="print_li1_html"><b>Open this page</b> on the computer: <b id="printUrl">this web page</b>, in Chrome or Edge.</li>
+    <li data-i18n-html="print_li2_html"><b>Choose a folder.</b> Click the green “Choose a folder” button, pick <b>Movies</b>, click <b>Allow</b>.</li>
+    <li data-i18n-html="print_li3_html"><b>Show the code to your phone.</b> Open tebCapture on the iPhone, tap Pair, point it at the square. Can't scan? Type the code under the square.</li>
+    <li data-i18n-html="print_li4_html"><b>Leave the window open.</b> Press Record on the phone. The video saves itself into your folder.</li>
+  </ol>
+  <div class="box" data-i18n-html="print_box1_html"><b>Computer asleep or offline?</b> Nothing is lost. The phone keeps the video and sends it when the window is open again.</div>
+  <div class="box" data-i18n-html="print_box2_html"><b>Code expired?</b> Click “Make a new code”. Nothing else changes.</div>
+  <p style="margin-top:16px" data-i18n="print_claim">End-to-end encrypted between your phone and this computer. Encrypted in transit and at rest (AES). Never used for training. Never sold.</p>
+</section>
+
+<!-- tebCapture talks ONLY to the tebCapture relay at this origin — never /api/dictate/*. -->
+<script id="tebcapture-config" type="application/json">{"relayOrigin":"https://capture.tebdictate.com","savedReceivers":true,"gateway":true}</script>
+<script src="./tebcapture-i18n.js"></script>
+<script src="./x25519.js"></script>
+<script src="./qrcode.js"></script>
+<script src="./tebcapture-chunk-crypto.js"></script>
+<script src="./tebcapture-mirror.js"></script>
+<script src="./tebcapture-gateway.js"></script>
+<script>
+(function(){
+  "use strict";
+  const $=(s,r)=>(r||document).querySelector(s), $$=(s,r)=>Array.from((r||document).querySelectorAll(s));
+  const root=document.documentElement, live=$("#live");
+  const CFG=(()=>{ try{ return JSON.parse($("#tebcapture-config").textContent); }catch(_){ return {relayOrigin:"",savedReceivers:false}; } })();
+  const RELAY=(CFG.relayOrigin||"").replace(/\/$/,"");
+  const SAVED_ON = CFG.savedReceivers === true && document.body.getAttribute("data-saved-receivers")==="true";
+  const CC=(typeof window!=="undefined" && window.tebCaptureChunkCrypto) || null;
+  const MIRROR=(typeof window!=="undefined" && window.tebCaptureMirror) || null;
+  let mirror=null; // the project-folder mirror engine; set once a folder is chosen + init()
+  const api=(p)=>RELAY + p;
+
+  // ---- i18n (en + fa; tebcapture-i18n.js). English is the DOM default; applyLang
+  // re-skins [data-i18n*] elements and re-renders the dynamic strings below. ------
+  const I18N=(typeof window!=="undefined" && window.tebCaptureI18n) || { SUPPORTED:["en"], RTL:{}, NATIVE:{en:"English"}, resolve:()=>null, S:{en:{}} };
+  let LANG="en";
+  function t(k, vars){
+    const tbl=(I18N.S[LANG]||I18N.S.en||{});
+    let s=(tbl[k]!=null)?tbl[k]:((I18N.S.en&&I18N.S.en[k]!=null)?I18N.S.en[k]:k);
+    if(vars) s=String(s).replace(/\{(\w+)\}/g,(_,n)=> vars[n]!=null?vars[n]:("{"+n+"}"));
+    return s;
+  }
+  // Persian-digit formatting for counts/sizes/countdown (Intl.NumberFormat fa-IR).
+  function locNum(n, frac){ try{ return new Intl.NumberFormat(LANG==="fa"?"fa-IR":"en-US",{maximumFractionDigits:frac||0}).format(n); }catch(_){ return String(n); } }
+  const FA_D="۰۱۲۳۴۵۶۷۸۹";
+  function locDigits(s){ return LANG==="fa"?String(s).replace(/[0-9]/g,d=>FA_D[+d]):String(s); }
+  function pickLang(){
+    const qs=new URLSearchParams(location.search).get("lang");
+    let saved=null; try{ saved=localStorage.getItem("tebcapture.lang"); }catch(_){}
+    const cands=[qs,saved].concat(navigator.languages||[navigator.language||""]);
+    for(const c of cands){ const r=I18N.resolve(c); if(r) return r; }
+    return "en";
+  }
+  let compNameTouched=false;   // don't clobber a user-edited computer name on lang switch
+  function applyLang(loc, announce){
+    LANG=(I18N.SUPPORTED.indexOf(loc)>=0)?loc:"en";
+    root.lang=LANG; root.setAttribute("dir", I18N.RTL[LANG]?"rtl":"ltr");
+    try{ document.title=t("doc_title"); }catch(_){}
+    $$("[data-i18n]").forEach(el=>{ el.textContent=t(el.getAttribute("data-i18n")); });
+    $$("[data-i18n-html]").forEach(el=>{ el.innerHTML=t(el.getAttribute("data-i18n-html")); });
+    $$("[data-i18n-attr]").forEach(el=>{
+      (el.getAttribute("data-i18n-attr")||"").split(";").forEach(pair=>{
+        const i=pair.indexOf("="); if(i<0) return;
+        const attr=pair.slice(0,i).trim(), key=pair.slice(i+1).trim();
+        if(attr&&key) el.setAttribute(attr, t(key));
+      });
+    });
+    const langBtn=$("#langBtn"); if(langBtn){ const other=LANG==="fa"?"en":"fa"; langBtn.textContent=I18N.NATIVE[other]||other; langBtn.setAttribute("aria-label", t("lang_switch_aria")); langBtn.setAttribute("lang", other); }
+    const cn=$("#compName"); if(cn && !compNameTouched) cn.value=t("s2_name_default");
+    try{ $("#printUrl").textContent=printUrlText||t("print_printurl_default"); }catch(_){}
+    refreshDynamicText();
+    try{ localStorage.setItem("tebcapture.lang", LANG); }catch(_){}
+    if(announce) live.textContent=t("live_lang");
+  }
+  // Re-render every dynamically-set string in the active language + digits.
+  function refreshDynamicText(){
+    if(STATE){ const n=STEP[STATE]||0; $("#railText").textContent=n?t("step_of",{n:locNum(n)}):""; if(!announceMuted) live.textContent=liveText(STATE); }
+    try{ applyTheme(root.getAttribute("data-theme")||null); }catch(_){}
+    try{ renderTimer(); }catch(_){}
+    try{ if(STATE==="rec"||STATE==="done") refreshRecStats(false); }catch(_){}
+    try{ renderPathLabels(); }catch(_){}
+    try{ if(STATE==="done") $("#doneStats").textContent=t("done_stats",{mb:fmtMB(bytesTotal), n:locNum(chunkCount)}); }catch(_){}
+    try{ if(mirror) renderRecent(); }catch(_){}
+    try{ if(gwRelabel) gwRelabel(); }catch(_){}
+  }
+  function liveText(state){ return t("live_"+state); }
+  let announceMuted=false;      // set while go() manages its own live announcement
+  let printUrlText=null;        // the real receiver URL, once boot computes it
+  let gwRelabel=null;           // set by initGatewayPanel; re-skins the unlocked gateway on lang switch
+
+  const STEP={first:1,pair:2,ready:3,rec:4,done:4};
+  let timerTick=null, recStatTick=null, renewTick=null, secs=600;
+
+  // ---- state machine ----------------------------------------------------------
+  function go(state){
+    root.classList.remove("show-print");
+    $$(".panel").forEach(p=>p.hidden=p.dataset.stage!==state);
+    const n=STEP[state]||0;
+    $$("#rail span").forEach(s=>{ const i=+s.dataset.i; s.className=i<n?"done":""; if(i===n) s.setAttribute("aria-current","step"); else s.removeAttribute("aria-current"); });
+    $("#rail").hidden = !n; $("#railText").hidden=!n; $("#railText").textContent = n?t("step_of",{n:locNum(n)}):"";
+    live.textContent=liveText(state);
+    if(state!=="pair" && timerTick){ clearInterval(timerTick); timerTick=null; }
+    if(state!=="rec" && recStatTick){ clearInterval(recStatTick); recStatTick=null; }
+    // Recent panel rides the Ready + Saved screens (glanced at for hours); refresh on show.
+    const rp=$("#recentPanel");
+    if(rp){ const show=(state==="ready"||state==="done") && mirror && mirror.receipts().length>0; rp.hidden=!show; if(show) renderRecent(); }
+    // Move focus to the new heading for screen readers, but never let focus() decide the
+    // scroll position: on a tall panel that can leave the headline above the fold. Pin the
+    // heading to the top of the viewport explicitly (no smooth scroll — reduced-motion safe).
+    const h=$(`.panel[data-stage="${state}"] h2`);
+    if(h){ h.setAttribute("tabindex","-1"); try{ h.focus({preventScroll:true}); }catch(_){ try{h.focus();}catch(__){} }
+           if(STATE===null){ window.scrollTo(0,0); } else { try{ h.scrollIntoView({block:"start"}); }catch(_){ } } }
+    try{ localStorage.setItem("tebcapture.state", state); }catch(_){}
+    STATE=state;
+  }
+  let STATE=null; // null until the first go(): boot pins scroll to the top
+  try{ history.scrollRestoration="manual"; }catch(_){}
+  document.addEventListener("click",e=>{ const g=e.target.closest("[data-go]"); if(g){ e.preventDefault(); route(g.dataset.go); } });
+  function route(state){ if(state==="pair") startPairing(); else go(state); }
+
+  // ---- IndexedDB (folder handle + receiver identity) --------------------------
+  function idb(){
+    return new Promise((res,rej)=>{
+      const r=indexedDB.open("tebcapture",1);
+      r.onupgradeneeded=()=>{ r.result.createObjectStore("kv"); };
+      r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error);
+    });
+  }
+  async function kvGet(k){ try{ const db=await idb(); return await new Promise((res,rej)=>{ const t=db.transaction("kv").objectStore("kv").get(k); t.onsuccess=()=>res(t.result); t.onerror=()=>rej(t.error); }); }catch(_){ return undefined; } }
+  async function kvSet(k,v){ try{ const db=await idb(); return await new Promise((res,rej)=>{ const t=db.transaction("kv","readwrite").objectStore("kv").put(v,k); t.onsuccess=()=>res(); t.onerror=()=>rej(t.error); }); }catch(_){ } }
+
+  // ---- folder (File System Access API; Chrome/Edge) ---------------------------
+  const hasFolderApi = typeof window.showDirectoryPicker === "function";
+  let dirHandle=null, folderMode = hasFolderApi ? "disk" : "memory";
+  if(!hasFolderApi){ $("#pickFolderBtn").hidden=true; } // Safari/Firefox: skip straight to pairing
+
+  async function verifyPerm(handle){
+    if(!handle||!handle.queryPermission) return false;
+    const opts={mode:"readwrite"};
+    if(await handle.queryPermission(opts)==="granted") return true;
+    return (await handle.requestPermission(opts))==="granted";
+  }
+  $("#pickFolderBtn").addEventListener("click", async ()=>{
+    try{
+      dirHandle = await window.showDirectoryPicker({ id:"tebcapture", mode:"readwrite", startIn:"videos" });
+      if(!(await verifyPerm(dirHandle))) throw new Error("perm");
+      await kvSet("dir", dirHandle);
+      folderMode="disk";
+      await attachMirror(dirHandle);
+      route("pair");
+    }catch(err){ if(err && err.name==="AbortError") return; /* stay on step 1 */ }
+  });
+
+  // ---- relay session + handshake (guest) --------------------------------------
+  let session=null;   // {token, sid, expires_in}
+  let sessionKey=null, sseSource=null, myKeys=null, qrNonce=null;
+  let recording=null; // {recording_id, ...}
+  let ackedUpto=-1, nextExpect=0, bytesTotal=0, chunkCount=0, writable=null, memBuffers=null;
+
+  async function relayFetch(path, opts){
+    opts=opts||{};
+    opts.headers=Object.assign({}, opts.headers||{});
+    // The relay mints {session_token, sid, expires_in} — the field is session_token (a bare
+    // `session.token` is undefined → no header → every signal/chunk/ack call 401s).
+    const tok = session && (session.session_token || session.token);
+    if(tok && !opts.noauth) opts.headers["Authorization"]="Bearer "+tok;
+    const r=await fetch(api(path), opts);
+    return r;
+  }
+  function b64uRand(nbytes){ const b=new Uint8Array(nbytes); crypto.getRandomValues(b); return CC.b64(b); }
+
+  async function startPairing(){
+    go("pair");
+    resetTimer();
+    if(SAVED_ON){ $("#modeFieldset").hidden=false; } else { $("#modeFieldset").hidden=true; $("#nameRow").hidden=true; }
+    await mintAndDrawQR();
+    startTimer();
+  }
+
+  async function mintAndDrawQR(){
+    if(!RELAY || !CC){ showQrPlaceholder("(set the relay origin to generate a live code)"); return; }
+    try{
+      // fresh keypair + nonce for this pairing
+      myKeys = CC.generateKeypair();
+      qrNonce = new Uint8Array(16); crypto.getRandomValues(qrNonce);
+      const remember = SAVED_ON && $('input[name="mode"]:checked') && $('input[name="mode"]:checked').value==="remember";
+      const r = await relayFetch("/api/capture/session", { method:"POST", noauth:true });
+      if(!r.ok) throw new Error("mint "+r.status);
+      session = await r.json();
+      let payload;
+      if(remember){
+        payload = await buildPairQR();
+      }else{
+        // guest QR payload — EXACTLY the keys the iOS app reads.
+        payload = {
+          t: "guest",
+          origin: RELAY,
+          token: session.session_token || session.token,
+          sid: session.sid,
+          rpub: CC.b64(myKeys.pub),
+          nonce: CC.b64(qrNonce)
+        };
+      }
+      drawQR(JSON.stringify(payload));
+      // Typed code: ask the relay for a real short code (POST /api/capture/session/code)
+      // and fall back to the sid prefix when the relay 404s that endpoint. fetchShortCode
+      // never throws — it returns {code, source}. 8-char codes are grouped 4-4 to read.
+      (async ()=>{
+        let code = null;
+        const GW = window.tebCaptureGateway;
+        if(GW){ try{ const sc = await GW.fetchShortCode(RELAY, session.sid, session.session_token||session.token, (u,i)=>fetch(u,i)); code = sc && sc.code; }catch(_){} }
+        if(!code){ code = String(session.sid||"").replace(/[^A-Za-z0-9]/g,"").toUpperCase().slice(0,8); }
+        const disp = /^[A-Z0-9]{8}$/.test(code) ? (code.slice(0,4)+"-"+code.slice(4,8)) : code;
+        $("#textCode").textContent = disp || "····-····";
+      })();
+      openReceiverStream();
+    }catch(err){ go("p-relay"); }
+  }
+
+  async function buildPairQR(){
+    // saved-computer identity: Ed25519 sign key + static X25519 DH key, kept once.
+    let ident = await kvGet("receiver-identity");
+    if(!ident){ ident = await genReceiverIdentity(); await kvSet("receiver-identity", ident); }
+    const nonceB64 = CC.b64(qrNonce);
+    const rsig = await ed25519Sign(ident.signPrivPkcs8, "tebcapture-pair-offer|"+ident.rid+"|"+nonceB64);
+    return { t:"pair", origin:RELAY, rid:ident.rid, rsign:ident.signPubB64, rdh:ident.dhPubB64, rsig:rsig, nonce:nonceB64 };
+  }
+
+  // Ed25519 via WebCrypto (Chrome/Edge — the saved-mode targets). Falls back to
+  // hiding saved mode if unavailable.
+  async function genReceiverIdentity(){
+    const kp = await crypto.subtle.generateKey({name:"Ed25519"}, true, ["sign","verify"]);
+    const signPub = new Uint8Array(await crypto.subtle.exportKey("raw", kp.publicKey));
+    const signPrivPkcs8 = new Uint8Array(await crypto.subtle.exportKey("pkcs8", kp.privateKey));
+    const dh = CC.generateKeypair();
+    const rid = await CC.receiverId(signPub);
+    return { rid, signPubB64:CC.b64(signPub), signPrivPkcs8:CC.b64(signPrivPkcs8), dhPubB64:CC.b64(dh.pub), dhPrivB64:CC.b64(dh.priv) };
+  }
+  async function ed25519Sign(privPkcs8B64, msg){
+    const key = await crypto.subtle.importKey("pkcs8", CC.b64d(privPkcs8B64), {name:"Ed25519"}, false, ["sign"]);
+    const sig = new Uint8Array(await crypto.subtle.sign({name:"Ed25519"}, key, new TextEncoder().encode(msg)));
+    return CC.b64(sig);
+  }
+
+  function drawQR(text){
+    try{
+      const svg = QRPairing.svg(text, { ec:"M", size:600, margin:4 });
+      $("#qrFrame").querySelector(".qr-cover").insertAdjacentElement("beforebegin", htmlToNode(svg));
+      const old=$("#qrSvg"); if(old) old.remove();
+      const fresh=$("#qrFrame svg"); if(fresh) fresh.id="qrSvg";
+    }catch(_){ showQrPlaceholder("(couldn't render the code)"); }
+  }
+  function htmlToNode(s){ const d=document.createElement("div"); d.innerHTML=s.trim(); return d.firstChild; }
+  function showQrPlaceholder(msg){ const s=$("#qrSvg"); if(s) s.outerHTML='<svg id="qrSvg" viewBox="0 0 33 33"><rect width="33" height="33" fill="#fff"/></svg>'; }
+
+  // ---- SSE receiver stream ----------------------------------------------------
+  function openReceiverStream(){
+    if(!session || sseSource) return;
+    const url = api("/api/capture/stream")+"?session="+encodeURIComponent(session.session_token||session.token)+"&role=receiver";
+    try{
+      sseSource = new EventSource(url);
+      sseSource.addEventListener("signal", onSignal);
+      sseSource.addEventListener("error", ()=>{ /* EventSource auto-retries; only surface if we never paired */ if(!sessionKey && STATE==="pair"){ /* keep trying quietly */ } });
+      // announce our receiver pubkey, then receiver_ready
+      postSignal("e2ee_pubkey","receiver",{ pubkey: CC.b64(myKeys.pub) })
+        .then(()=>postSignal("receiver_ready","receiver"))
+        .catch(()=>{});
+      startRenew();
+    }catch(_){ go("p-relay"); }
+  }
+  async function postSignal(signal, role, payload){
+    const body={ signal, role }; if(payload) body.payload=payload;
+    const r=await relayFetch("/api/capture/signals",{ method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(body) });
+    if(!r.ok) throw new Error("signal "+r.status);
+    return r.json();
+  }
+  function startRenew(){
+    if(renewTick) clearInterval(renewTick);
+    // keep both peers "seen live" and the token fresh through long recordings
+    renewTick=setInterval(async ()=>{ try{ const r=await relayFetch("/api/capture/session/renew",{method:"POST"}); if(r.ok){ const j=await r.json(); if(j.session_token){ session.session_token=j.session_token; } } }catch(_){}} , 30*60*1000);
+  }
+
+  async function onSignal(ev){
+    let m; try{ m=JSON.parse(ev.data); }catch(_){ return; }
+    const sig=m.signal, pl=m.payload||{};
+    if(sig==="e2ee_pubkey" && m.role==="phone"){
+      try{
+        const phonePub=CC.b64d(pl.pubkey);
+        sessionKey = await CC.deriveSessionKey(myKeys.priv, phonePub, myKeys.pub, phonePub, qrNonce);
+        $("#pairedWith").textContent = t("paired");
+        go("ready");
+      }catch(_){ /* bad key — leave on pair, phone can retry */ }
+    }else if(sig==="recording_started" && m.role==="phone"){
+      // MediaTransferStart. media_id/kind present ⇒ a contract media transfer whose chunk 0
+      // is the encrypted private manifest; absent ⇒ a legacy recording (→ Unsorted).
+      recording={ recording_id: pl.recording_id, media_id: pl.media_id||null, kind: pl.kind||"video",
+                  codec:pl.codec, w:pl.w, h:pl.h, fps:pl.fps, chunk_seconds:pl.chunk_seconds };
+      await beginReceive();
+    }else if(sig==="chunk_available"){
+      onChunkAvailable(pl);
+    }else if(sig==="recording_stopped"){
+      await endReceive(pl);   // MediaTransferFinal payload carries final_chunk_index/byte_count/sha256
+    }else if(sig==="open_recent_item" && m.role==="phone"){
+      onOpenRecent(pl.media_id);
+    }
+  }
+
+  // ---- receive pipeline (mirror-aware) ----------------------------------------
+  // Photos and videos travel as ONE recording (MEDIA-CONTRACT.md): chunk 0 is the
+  // encrypted private manifest (only on a contract transfer), chunks 1…N are media.
+  // Disk mode streams into the mirror's atomic <name>.part and finalizes (verify
+  // sha256 + byte_count) before the chunk-N ACK — the receipt invariant. Memory mode
+  // (Safari, no folder) keeps the legacy "offer a download" fallback.
+  let xfer=null; // per-recording transfer state
+  function nowLabel(){ const d=new Date(); const p=n=>String(n).padStart(2,"0"); return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())} ${p(d.getHours())}-${p(d.getMinutes())}`; }
+  function fileName(){ const ext=(xfer&&xfer.kind==="photo")?"jpg":"mp4"; return `${nowLabel()} tebCapture.${ext}`; }
+
+  function metaFromManifest(man){
+    return {
+      media_id: man.media_id || (recording&&recording.media_id),
+      recording_id: man.recording_id || (recording&&recording.recording_id),
+      kind: man.kind || (recording&&recording.kind) || "video",
+      safe_extension: man.safe_extension,
+      project_id: man.project_id, scene_id: man.scene_id, shot_id: man.shot_id,
+      take_id: man.take_id, variant_id: man.variant_id||null,
+      display: man.display||null, captured_at: man.captured_at||null,
+      duration_milliseconds: man.duration_milliseconds, pixel_width: man.pixel_width,
+      pixel_height: man.pixel_height, orientation_degrees: man.orientation_degrees,
+    };
+  }
+  function legacyMeta(){
+    // A recording with no private manifest → mirror routes it to tebCapture/Unsorted/.
+    return { media_id: recording.recording_id, recording_id: recording.recording_id,
+             kind: recording.kind||"video", safe_extension:(recording.kind==="photo")?"jpg":"mp4" };
+  }
+  async function startInstall(meta){
+    if(mirror){
+      try{ xfer.ingest = await mirror.beginIngest(meta); xfer.meta=meta; setPathLabels(meta); return true; }
+      catch(err){ go(err && err.name==="QuotaExceededError" ? "p-disk" : "p-folder"); return false; }
+    }
+    xfer.meta=meta; setMemLabels(); return false; // memory fallback
+  }
+  // Path labels are re-rendered on language switch (renderPathLabels), so keep the
+  // language-neutral parts (the relative path / the download name) in pathState and
+  // localize only the "your folder /" prefix + the "(download when you stop)" hint.
+  let pathState=null;
+  function renderPathLabels(){
+    if(!pathState) return;
+    if(pathState.mode==="mem"){ $("#recPath").textContent=pathState.name+" "+t("mem_suffix"); $("#donePath").textContent=pathState.name; }
+    else{ const nice=t("folder_word")+" / "+pathState.rel.split("/").join(" / "); $("#recPath").textContent=nice; $("#donePath").textContent=nice; }
+  }
+  function setPathLabels(meta){
+    const rec = mirror && mirror.getIndex && mirror.getIndex().items[meta.media_id];
+    const rel = rec ? rec.path : "tebCapture / "+(meta.kind==="photo"?t("photo"):t("video"));
+    pathState={mode:"disk", rel}; renderPathLabels();
+  }
+  function setMemLabels(){ pathState={mode:"mem", name:fileName()}; renderPathLabels(); }
+
+  async function beginReceive(){
+    ackedUpto=-1; nextExpect=0; bytesTotal=0; chunkCount=0; writable=null; memBuffers=[];
+    xfer={ recording_id:recording.recording_id, media_id:recording.media_id||null,
+           kind:recording.kind||"video", isContract:!!recording.media_id, ingest:null, meta:null };
+    if(mirror && dirHandle){ if(!(await verifyPerm(dirHandle))){ go("p-folder"); return; } }
+    // Legacy (no manifest): open the Unsorted target now — chunk 0 is already media bytes.
+    if(!xfer.isContract){ await startInstall(legacyMeta()); }
+    emitMediaStatus(xfer.media_id, "receiving");
+    go("rec"); startRecStats();
+  }
+
+  async function onChunkAvailable(pl){
+    if(!recording || !sessionKey || !xfer) return;
+    const idx = pl.index;
+    if(idx!==nextExpect) return; // strict order; relay status is authoritative for gap-fill
+    try{
+      const r=await relayFetch(`/api/capture/recordings/${encodeURIComponent(recording.recording_id)}/chunks/${idx}`);
+      if(r.status===404) return; // already acked/expired
+      if(!r.ok) throw new Error("chunk "+r.status);
+      const ct=new Uint8Array(await r.arrayBuffer());
+      const plain=await CC.decryptChunk(sessionKey, recording.recording_id, idx, ct);
+      if(xfer.isContract && idx===0){
+        // chunk 0 = encrypted private manifest. Parse, reject any ID mismatch, open the file.
+        let man; try{ man=JSON.parse(new TextDecoder().decode(plain)); }catch(_){ throw new Error("bad manifest"); }
+        if((man.media_id && recording.media_id && man.media_id!==recording.media_id) ||
+           (man.recording_id && man.recording_id!==recording.recording_id)){
+          emitMediaStatus(recording.media_id,"needs_attention"); go("p-folder"); return;
+        }
+        if(!(await startInstall(metaFromManifest(man)))) { /* memory fallback: buffer media below */ }
+      } else {
+        // media bytes (chunk 1…N for a contract transfer; chunk 0…N for legacy)
+        if(xfer.ingest){ await xfer.ingest.write(plain); } else { memBuffers.push(plain); }
+        bytesTotal += plain.byteLength; chunkCount++;
+      }
+      nextExpect=idx+1;
+      // Receipt invariant: NEVER ack the (still-unknown) final chunk. Ack the proven
+      // contiguous prefix up to idx-1; chunk N is acked only after finalize (endReceive).
+      const ackUpto=idx-1;
+      if(ackUpto>ackedUpto){
+        await relayFetch(`/api/capture/recordings/${encodeURIComponent(recording.recording_id)}/ack`, { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({ upto_index: ackUpto }) });
+        ackedUpto=ackUpto;
+      }
+      refreshRecStats(true);
+    }catch(err){
+      if(err && err.name==="QuotaExceededError"){ go("p-disk"); }
+      // transient network: leave nextExpect; the phone re-emits chunk_available / we resume
+    }
+  }
+
+  async function endReceive(final){
+    final=final||{};
+    try{
+      if(xfer && xfer.ingest){
+        const rec=await xfer.ingest.finalize({ sha256: final.sha256, byte_count: final.byte_count });
+        // Durable now → the ONLY moment we may ACK the final chunk (frees phone cleanup).
+        const finalIdx = final.final_chunk_index!=null ? final.final_chunk_index : (nextExpect-1);
+        if(finalIdx>ackedUpto){ try{ await relayFetch(`/api/capture/recordings/${encodeURIComponent(recording.recording_id)}/ack`, { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({ upto_index: finalIdx }) }); ackedUpto=finalIdx; }catch(_){}}
+        emitMediaStatus(rec.media_id, "ready");
+        $("#downloadLink").hidden=true;
+      } else {
+        // memory fallback (Safari / no folder): build a download; best-effort final ack.
+        const blob=new Blob(memBuffers,{type:(xfer&&xfer.kind==="photo")?"image/jpeg":"video/mp4"});
+        const a=$("#downloadLink"); a.href=URL.createObjectURL(blob); a.download=fileName(); a.hidden=false;
+        const finalIdx = final.final_chunk_index!=null ? final.final_chunk_index : (nextExpect-1);
+        if(finalIdx>ackedUpto){ try{ await relayFetch(`/api/capture/recordings/${encodeURIComponent(recording.recording_id)}/ack`, { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({ upto_index: finalIdx }) }); ackedUpto=finalIdx; }catch(_){}}
+        emitMediaStatus(xfer&&xfer.media_id, "ready");
+      }
+    }catch(err){
+      // finalize failed (hash/byte mismatch) — DO NOT ack the final chunk; the phone keeps it.
+      try{ if(xfer&&xfer.ingest) await xfer.ingest.abort(); }catch(_){}
+      emitMediaStatus(xfer&&xfer.media_id, "needs_attention");
+      go("p-folder"); return;
+    }
+    $("#doneStats").textContent = t("done_stats", {mb:fmtMB(bytesTotal), n:locNum(chunkCount)});
+    go("done");
+  }
+
+  // receiver → phone bounded status signal (MEDIA-CONTRACT.md). If the relay's signal
+  // enum doesn't yet accept it the POST 400s harmlessly (see REPORT: relay wire gap).
+  function emitMediaStatus(mediaId, status){ if(!mediaId||!session) return; postSignal("receiver_media_status","receiver",{ media_id:mediaId, status }).catch(()=>{}); }
+  // open_recent_item (phone → receiver, media_id only): confirm we hold it + surface it.
+  function onOpenRecent(mediaId){
+    if(!mirror||!mediaId){ emitMediaStatus(mediaId,"needs_attention"); return; }
+    const rec=mirror.getIndex().items[mediaId];
+    if(!rec){ emitMediaStatus(mediaId,"needs_attention"); return; }
+    if((STATE==="ready"||STATE==="done")===false){ go("done"); } else { renderRecent(); }
+    const el=document.querySelector(`.recent-item[data-id="${CSS.escape(mediaId)}"]`);
+    if(el){ el.scrollIntoView({block:"center"}); el.style.outline="3px solid var(--focus)"; setTimeout(()=>{el.style.outline="";},2500); }
+    emitMediaStatus(mediaId, rec.receipt==="ready"?"ready":"processing");
+  }
+
+  function fmtMB(b){ return locNum(b/1048576, b>52428800?0:1)+" "+t("unit_mb"); }
+  function startRecStats(){ refreshRecStats(false); if(recStatTick) clearInterval(recStatTick); recStatTick=setInterval(()=>refreshRecStats(false),1000); }
+  function refreshRecStats(acked){ $("#stBytes").textContent=fmtMB(bytesTotal); $("#stChunks").textContent=locNum(chunkCount); if(acked) $("#stAck").textContent=t("ack_justnow"); }
+
+  // ---- QR timer / expiry ------------------------------------------------------
+  function resetTimer(){ secs=600; $("#qrFrame").classList.remove("expired"); renderTimer(); }
+  function startTimer(){ if(timerTick) clearInterval(timerTick); timerTick=setInterval(()=>{ secs--; renderTimer(); if(secs<=0){ clearInterval(timerTick); timerTick=null; $("#qrFrame").classList.add("expired"); live.textContent=t("live_expired"); } },1000); }
+  function renderTimer(){ const m=Math.floor(Math.max(secs,0)/60), s=Math.max(secs,0)%60; const el=$("#timer"); if(el) el.textContent=locDigits(`${m}:${String(s).padStart(2,"0")}`); }
+  $$("[data-newcode]").forEach(b=>b.addEventListener("click", async ()=>{ closeStream(); resetTimer(); await mintAndDrawQR(); startTimer(); live.textContent=t("live_newcode"); }));
+  function closeStream(){ if(sseSource){ try{sseSource.close();}catch(_){} sseSource=null; } if(renewTick){ clearInterval(renewTick); renewTick=null; } sessionKey=null; recording=null; }
+
+  // ---- pair-mode radios -------------------------------------------------------
+  $$('input[name="mode"]').forEach(r=>r.addEventListener("change", async ()=>{
+    const rem = $('input[name="mode"]:checked').value==="remember";
+    $("#nameRow").hidden=!rem;
+    live.textContent = rem?t("live_remember_selected"):t("live_guest_selected");
+    closeStream(); resetTimer(); await mintAndDrawQR(); startTimer();
+  }));
+
+  // ---- problem-screen actions -------------------------------------------------
+  $("#retryRelayBtn") && $("#retryRelayBtn").addEventListener("click", ()=>{ startPairing(); });
+  $("#regrantBtn") && $("#regrantBtn").addEventListener("click", async ()=>{ try{ if(dirHandle && await verifyPerm(dirHandle)){ await attachMirror(dirHandle); go("rec"); } else { dirHandle=await window.showDirectoryPicker({id:"tebcapture",mode:"readwrite"}); await kvSet("dir",dirHandle); await attachMirror(dirHandle); go("rec"); } }catch(_){}});
+  $("#diskRetryBtn") && $("#diskRetryBtn").addEventListener("click", async ()=>{ try{ dirHandle=await window.showDirectoryPicker({id:"tebcapture",mode:"readwrite"}); await kvSet("dir",dirHandle); await attachMirror(dirHandle); go("rec"); }catch(_){}});
+
+  // ---- mirror engine + in-page receiver API + Recent panel --------------------
+  async function attachMirror(handle){
+    if(!MIRROR || !handle) return;
+    try{
+      // Non-prompting: only attach if we already hold read/write (init writes .mirror/).
+      if(handle.queryPermission && (await handle.queryPermission({mode:"readwrite"}))!=="granted") return;
+      mirror = MIRROR.createMirror(handle, {});
+      await mirror.init();
+      mirror.on("change", renderRecent); mirror.on("item", renderRecent); mirror.on("receipt", renderRecent);
+      buildReceiverFacade(); renderRecent();
+    }catch(_){ mirror=null; buildReceiverFacade(); }
+  }
+  // window.tebCaptureReceiver — a FROZEN control face for tools/tests. No secrets ever
+  // (never the session key or a relay token); read-only until the user chose a folder.
+  function buildReceiverFacade(){
+    const ver=(MIRROR&&MIRROR.VERSION)||"1.0.0";
+    const facade={
+      version: ver,
+      getState(){ return mirror ? mirror.getState() : { version:ver, root:"tebCapture", hasFolder:false, itemCount:0, projectCount:0 }; },
+      listProjects(){ return mirror ? mirror.listProjects() : []; },
+      listFolder(p){ return mirror ? mirror.listFolder(p) : []; },
+      async ensurePath(p){ if(!mirror) throw new Error("no folder chosen"); await mirror.ensurePath(p); return true; },
+      async ingest(meta, bytes){ if(!mirror) throw new Error("no folder chosen"); return mirror.ingest(meta, bytes); },
+      receipts(){ return mirror ? mirror.receipts() : []; },
+      on(ev, cb){ if(mirror) mirror.on(ev, cb); },
+    };
+    try{ window.tebCaptureReceiver = Object.freeze(facade); }catch(_){}
+  }
+  const RI_ICON = {
+    photo:'<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg>',
+    video:'<svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3z"/></svg>'
+  };
+  // [class, i18n-key, svg] — the label key resolves at render time so a language
+  // switch re-skins the Recent list too.
+  const RI_BADGE = {
+    ready:['ok','badge_saved','<path d="M4 12.5 9.5 18 20 6.5"/>'],
+    receiving:['work','badge_receiving','<path d="M12 3v9l6 3"/><circle cx="12" cy="12" r="9"/>'],
+    processing:['work','badge_working','<path d="M12 3v9l6 3"/><circle cx="12" cy="12" r="9"/>'],
+    waiting_for_wifi:['work','badge_waiting','<path d="M5 12a10 10 0 0 1 14 0M8.5 15.5a5 5 0 0 1 7 0M12 19h.01"/>'],
+    computer_low_storage:['bad','badge_lowspace','<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 12h18"/>'],
+    needs_attention:['bad','badge_needslook','<path d="M12 3l9.5 17h-19z M12 10v4M12 17.5h.01"/>']
+  };
+  let recentThumbSeen=new Set();
+  function renderRecent(){
+    const list=$("#recentList"); if(!list||!mirror) return;
+    const items=mirror.receipts();
+    const rp=$("#recentPanel");
+    if(rp && (STATE==="ready"||STATE==="done")) rp.hidden = items.length===0;
+    list.innerHTML="";
+    items.forEach(r=>{
+      const li=document.createElement("li"); li.className="recent-item"; li.setAttribute("data-id", r.media_id);
+      const kind = r.kind==="photo"?"photo":"video";
+      const b = RI_BADGE[r.receipt] || RI_BADGE.processing;
+      const where = r.unsorted ? t("unsorted") : [r.project,r.scene,r.shot].filter(Boolean).join(" · ");
+      const takeTxt = (r.take_number!=null && !r.unsorted) ? (" · "+t("take",{n:locDigits(String(r.take_number).padStart(2,"0"))})) : "";
+      const title = r.unsorted ? (kind==="photo"?t("photo"):t("video")) : ((r.project||t("video")));
+      li.innerHTML =
+        '<div class="ri-thumb" data-id="'+esc(r.media_id)+'">'+RI_ICON[kind]+'</div>'+
+        '<div class="ri-meta"><div class="ri-title">'+esc(title)+'</div>'+
+          '<div class="ri-where">'+esc(where+takeTxt)+'</div></div>'+
+        '<div class="ri-actions"><span class="ri-badge '+b[0]+'"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6">'+b[2]+'</svg>'+esc(t(b[1]))+'</span>'+
+          '<button class="ri-open" data-open="'+esc(r.media_id)+'">'+esc(t("open_folder"))+'</button></div>';
+      list.appendChild(li);
+      if(r.receipt==="ready" && !recentThumbSeen.has(r.media_id)){ recentThumbSeen.add(r.media_id); loadThumb(r, li.querySelector(".ri-thumb")); }
+    });
+  }
+  function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+  async function loadThumb(rec, box){
+    if(!mirror||!box) return;
+    try{
+      const fh=await mirror.getFileHandleFor(rec.media_id); if(!fh) return;
+      const file=await fh.getFile();
+      if(rec.kind==="photo"){
+        const bmp=await createImageBitmap(file);
+        const cv=document.createElement("canvas"); cv.width=192; cv.height=128;
+        const ctx=cv.getContext("2d"); const s=Math.max(192/bmp.width,128/bmp.height);
+        ctx.drawImage(bmp,(192-bmp.width*s)/2,(128-bmp.height*s)/2,bmp.width*s,bmp.height*s);
+        setThumb(box, cv.toDataURL("image/png")); bmp.close&&bmp.close();
+      }else{
+        const url=URL.createObjectURL(file); const v=document.createElement("video");
+        v.muted=true; v.preload="metadata"; v.src=url;
+        await new Promise((res)=>{ v.addEventListener("loadeddata",res,{once:true}); v.addEventListener("error",res,{once:true}); });
+        try{ v.currentTime=Math.min(0.1,(v.duration||1)/2); await new Promise(r=>{v.addEventListener("seeked",r,{once:true}); setTimeout(r,400);}); }catch(_){}
+        const cv=document.createElement("canvas"); cv.width=192; cv.height=128;
+        cv.getContext("2d").drawImage(v,0,0,192,128); setThumb(box, cv.toDataURL("image/png")); URL.revokeObjectURL(url);
+      }
+    }catch(_){ /* keep the icon placeholder */ }
+  }
+  function setThumb(box, dataUrl){ const img=new Image(); img.alt=""; img.src=dataUrl; box.innerHTML=""; box.appendChild(img); }
+  document.addEventListener("click", async (e)=>{
+    const ob=e.target.closest("[data-open]"); if(!ob) return;
+    // The File System Access API can't reveal a path in the OS file manager; the honest,
+    // secure action is to re-confirm the folder handle is live (a user gesture re-grants it).
+    try{ if(dirHandle && dirHandle.requestPermission){ await dirHandle.requestPermission({mode:"readwrite"}); } }catch(_){}
+    live.textContent=t("live_open_folder");
+  });
+
+  // ---- display options --------------------------------------------------------
+  const easyBtn=$("#easyBtn");
+  function setEasy(on){ root.classList.toggle("easy",on); easyBtn.setAttribute("aria-pressed",String(on)); try{localStorage.setItem("tebcapture.easy",on?"1":"0");}catch(_){} live.textContent=on?t("live_easy_on"):t("live_easy_off"); }
+  easyBtn.addEventListener("click",()=>setEasy(!root.classList.contains("easy")));
+  const themeBtn=$("#themeBtn");
+  function applyTheme(th){ if(th) root.setAttribute("data-theme",th); else root.removeAttribute("data-theme"); const dark=th?th==="dark":matchMedia("(prefers-color-scheme: dark)").matches; themeBtn.querySelector("span").textContent=dark?t("tool_light"):t("tool_dark"); themeBtn.setAttribute("aria-pressed",String(dark)); }
+  themeBtn.addEventListener("click",()=>{ const dark=root.getAttribute("data-theme")==="dark"||(!root.getAttribute("data-theme")&&matchMedia("(prefers-color-scheme: dark)").matches); const next=dark?"light":"dark"; applyTheme(next); try{localStorage.setItem("tebcapture.theme",next);}catch(_){} });
+  const help=$("#help"); $("#helpBtn").addEventListener("click",()=>help.showModal()); $("#helpClose").addEventListener("click",()=>help.close());
+
+  // ---- language toggle (فارسی / English; persisted; RTL flip in applyLang) -----
+  const langBtn=$("#langBtn");
+  if(langBtn) langBtn.addEventListener("click",()=>{ applyLang(LANG==="fa"?"en":"fa", true); });
+  const compNameEl=$("#compName");
+  if(compNameEl) compNameEl.addEventListener("input",()=>{ compNameTouched=true; });
+
+  // ---- print sheet: print the real receiver URL -------------------------------
+  try{ printUrlText = location.origin + location.pathname; $("#printUrl").textContent = printUrlText; }catch(_){}
+
+  // ---- Personal Model Gateway panel (flag TEBCAPTURE_GATEWAY; server-stripped OFF) --
+  // Wires the credential vault, provider setup, limits, and ledger. The gateway ENGINE
+  // (crypto, adapters, policy, orchestration) lives in tebcapture-gateway.js and is
+  // proven by tests/test_tebcapture_gateway.mjs. Live request-answering needs a SAVED
+  // pairing's signing identities (pairSecret + Ed25519 keys) + the relay's gateway
+  // endpoints; that seam is documented as a stub in docs/TEBCAPTURE-GATEWAY.md.
+  function initGatewayPanel(){
+    const GW = window.tebCaptureGateway;
+    const panel = $("#gwPanel");
+    if(!CFG.gateway || !GW || !panel) return;    // panel absent when flag OFF
+    const vault = GW.makeVault();
+    const catalog = GW.PROVIDER_CATALOG;
+    const status = $("#gwStatus");
+    function say(msg, kind){ status.textContent = msg||""; status.className = "gw-status"+(kind?" "+kind:""); }
+
+    // savedComputerRequired: guest sessions can't sign gateway requests.
+    if(!SAVED_ON) $("#gwSaved").hidden = false;
+
+    // provider + model selects
+    const provSel = $("#gwProvider"), modelSel = $("#gwModel"), keyRow = $("#gwKeyRow");
+    catalog.forEach(p=>{ const o=document.createElement("option"); o.value=p.provider_id; o.textContent=p.label; provSel.appendChild(o); });
+    function syncModels(){
+      const p = GW.catalogFor(provSel.value); modelSel.innerHTML="";
+      (p.models||[]).forEach(m=>{ const o=document.createElement("option"); o.value=m; o.textContent=m; if(m===p.default_model) o.selected=true; modelSel.appendChild(o); });
+      keyRow.hidden = (p.credential === "none");   // Ollama-local needs no key
+    }
+    provSel.addEventListener("change", syncModels); syncModels();
+
+    async function renderProviders(){
+      const list = $("#gwProviderList"); list.innerHTML="";
+      for(const p of catalog){
+        const li=document.createElement("li");
+        const name=document.createElement("span"); name.textContent=p.label;
+        const right=document.createElement("span");
+        if(p.credential==="none"){ right.innerHTML='<span class="st-yes">'+esc(t("gw_ready_nokey"))+'</span>'; }
+        else if(await vault.hasCredential(p.provider_id)){
+          right.innerHTML='<span class="st-yes">'+esc(t("gw_key_saved"))+'</span> ';
+          const rm=document.createElement("button"); rm.className="gw-btn ghost"; rm.type="button"; rm.textContent=t("gw_remove"); rm.style.minHeight="44px"; rm.style.fontSize="1rem";
+          rm.addEventListener("click", async ()=>{ await vault.removeCredential(p.provider_id); say(t("gw_removed_ok",{label:p.label}),"ok"); renderProviders(); });
+          right.appendChild(rm);
+        } else { right.innerHTML='<span class="st-no">'+esc(t("gw_no_key_yet"))+'</span>'; }
+        li.appendChild(name); li.appendChild(right); list.appendChild(li);
+      }
+    }
+    function renderLimits(){
+      const pol = GW.makePolicy();
+      $("#gwLimits").textContent = t("gw_limits", {budget:locNum(pol.dailyBudget,2), rate:locNum(pol.ratePerMin)});
+    }
+    // Re-skin the unlocked panel's dynamic strings when the language flips.
+    gwRelabel = ()=>{ if(!$("#gwUnlocked").hidden){ renderLimits(); renderProviders(); } };
+
+    $("#gwUnlockBtn").addEventListener("click", async ()=>{
+      const pass = $("#gwPass").value||"";
+      if(pass.length < 6){ say(t("gw_min6"),"err"); return; }
+      say(t("gw_unlocking"));
+      try{
+        await vault.unlock(pass);
+        $("#gwPass").value="";
+        $("#gwLocked").hidden=true; $("#gwUnlocked").hidden=false;
+        say(t("gw_unlocked_ok"),"ok");
+        renderLimits(); renderProviders();
+      }catch(e){ say(t("gw_pass_bad"),"err"); }
+    });
+    $("#gwLockBtn").addEventListener("click", ()=>{
+      vault.lock(); $("#gwUnlocked").hidden=true; $("#gwLocked").hidden=false; say(t("gw_locked_ok"),"ok");
+    });
+    $("#gwSaveBtn").addEventListener("click", async ()=>{
+      const pid=provSel.value, key=$("#gwKey").value||"";
+      if(!key){ say(t("gw_paste_first"),"err"); return; }
+      try{ await vault.setCredential(pid, key); $("#gwKey").value=""; say(t("gw_saved_key_ok",{label:GW.catalogFor(pid).label}),"ok"); renderProviders(); }
+      catch(e){ say(t("gw_unlock_first"),"err"); }
+    });
+  }
+
+  // ---- boot: restore prefs, saved folder, deep links --------------------------
+  (async function boot(){
+    // Language first, so every static string + the first screen render in the chosen
+    // locale (English is the DOM default; fa via ?lang=fa / saved / navigator.language).
+    try{ applyLang(pickLang()); }catch(_){}
+    try{ if(localStorage.getItem("tebcapture.easy")==="1") setEasy(true); }catch(_){}
+    try{ applyTheme(localStorage.getItem("tebcapture.theme")||null); }catch(_){ applyTheme(null); }
+    const q=new URLSearchParams(location.search);
+    if(q.get("theme")) applyTheme(q.get("theme"));
+    if(q.get("easy")==="1") setEasy(true);
+    if(SAVED_ON){ // Ed25519 support gate — hide saved mode if the browser can't do it
+      try{ await crypto.subtle.generateKey({name:"Ed25519"}, false, ["sign","verify"]); }
+      catch(_){ document.body.setAttribute("data-saved-receivers","false"); }
+    }
+    // Build the in-page receiver API immediately (read-only until a folder is chosen).
+    buildReceiverFacade();
+    try{ initGatewayPanel(); }catch(_){}
+    // restore a previously chosen folder (permission re-granted on first use)
+    if(hasFolderApi){ const saved=await kvGet("dir"); if(saved){ dirHandle=saved; folderMode="disk"; await attachMirror(saved); } }
+
+    const deep=q.get("state");
+    // Deep links render the requested screen; "pair" must also mint a real session, or the
+    // QR/typed-code are empty (a link someone bookmarked is a real entry point).
+    if(deep && (deep in STEP || deep.indexOf("p-")===0)){ if(deep==="pair"){ startPairing(); } else { go(deep); } return; }
+    // real first-run entry: folder first (or straight to pair on Safari/Firefox)
+    if(!hasFolderApi){ startPairing(); }
+    else { go("first"); }
+  })();
+})();
+</script>
+</body>
+</html>
