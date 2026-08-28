@@ -4,6 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>tebCapture — your phone is an encrypted camera</title>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
 <meta name="robots" content="noindex" />
 <script>
 /* Orient <html lang/dir> before first paint so Farsi never flashes LTR.
@@ -491,7 +492,17 @@ html.show-print[dir="rtl"] #printSheet li::before{ left:auto; right:0; }
   const $=(s,r)=>(r||document).querySelector(s), $$=(s,r)=>Array.from((r||document).querySelectorAll(s));
   const root=document.documentElement, live=$("#live");
   const CFG=(()=>{ try{ return JSON.parse($("#tebcapture-config").textContent); }catch(_){ return {relayOrigin:"",savedReceivers:false}; } })();
-  const RELAY=(CFG.relayOrigin||"").replace(/\/$/,"");
+  // Self-host / local-test override: ?relay=<origin> (remembered per browser) wins over
+  // the baked origin, so this page can point at a relay on your own machine or network.
+  const RELAY=(()=>{
+    let o="";
+    try{
+      const q=new URLSearchParams(location.search).get("relay");
+      if(q){ o=q; localStorage.setItem("tebcapture.relay", q); }
+      else { o=localStorage.getItem("tebcapture.relay")||""; }
+    }catch(_){}
+    return (o||CFG.relayOrigin||"").replace(/\/$/,"");
+  })();
   const SAVED_ON = CFG.savedReceivers === true && document.body.getAttribute("data-saved-receivers")==="true";
   const CC=(typeof window!=="undefined" && window.tebCaptureChunkCrypto) || null;
   const MIRROR=(typeof window!=="undefined" && window.tebCaptureMirror) || null;
