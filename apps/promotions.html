@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>TebScribe Apps — every app we build, live and on the way</title>
-<meta name="description" content="Every TebScribe app in one place: tebIQ and tebDictate are live on the App Store and Google Play, tebRounds is the hospitalist view built into tebIQ, and tebChart, tebIntake, and tebCapture are on the way." />
-<link rel="canonical" href="https://tebscribe.com/apps.html" />
+<title>Promotions — every app's live promo codes | TebScribe Apps</title>
+<meta name="description" content="Every current TebScribe promo code, in one place — minted by the founder and pulled live, so this page never goes stale." />
+<link rel="canonical" href="https://tebscribe.com/apps/promotions.html" />
 <meta name="theme-color" content="#06070C" />
 
-<meta property="og:title" content="TebScribe Apps — every app we build" />
-<meta property="og:description" content="tebIQ and tebDictate are live now on the App Store and Google Play. tebChart, tebIntake, and tebCapture are on the way. tebRounds is built into tebIQ." />
+<meta property="og:title" content="TebScribe Promotions" />
+<meta property="og:description" content="Every current TebScribe promo code, in one place — pulled live from the Promo Center." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://tebscribe.com/apps.html" />
+<meta property="og:url" content="https://tebscribe.com/apps/promotions.html" />
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%230A84FF'/%3E%3Cstop offset='100%25' stop-color='%235E5CE6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M32 2c20 0 30 10 30 30s-10 30-30 30S2 52 2 32 12 2 32 2Z' fill='url(%23g)'/%3E%3Ccircle cx='32' cy='32' r='13' fill='none' stroke='white' stroke-width='3.4'/%3E%3Cpath d='M40 40 L48 48' stroke='white' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E" />
 
@@ -28,8 +28,8 @@
     <a class="brand" href="/"><span class="mark"></span> tebScribe</a>
     <div class="navlinks">
       <a href="/products.html">Products</a>
-      <a href="/apps.html" aria-current="page">Apps</a>
-      <a href="/apps/promotions.html">Promotions</a>
+      <a href="/apps.html">Apps</a>
+      <a href="/apps/promotions.html" aria-current="page">Promotions</a>
       <a href="/#platform">Platform</a>
       <a href="/#principles">Why we're different</a>
     </div>
@@ -42,11 +42,18 @@
   <!-- ===================== HERO ===================== -->
   <section>
     <div class="wrap center">
-      <div class="sec-eyebrow">TebScribe LLC · Apps</div>
-      <h1 class="sec-title">Every app we build, in one place.</h1>
-      <p class="sec-lead">tebIQ and tebDictate are live today, on the App Store and Google Play. tebRounds is the hospitalist view already inside tebIQ, in pilot with hospitalist groups. tebChart, tebIntake, and tebCapture are on the way. Open any app's page to read what it does, see where to get it, and write straight to the founder.</p>
+      <p class="crumb"><a href="/apps.html">Apps</a> / Promotions</p>
+      <div class="sec-eyebrow">TebScribe LLC · Promotions</div>
+      <h1 class="sec-title">Every live promo code, in one place.</h1>
+      <p class="sec-lead">Codes are minted by the founder and pulled straight from the Promo Center — this page reflects what's actually running, not a snapshot someone forgot to update. No code shown here has an expired or exhausted twin still advertised elsewhere.</p>
     </div>
   </section>
+
+  <!-- data-promo-hub scopes the live fetch in /apps/apps.js: one request loads the
+       whole feed, then fills in each [data-promo-section] card below by slug. If the
+       feed 404s or the request fails, every card keeps its static "nothing running"
+       fallback — never an error. -->
+  <div data-promo-hub>
 
   <!-- ===================== AVAILABLE NOW ===================== -->
   <section class="hub-sec">
@@ -55,25 +62,27 @@
       <h2 class="sec-title" style="font-size:clamp(24px,3.2vw,36px)">On the App Store and Google Play today.</h2>
       <div class="grid2">
 
-        <div class="card prod">
+        <div class="card prod promo-app" data-promo-section="tebiq">
           <div class="prod-head">
             <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v4"/></svg></div>
             <span class="badge live">Available now</span>
           </div>
-          <h3>tebIQ</h3>
+          <h3 class="promo-app-name">tebIQ</h3>
           <div class="prod-tag">The clinician's AI scribe</div>
-          <p>An AI medical scribe that turns the patient encounter into a structured clinical note. Built on shift by a practicing ER doctor. iPhone, Apple Watch, web, and Android.</p>
+          <div class="promo-cards" hidden></div>
+          <p class="promo-empty">Nothing running right now — <a href="/apps/tebiq.html#feedback">ask for a promo code</a>.</p>
           <a class="prod-link" href="/apps/tebiq.html">See the tebIQ app page <span class="arr">→</span></a>
         </div>
 
-        <div class="card prod">
+        <div class="card prod promo-app" data-promo-section="tebdictate">
           <div class="prod-head">
             <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3zM19 19h2v2h-2z"/></svg></div>
             <span class="badge live">Available now</span>
           </div>
-          <h3>tebDictate</h3>
+          <h3 class="promo-app-name">tebDictate</h3>
           <div class="prod-tag">Your phone is the microphone</div>
-          <p>Free in any phone browser at tebchart.com/dictate — no install. The standalone iPhone app is on the App Store today; Android is on the way.</p>
+          <div class="promo-cards" hidden></div>
+          <p class="promo-empty">Nothing running right now — <a href="/apps/tebdictate.html#feedback">ask for a promo code</a>.</p>
           <a class="prod-link" href="/apps/tebdictate.html">See the tebDictate app page <span class="arr">→</span></a>
         </div>
 
@@ -88,14 +97,15 @@
       <h2 class="sec-title" style="font-size:clamp(24px,3.2vw,36px)">Not a separate download — the same app and account.</h2>
       <div class="grid2">
 
-        <div class="card prod">
+        <div class="card prod promo-app" data-promo-section="tebrounds">
           <div class="prod-head">
             <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M8 8h5M8 16h3"/></svg></div>
             <span class="badge pilot">In pilot</span>
           </div>
-          <h3>tebRounds</h3>
+          <h3 class="promo-app-name">tebRounds</h3>
           <div class="prod-tag">The hospitalist view of tebIQ</div>
-          <p>A rounding board instead of a search box: what's gating each discharge, written where the team can see it, with a discharge summary drafted from the stay for a physician to review and sign. In pilot with hospitalist groups — one app and one account with tebIQ, no separate install.</p>
+          <div class="promo-cards" hidden></div>
+          <p class="promo-empty">Nothing running right now — <a href="/apps/tebrounds.html#feedback">ask for a promo code</a>.</p>
           <a class="prod-link" href="/apps/tebrounds.html">See the tebRounds page <span class="arr">→</span></a>
         </div>
 
@@ -110,42 +120,81 @@
       <h2 class="sec-title" style="font-size:clamp(24px,3.2vw,36px)">Not on a store yet — here's what's next.</h2>
       <div class="grid3">
 
-        <div class="card prod">
+        <div class="card prod promo-app" data-promo-section="tebchart">
           <div class="prod-head">
             <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 5a4.5 4.5 0 0 0-7 .8A4.5 4.5 0 0 0 5 5C2.8 6.4 2.3 9.5 4 11.6L12 20l8-8.4c1.7-2.1 1.2-5.2-1-6.6Z"/></svg></div>
             <span class="badge soon">Coming soon</span>
           </div>
-          <h3>tebChart</h3>
+          <h3 class="promo-app-name">tebChart</h3>
           <div class="prod-tag">Everyone's own medical vault</div>
-          <p>Your health records, in your pocket — organized from your discharge papers, kept on your own iPhone. The patient-side counterpart to the clinical product.</p>
+          <div class="promo-cards" hidden></div>
+          <p class="promo-empty">Nothing running right now — <a href="/apps/tebchart.html#feedback">ask for a promo code</a>.</p>
           <a class="prod-link" href="/apps/tebchart.html">See the tebChart page <span class="arr">→</span></a>
         </div>
 
-        <div class="card prod">
+        <div class="card prod promo-app" data-promo-section="tebintake">
           <div class="prod-head">
             <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
             <span class="badge soon">Coming soon</span>
           </div>
-          <h3>tebIntake</h3>
+          <h3 class="promo-app-name">tebIntake</h3>
           <div class="prod-tag">Multilingual front-desk intake</div>
-          <p>An offline, multilingual patient-intake kiosk for front desks. Captures history in the patient's own language and drafts a summary for staff to review.</p>
+          <div class="promo-cards" hidden></div>
+          <p class="promo-empty">Nothing running right now — <a href="/apps/tebintake.html#feedback">ask for a promo code</a>.</p>
           <a class="prod-link" href="/apps/tebintake.html">See the tebIntake page <span class="arr">→</span></a>
         </div>
 
-        <div class="card prod">
+        <div class="card prod promo-app" data-promo-section="tebcapture">
           <div class="prod-head">
             <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 7l-7 5 7 5V7Z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
             <span class="badge soon">Coming soon</span>
           </div>
-          <h3>tebCapture</h3>
+          <h3 class="promo-app-name">tebCapture</h3>
           <div class="prod-tag">Your phone is an encrypted camera</div>
-          <p>Send video straight from your phone to one paired computer, end-to-end encrypted. Try the web tool now; the iPhone app is being tested ahead of an App Store release.</p>
+          <div class="promo-cards" hidden></div>
+          <p class="promo-empty">Nothing running right now — <a href="/apps/tebcapture.html#feedback">ask for a promo code</a>.</p>
           <a class="prod-link" href="/apps/tebcapture.html">See the tebCapture page <span class="arr">→</span></a>
         </div>
 
       </div>
     </div>
   </section>
+
+  <!-- ===================== NOT YET A PAGE =====================
+       bellody and momo-home have no app page on this site yet — no blurb, no tagline,
+       no feedback-form link is invented for them. If the founder mints a code for
+       either slug before their page exists, it still renders here from the feed. -->
+  <section class="hub-sec">
+    <div class="wrap">
+      <div class="sec-eyebrow">Not yet on this site</div>
+      <h2 class="sec-title" style="font-size:clamp(24px,3.2vw,36px)">No app page here yet.</h2>
+      <div class="grid2">
+
+        <div class="card prod promo-app" data-promo-section="bellody">
+          <div class="prod-head">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/></svg></div>
+            <span class="badge soon">Coming soon</span>
+          </div>
+          <h3 class="promo-app-name">Bellody</h3>
+          <div class="promo-cards" hidden></div>
+          <p class="promo-empty">Nothing running right now.</p>
+        </div>
+
+        <div class="card prod promo-app" data-promo-section="momo-home">
+          <div class="prod-head">
+            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="4"/></svg></div>
+            <span class="badge soon">Coming soon</span>
+          </div>
+          <h3 class="promo-app-name">Momo Home</h3>
+          <div class="promo-cards" hidden></div>
+          <p class="promo-empty">Nothing running right now.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  </div><!-- /[data-promo-hub] -->
 
 </main>
 
@@ -165,12 +214,12 @@
 </footer>
 
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="/apps/apps.js"></script>
 
 <!-- ===================== STRUCTURED DATA =====================
-     Reuses the same Organization/@id declared in index.html and products.html —
-     do not fork a new Organization node here. No AggregateRating/Review/testimonial
-     markup. Each app's full SoftwareApplication node lives on its own /apps/<app>.html
-     page; this is a CollectionPage that points at them by @id. -->
+     Reuses the same Organization/@id declared in index.html, products.html and
+     apps.html — do not fork a new Organization node here. No price, rating, or
+     offer markup: promo codes here are UI state from a live feed, not catalog data. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -206,19 +255,10 @@
       "publisher": { "@id": "https://tebscribe.com/#org" }
     },
     {
-      "@type": "CollectionPage",
-      "@id": "https://tebscribe.com/apps.html#page",
-      "url": "https://tebscribe.com/apps.html",
-      "name": "TebScribe Apps",
-      "isPartOf": { "@id": "https://tebscribe.com/#website" },
-      "about": { "@id": "https://tebscribe.com/#org" },
-      "hasPart": [
-        { "@id": "https://tebiq.com/#app" },
-        { "@id": "https://tebdictate.com/#app" },
-        { "@id": "https://tebscribe.com/apps/tebrounds.html#app" },
-        { "@id": "https://tebchart.com/#app" },
-        { "@id": "https://tebscribe.com/apps/tebintake.html#app" },
-        { "@id": "https://tebscribe.com/apps/tebcapture.html#app" }
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Apps", "item": "https://tebscribe.com/apps.html" },
+        { "@type": "ListItem", "position": 2, "name": "Promotions", "item": "https://tebscribe.com/apps/promotions.html" }
       ]
     }
   ]

@@ -29,6 +29,7 @@
     <div class="navlinks">
       <a href="/products.html">Products</a>
       <a href="/apps.html">Apps</a>
+      <a href="/apps/promotions.html">Promotions</a>
       <a href="/#platform">Platform</a>
       <a href="/#principles">Why we're different</a>
     </div>
@@ -61,12 +62,14 @@
 
   <section>
     <div class="wrap">
-      <div class="promo-block">
-        <!-- PROMOTIONS — hand-edited by the founder. Nothing to promote before launch;
-             replace this comment and the line below once tebChart has a price or a
-             launch offer. Keep it in sync with the live billing config before publishing. -->
+      <div class="promo-block" data-promo="tebchart">
+        <!-- Live-fed from the Promo Center feed by /apps/apps.js. The <p class="promo-empty">
+             below is the fallback shown with no JS and while the feed has nothing for
+             tebchart (including a 404, treated as "no promotions", not an error). -->
         <h2>Promotions</h2>
-        <p>Nothing running yet — tebChart hasn't launched. Ask below to be notified.</p>
+        <div class="promo-cards" hidden></div>
+        <p class="promo-empty">Nothing running yet — tebChart hasn't launched. <a href="#feedback">Ask below to be notified.</a></p>
+        <p class="promo-see-all"><a href="/apps/promotions.html">See every app's promo codes →</a></p>
       </div>
     </div>
   </section>

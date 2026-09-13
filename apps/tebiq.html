@@ -29,6 +29,7 @@
     <div class="navlinks">
       <a href="/products.html">Products</a>
       <a href="/apps.html">Apps</a>
+      <a href="/apps/promotions.html">Promotions</a>
       <a href="/#platform">Platform</a>
       <a href="/#principles">Why we're different</a>
     </div>
@@ -69,13 +70,14 @@
 
   <section>
     <div class="wrap">
-      <div class="promo-block">
-        <!-- PROMOTIONS — hand-edited by the founder. Replace this comment and the line
-             below with a live offer or promo code. Keep any price/code here in exact sync
-             with the live billing config (app/plans.py) before publishing — a stale price
-             here is a false claim. Delete the whole .promo-block if there's nothing running. -->
+      <div class="promo-block" data-promo="tebiq">
+        <!-- Live-fed from the Promo Center feed by /apps/apps.js. The <p class="promo-empty">
+             below is the fallback shown with no JS and while the feed has nothing for
+             tebiq (including a 404, treated as "no promotions", not an error). -->
         <h2>Promotions</h2>
-        <p>Nothing running right now — check back soon, or ask below for a promo code.</p>
+        <div class="promo-cards" hidden></div>
+        <p class="promo-empty">Nothing running right now — check back soon, or <a href="#feedback">ask below for a promo code</a>.</p>
+        <p class="promo-see-all"><a href="/apps/promotions.html">See every app's promo codes →</a></p>
       </div>
     </div>
   </section>

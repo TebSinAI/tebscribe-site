@@ -121,15 +121,36 @@ nav .bar{display:flex;align-items:center;justify-content:space-between;
 .prod-link:hover{gap:11px}
 .prod-link.muted{color:var(--fg-3)}
 
-/* ---- promotions block (hand-editable by the founder) ---- */
+/* ---- promotions block (live-fed by /apps/apps.js; static <p class="promo-empty">
+   in the HTML is the no-JS / feed-dark fallback and must stay accurate on its own) ---- */
 .promo-block{border:1px solid var(--hair-strong);border-radius:22px;padding:34px;
              background:linear-gradient(180deg,rgba(94,92,230,.09),rgba(10,132,255,.05));
              position:relative;overflow:hidden}
 .promo-block h2{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
 .promo-block p{color:var(--fg-2);font-size:15.5px;line-height:1.6}
-.promo-code{display:inline-flex;align-items:center;gap:10px;margin-top:16px;padding:10px 16px;
-            border-radius:12px;background:var(--panel-2);border:1px solid var(--hair);
-            font-family:var(--mono);font-size:14px;letter-spacing:.02em}
+.promo-see-all{margin-top:14px}
+.promo-see-all a{color:#7AB8FF;font-weight:550}
+.promo-see-all a:hover{text-decoration:underline}
+
+/* ---- promo cards (rendered from the live feed) ---- */
+.promo-cards{display:grid;gap:16px;margin-top:6px}
+.promo-card{border:1px solid var(--hair);border-radius:16px;padding:20px 22px;background:var(--panel-2)}
+.promo-headline{font-size:16.5px;font-weight:650;letter-spacing:-.01em;margin-bottom:6px}
+.promo-blurb{color:var(--fg-2);font-size:14.5px;line-height:1.55;margin-bottom:10px}
+.promo-grant{display:inline-flex;font-size:13px;font-weight:600;color:#7AB8FF;
+             background:rgba(10,132,255,.10);border:1px solid rgba(122,184,255,.30);
+             border-radius:999px;padding:5px 12px;margin-bottom:12px}
+.promo-code-btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;
+                border-radius:12px;background:var(--panel-2);border:1px solid var(--hair);
+                font-family:var(--mono);font-size:14px;letter-spacing:.02em;color:var(--fg);
+                cursor:pointer;transition:border-color .2s}
+.promo-code-btn:hover{border-color:var(--hair-strong)}
+.promo-copy-label{color:var(--fg-3);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.promo-meta{color:var(--fg-3);font-size:13px;margin-top:10px}
+
+/* ---- /apps/promotions.html hub ---- */
+.promo-app{position:relative}
+.promo-app .promo-empty{margin-top:4px}
 
 /* ---- comments ---- */
 .comments{margin-top:8px}
