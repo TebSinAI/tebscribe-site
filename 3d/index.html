@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>tebScribe — AI that thinks like a clinician | The 3D tour</title>
+<meta name="description" content="tebScribe builds AI that thinks like a clinician. Take the 3D tour of tebIQ, tebChart and tebDictate — built by a practicing ER doctor." />
+<meta name="theme-color" content="#06070C" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="tebScribe — AI that thinks like a clinician | The 3D tour" />
+<meta property="og:description" content="tebScribe builds AI that thinks like a clinician. Take the 3D tour of tebIQ, tebChart and tebDictate — built by a practicing ER doctor." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://tebscribe.com/3d/" />
+<meta property="og:site_name" content="tebScribe" />
+
+<!-- Unified entity graph. @id "https://tebscribe.com/#org" is the ONE canonical
+     identifier for the company; every other TebScribe site must reference this exact
+     @id rather than redeclaring an Organization, or engines resolve four companies.
+     Must stay byte-identical to the Organization node in products.html.
+     No AggregateRating / Review / medical-claim markup — ever. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://tebscribe.com/#org",
+      "name": "TebScribe LLC",
+      "alternateName": "TebScribe",
+      "url": "https://tebscribe.com",
+      "description": "TebScribe LLC is a New York limited liability company founded by a practicing emergency medicine physician. It builds tebIQ (an AI clinical scribe), tebChart (a private health-records app for patients), and tebDictate (free QR-paired dictation).",
+      "founder": {
+        "@type": "Person",
+        "name": "Mohammad Chelehmalzadeh",
+        "honorificSuffix": "MD",
+        "jobTitle": "Founder & CEO",
+        "description": "Practicing emergency medicine physician"
+      },
+      "email": "mchelehmal@tebscribe.com",
+      "sameAs": [
+        "https://tebscribe.com",
+        "https://tebiq.com",
+        "https://tebchart.com",
+        "https://tebdictate.com",
+        "https://apps.apple.com/us/app/id6756632709"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://tebscribe.com/#website",
+      "name": "TebScribe",
+      "url": "https://tebscribe.com",
+      "publisher": { "@id": "https://tebscribe.com/#org" }
+    }
+  ]
+}
+</script>
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%230A84FF'/%3E%3Cstop offset='100%25' stop-color='%235E5CE6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M32 2c20 0 30 10 30 30s-10 30-30 30S2 52 2 32 12 2 32 2Z' fill='url(%23g)'/%3E%3Ccircle cx='32' cy='32' r='13' fill='none' stroke='white' stroke-width='3.4'/%3E%3Cpath d='M40 40 L48 48' stroke='white' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E" />
+
+<!-- Google Analytics (GA4) — tebscribe.com ONLY. Never copy this tag to any other
+     host: tebiq.com's live privacy policy (scripta web/legal/privacy.html) promises
+     "no third-party analytics" and is covered by scripta's first-party server-side
+     analytics middleware instead; tebchart.com and /dictate publish a "no cookies,
+     no analytics trackers" promise and are measured server-side (CloudWatch
+     namespace "tebDictate"). An earlier version of this comment claimed the
+     property was "shared with tebiq.com" — that was aspirational and never built;
+     ruled out 2026-08-01 (privacy-policy conflict). -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XZK7XBL67"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1XZK7XBL67');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+
+<link rel="canonical" href="https://tebscribe.com/" />
+<!-- PROTOTYPE: noindex until the founder approves the 3D page as the homepage. On go-live: delete this
+     line, set canonical to https://tebscribe.com/3d/ (or swap the page in at /), add to sitemap.xml. -->
+<meta name="robots" content="noindex, follow" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="tebScribe — AI that thinks like a clinician | The 3D tour" />
+<meta name="twitter:description" content="tebScribe builds AI that thinks like a clinician. Take the 3D tour of tebIQ, tebChart and tebDictate — built by a practicing ER doctor." />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://tebscribe.com/3d/#page","url":"https://tebscribe.com/3d/",
+ "name":"tebScribe — AI that thinks like a clinician | The 3D tour","description":"tebScribe builds AI that thinks like a clinician. Take the 3D tour of tebIQ, tebChart and tebDictate — built by a practicing ER doctor.","isPartOf":{"@id":"https://tebscribe.com/#website"},"about":{"@id":"https://tebscribe.com/#org"},"inLanguage":"en"}
+</script>
+<style>
+/* =======================================================================
+   tebScribe — Corporate landing. Cinematic dark, medical-grade, on-brand.
+   Design tokens mirror the tebIQ design system (blue → indigo, Inter).
+   ======================================================================= */
+:root{
+  --blue:#0A84FF; --indigo:#5E5CE6; --ai:#5E5CE6;
+  --bg:#06070C; --bg-2:#0A0C14; --bg-3:#0E1119;
+  --panel:rgba(255,255,255,0.035);
+  --panel-2:rgba(255,255,255,0.06);
+  --hair:rgba(255,255,255,0.09);
+  --hair-strong:rgba(255,255,255,0.16);
+  --fg:#F5F6FA; --fg-2:#A6ABBC; --fg-3:#6E7385;
+  --grad:linear-gradient(120deg,#0A84FF 0%,#5E5CE6 100%);
+  --grad-soft:linear-gradient(120deg,rgba(10,132,255,.16),rgba(94,92,230,.16));
+  --font:"Inter",-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono","SF Mono",Menlo,Consolas,monospace;
+  --maxw:1180px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font);background:var(--bg);color:var(--fg);
+  line-height:1.55;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;letter-spacing:-.005em;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block}
+::selection{background:rgba(94,92,230,.35)}
+
+/* ---- ambient page glow ------------------------------------------------ */
+.bgwrap{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+#neural{position:fixed;inset:0;z-index:0;opacity:.55}
+.aurora{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;
+  animation:float 22s var(--ease) infinite alternate}
+.a1{width:620px;height:620px;top:-180px;left:-120px;
+  background:radial-gradient(circle,rgba(10,132,255,.45),transparent 65%)}
+.a2{width:560px;height:560px;top:8%;right:-160px;
+  background:radial-gradient(circle,rgba(94,92,230,.42),transparent 65%);animation-delay:-7s}
+.a3{width:680px;height:680px;bottom:-220px;left:30%;
+  background:radial-gradient(circle,rgba(10,132,255,.28),transparent 60%);animation-delay:-14s}
+@keyframes float{from{transform:translate(0,0) scale(1)}to{transform:translate(40px,-50px) scale(1.12)}}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+main,nav,footer{position:relative;z-index:2}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+/* ---- nav -------------------------------------------------------------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:all .4s var(--ease)}
+nav .bar{display:flex;align-items:center;justify-content:space-between;
+  max-width:var(--maxw);margin:0 auto;padding:18px 28px;transition:all .4s var(--ease)}
+nav.scrolled{backdrop-filter:blur(18px) saturate(160%);background:rgba(6,7,12,.72);
+  border-bottom:1px solid var(--hair)}
+nav.scrolled .bar{padding:12px 28px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:600;font-size:19px;letter-spacing:-.02em}
+.brand .lin{font-weight:300;color:var(--fg)}
+.brand .strong{font-weight:700}
+.brand svg{width:34px;height:34px;filter:drop-shadow(0 4px 14px rgba(94,92,230,.5))}
+.navlinks{display:flex;align-items:center;gap:34px}
+.navlinks a{font-size:14.5px;color:var(--fg-2);font-weight:450;transition:color .2s}
+.navlinks a:hover{color:var(--fg)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:550;font-size:14.5px;
+  border-radius:999px;padding:11px 20px;transition:all .3s var(--ease);cursor:pointer;border:0;white-space:nowrap}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 8px 30px rgba(10,132,255,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 44px rgba(94,92,230,.5)}
+.btn-ghost{background:var(--panel-2);color:var(--fg);border:1px solid var(--hair)}
+.btn-ghost:hover{background:rgba(255,255,255,.1);border-color:var(--hair-strong)}
+.btn-lg{padding:15px 28px;font-size:16px}
+.btn .arr{transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translateX(3px)}
+.menu-toggle{display:none;background:none;border:0;color:var(--fg);cursor:pointer;padding:6px}
+
+/* ---- hero ------------------------------------------------------------- */
+.hero{padding:190px 0 120px;text-align:center;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--fg-2);
+  background:var(--panel);border:1px solid var(--hair);padding:8px 16px;border-radius:999px;
+  margin-bottom:30px;backdrop-filter:blur(10px)}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:#30D158;box-shadow:0 0 12px #30D158;
+  animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+h1.hero-title{font-size:clamp(42px,7.4vw,92px);line-height:1.0;letter-spacing:-.045em;
+  font-weight:700;margin-bottom:26px}
+.gradtext{background:var(--grad);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent}
+.shimmer{background:linear-gradient(110deg,#5E5CE6 0%,#0A84FF 25%,#7AB8FF 45%,#0A84FF 65%,#5E5CE6 100%);
+  background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:shim 6s linear infinite}
+@keyframes shim{to{background-position:-250% 0}}
+.hero-sub{font-size:clamp(18px,2vw,22px);color:var(--fg-2);max-width:660px;margin:0 auto 40px;
+  font-weight:350;line-height:1.5}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:30px}
+.trust-row{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;color:var(--fg-3);
+  font-size:13.5px;font-weight:450;margin-top:8px}
+.trust-row span{display:inline-flex;align-items:center;gap:7px}
+.trust-row svg{width:15px;height:15px;color:var(--blue)}
+
+/* ---- reveal on scroll ------------------------------------------------- */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}
+.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+
+/* ---- section scaffolding --------------------------------------------- */
+section{padding:110px 0}
+.sec-eyebrow{font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:16px}
+.sec-title{font-size:clamp(30px,4.4vw,52px);line-height:1.08;letter-spacing:-.035em;font-weight:700;
+  margin-bottom:20px;max-width:760px}
+.sec-lead{font-size:clamp(17px,1.7vw,20px);color:var(--fg-2);max-width:620px;font-weight:350}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+.center .sec-title,.center .sec-lead{margin-left:auto;margin-right:auto}
+
+/* ---- stat band -------------------------------------------------------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:54px 0}
+.stat{text-align:center}
+.stat .num{font-size:clamp(34px,4.5vw,52px);font-weight:700;letter-spacing:-.04em;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.stat .lbl{font-size:13.5px;color:var(--fg-2);margin-top:10px;font-weight:450}
+
+/* ---- flagship spotlight ---------------------------------------------- */
+.flagship{position:relative}
+.flag-card{position:relative;border-radius:32px;overflow:hidden;
+  border:1px solid var(--hair);background:linear-gradient(180deg,rgba(14,17,25,.9),rgba(8,9,15,.9));
+  box-shadow:0 50px 130px rgba(0,0,0,.55)}
+.flag-glow{position:absolute;inset:0;background:var(--grad-soft);opacity:.7;pointer-events:none}
+.flag-inner{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:56px}
+.flag-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--grad);
+  padding:7px 14px;border-radius:999px;margin-bottom:22px}
+.flag-name{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.flag-name svg{width:46px;height:46px;filter:drop-shadow(0 6px 18px rgba(94,92,230,.5))}
+.flag-name .nm{font-size:34px;font-weight:300;letter-spacing:-.02em}
+.flag-name .nm b{font-weight:700}
+.flag-card h3{font-size:clamp(24px,3vw,34px);font-weight:700;letter-spacing:-.03em;line-height:1.12;margin-bottom:18px}
+.flag-card p{color:var(--fg-2);font-size:16.5px;margin-bottom:26px;font-weight:350;line-height:1.6}
+.flag-feats{list-style:none;margin-bottom:30px;display:grid;gap:13px}
+.flag-feats li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--fg)}
+.flag-feats .ic{flex:0 0 auto;width:22px;height:22px;border-radius:7px;background:var(--grad-soft);
+  display:grid;place-items:center;margin-top:1px}
+.flag-feats .ic svg{width:13px;height:13px;color:#7AB8FF}
+
+/* device mock */
+.device{position:relative;aspect-ratio:9/16;max-width:300px;margin:0 auto;width:100%;
+  border-radius:38px;border:1px solid var(--hair-strong);
+  background:linear-gradient(180deg,#0C0E16,#070810);padding:11px;
+  box-shadow:0 40px 90px rgba(10,132,255,.22),inset 0 1px 0 rgba(255,255,255,.08)}
+.device .screen{height:100%;border-radius:28px;overflow:hidden;background:#080A11;
+  display:flex;flex-direction:column;position:relative}
+.dev-top{padding:18px 16px 12px;border-bottom:1px solid var(--hair)}
+.dev-top .row{display:flex;align-items:center;justify-content:space-between}
+.dev-dot{display:flex;align-items:center;gap:6px;font-size:11px;color:#30D158;font-weight:500}
+.dev-dot i{width:6px;height:6px;border-radius:50%;background:#30D158;box-shadow:0 0 8px #30D158;display:inline-block}
+.dev-title{font-size:13px;color:var(--fg-2);font-weight:500}
+.wave{display:flex;align-items:flex-end;gap:3px;height:34px;margin-top:14px}
+.wave i{flex:1;background:var(--grad);border-radius:3px;opacity:.85;animation:wv 1.1s ease-in-out infinite}
+@keyframes wv{0%,100%{height:18%}50%{height:100%}}
+.dev-body{flex:1;padding:16px;overflow:hidden;font-size:11.5px;line-height:1.5;color:var(--fg-2)}
+.dev-body .lab{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);font-weight:600;margin:10px 0 5px}
+.typed{color:var(--fg)}
+.cursor{display:inline-block;width:6px;height:13px;background:var(--blue);margin-left:1px;
+  vertical-align:middle;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.chip{display:inline-block;font-size:9px;font-weight:600;padding:3px 8px;border-radius:999px;
+  background:var(--grad-soft);color:#7AB8FF;margin:2px 3px 0 0}
+
+/* ---- feature grid ----------------------------------------------------- */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:54px}
+.card{background:var(--panel);border:1px solid var(--hair);border-radius:22px;padding:32px;
+  transition:all .45s var(--ease);position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;background:var(--grad-soft);opacity:0;transition:opacity .45s}
+.card:hover{transform:translateY(-6px);border-color:var(--hair-strong)}
+.card:hover::before{opacity:.5}
+.card>*{position:relative}
+.card .ico{width:52px;height:52px;border-radius:15px;background:var(--grad);display:grid;place-items:center;
+  margin-bottom:22px;box-shadow:0 12px 30px rgba(94,92,230,.32)}
+.card .ico svg{width:26px;height:26px;color:#fff}
+.card h4{font-size:20px;font-weight:600;letter-spacing:-.02em;margin-bottom:11px}
+.card p{color:var(--fg-2);font-size:15px;font-weight:350;line-height:1.6}
+
+/* ---- platform / vision rows ------------------------------------------ */
+.vision{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.timeline{display:grid;gap:0;position:relative;margin-top:8px}
+.timeline::before{content:"";position:absolute;left:21px;top:14px;bottom:14px;width:2px;
+  background:linear-gradient(180deg,var(--blue),var(--indigo),transparent)}
+.tl-item{display:grid;grid-template-columns:44px 1fr;gap:20px;padding:16px 0;position:relative}
+.tl-node{width:44px;height:44px;border-radius:13px;background:var(--bg-3);border:1px solid var(--hair-strong);
+  display:grid;place-items:center;z-index:1;font-size:13px;font-weight:700;color:#7AB8FF}
+.tl-item.now .tl-node{background:var(--grad);border-color:transparent;color:#fff;box-shadow:0 10px 28px rgba(94,92,230,.4)}
+.tl-item h4{font-size:18.5px;font-weight:600;letter-spacing:-.02em;margin-bottom:5px;display:flex;align-items:center;gap:10px}
+.tl-item .badge{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  padding:3px 9px;border-radius:999px;background:rgba(48,209,88,.15);color:#30D158}
+.tl-item .badge.soon{background:var(--panel-2);color:var(--fg-3)}
+.tl-item p{color:var(--fg-2);font-size:14.5px;font-weight:350}
+.vis-panel{border-radius:26px;border:1px solid var(--hair);padding:40px;
+  background:linear-gradient(180deg,rgba(14,17,25,.7),rgba(8,9,15,.7));position:relative;overflow:hidden}
+.vis-panel .glow{position:absolute;width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(94,92,230,.35),transparent 65%);top:-100px;right:-100px;filter:blur(40px)}
+.vis-panel h3{font-size:26px;font-weight:700;letter-spacing:-.03em;margin-bottom:14px;position:relative}
+.vis-panel p{color:var(--fg-2);font-size:15.5px;font-weight:350;position:relative}
+.vis-quote{font-size:19px;line-height:1.5;font-weight:350;color:var(--fg);margin:24px 0 0;position:relative}
+.vis-quote .by{display:block;margin-top:16px;font-size:14px;color:var(--fg-3);font-weight:450}
+
+/* ---- principles / trust ---------------------------------------------- */
+.princ{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:50px}
+.princ .row{display:flex;gap:18px;padding:26px;border-radius:20px;border:1px solid var(--hair);background:var(--panel)}
+.princ .ic{flex:0 0 auto;width:46px;height:46px;border-radius:13px;background:var(--grad-soft);display:grid;place-items:center}
+.princ .ic svg{width:23px;height:23px;color:#7AB8FF}
+.princ h4{font-size:18px;font-weight:600;margin-bottom:6px;letter-spacing:-.02em}
+.princ p{color:var(--fg-2);font-size:14.5px;font-weight:350;line-height:1.55}
+
+/* ---- compliance strip ------------------------------------------------- */
+.trust-band{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:stretch}
+.trust-pill{display:flex;align-items:center;gap:11px;padding:16px 22px;border-radius:16px;
+  border:1px solid var(--hair);background:var(--panel);min-width:200px;flex:1}
+.trust-pill .ic{flex:0 0 auto;width:34px;height:34px;border-radius:10px;background:var(--grad-soft);display:grid;place-items:center}
+.trust-pill .ic svg{width:18px;height:18px;color:#7AB8FF}
+.trust-pill .t{font-size:14px;font-weight:600;letter-spacing:-.01em}
+.trust-pill .s{font-size:12px;color:var(--fg-3);font-weight:400}
+
+/* ---- big CTA ---------------------------------------------------------- */
+.cta-band{position:relative;border-radius:34px;overflow:hidden;text-align:center;padding:84px 40px;
+  border:1px solid var(--hair);background:linear-gradient(135deg,rgba(10,132,255,.16),rgba(94,92,230,.16))}
+.cta-band::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(94,92,230,.4),transparent 60%);opacity:.7}
+.cta-band>*{position:relative}
+.cta-band h2{font-size:clamp(30px,4.6vw,54px);font-weight:700;letter-spacing:-.04em;line-height:1.05;margin-bottom:18px}
+.cta-band p{font-size:18px;color:var(--fg-2);max-width:520px;margin:0 auto 34px;font-weight:350}
+
+/* ---- footer ----------------------------------------------------------- */
+footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
+/* The global `nav{position:sticky;top:0;z-index:50}` rule above matches ANY <nav>,
+   including this one in the footer — without this reset the block pins itself over
+   the header. Keep these four declarations if you touch this rule. */
+.foot-family{position:static;top:auto;z-index:auto;backdrop-filter:none;
+             display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;
+             padding:22px 0;margin-bottom:26px;
+             border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.foot-family-label{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
+                   color:var(--fg-3);font-weight:550}
+.foot-family a{font-size:14px;color:var(--fg-2);transition:color .2s}
+.foot-family a:hover{color:var(--fg)}
+.foot-brand .brand{margin-bottom:16px}
+.foot-brand p{color:var(--fg-2);font-size:14.5px;font-weight:350;max-width:300px;line-height:1.6}
+.foot-col h5{font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);
+  font-weight:600;margin-bottom:18px}
+.foot-col a{display:block;color:var(--fg-2);font-size:14.5px;margin-bottom:12px;transition:color .2s;font-weight:400}
+.foot-col a:hover{color:var(--fg)}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+  padding-top:28px;border-top:1px solid var(--hair);color:var(--fg-3);font-size:13px;font-weight:400}
+.foot-bottom .legal{display:flex;gap:22px;flex-wrap:wrap}
+.foot-bottom a:hover{color:var(--fg-2)}
+.disclaimer{font-size:12px;color:var(--fg-3);margin-top:20px;max-width:760px;line-height:1.6;font-weight:350}
+
+/* ---- product cards ---------------------------------------------------- */
+.prod{display:flex;flex-direction:column}
+.prod-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px}
+.prod .ico{margin-bottom:0}
+.badge{flex:0 0 auto;font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+  padding:6px 11px;border-radius:999px;white-space:nowrap;border:1px solid var(--hair);
+  color:var(--fg-3);background:var(--panel-2)}
+.badge.live{color:#30D158;border-color:rgba(48,209,88,.34);background:rgba(48,209,88,.10)}
+.badge.soon{color:#7AB8FF;border-color:rgba(122,184,255,.30);background:rgba(10,132,255,.10)}
+.prod-tag{font-size:13px;font-weight:500;color:var(--fg-3);margin:-5px 0 12px;letter-spacing:-.01em}
+.prod p{flex:1}
+.prod-link{display:inline-flex;align-items:center;gap:7px;margin-top:22px;font-size:14.5px;
+  font-weight:550;color:#7AB8FF;transition:gap .25s var(--ease)}
+.prod-link:hover{gap:11px}
+.prod-link.muted{color:var(--fg-3)}
+
+/* ---- free dictation band ---------------------------------------------- */
+.dict-band{position:relative;border-radius:30px;overflow:hidden;margin-top:26px;padding:52px 46px;
+  border:1px solid var(--hair-strong);background:var(--bg-3);
+  display:grid;grid-template-columns:1.3fr .7fr;gap:44px;align-items:center}
+.dict-band::before{content:"";position:absolute;inset:0;background:var(--grad-soft);opacity:.75}
+.dict-band>*{position:relative}
+.dict-band h3{font-size:clamp(24px,3.1vw,36px);font-weight:700;letter-spacing:-.035em;
+  line-height:1.1;margin-bottom:14px}
+.dict-band p{color:var(--fg-2);font-size:16px;font-weight:350;max-width:540px}
+.dict-steps{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0 26px}
+.dict-step{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--fg-2);
+  background:var(--panel-2);border:1px solid var(--hair);border-radius:999px;padding:7px 14px}
+.dict-step b{color:var(--fg);font-weight:700}
+.dict-fine{font-size:12.5px;color:var(--fg-3);margin-top:18px;max-width:520px;line-height:1.55}
+.dict-art{display:grid;place-items:center}
+.dict-art svg{width:100%;max-width:230px;height:auto}
+
+/* ---- responsive ------------------------------------------------------- */
+@media(max-width:880px){
+  .dict-band{grid-template-columns:1fr;padding:38px 26px;gap:30px}
+  .dict-art{order:-1}
+  .dict-art svg{max-width:180px}
+  .navlinks{display:none}
+  .menu-toggle{display:block}
+  .flag-inner{grid-template-columns:1fr;gap:40px;padding:36px 28px}
+  .vision{grid-template-columns:1fr;gap:40px}
+  .grid3{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr;gap:36px 16px}
+  .princ{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:34px}
+  .hero{padding:150px 0 80px}
+  section{padding:80px 0}
+  .device{max-width:240px}
+}
+@media(max-width:520px){
+  .foot-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .hero-cta{flex-direction:column;align-items:stretch}
+  .hero-cta .btn{justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+
+/* mobile menu sheet */
+.sheet{position:fixed;inset:0;z-index:49;background:rgba(6,7,12,.96);backdrop-filter:blur(20px);
+  display:none;flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.sheet.open{display:flex}
+.sheet a{font-size:22px;color:var(--fg);font-weight:500}
+.sheet .btn{margin-top:10px}
+.sheet .close{position:absolute;top:24px;right:24px;background:none;border:0;color:var(--fg);font-size:30px;cursor:pointer}
+</style>
+<script defer src="/tb-beacon.js" data-property="tebscribe"></script>
+
+
+<style>
+/* ---- 3D journey content (page chrome above is the live site, unchanged) ---- */
+.bgwrap,#neural,.grain{display:none!important}
+.j3d-block{padding:0 20px}
+.j3d-wrap{max-width:900px;margin:0 auto}
+.j3d-block h1{font-size:clamp(40px,6.6vw,88px);line-height:1.02;letter-spacing:-.045em;font-weight:800}
+.j3d-block h2{font-size:clamp(28px,4.4vw,56px);line-height:1.08;letter-spacing:-.035em;font-weight:700}
+.j3d-block .lead{font-size:clamp(16px,1.9vw,20px);color:var(--fg-2);margin:16px auto 0;max-width:640px}
+.j3d-block .hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.j3d-block ul.j3d-more{list-style:none;margin:18px auto 0;max-width:640px;text-align:left;color:var(--fg-2)}
+.j3d-block ul.j3d-more li{margin:10px 0}
+.j3d-block ul.j3d-more b{color:var(--fg)}
+.j3d-cap{max-width:560px;margin:0 auto;padding:12px 18px;border-radius:14px;background:rgba(6,7,12,.72);backdrop-filter:blur(8px);border:1px solid var(--hair)}
+.j3d-cap h3{font-size:18px;letter-spacing:-.02em}
+.j3d-cap p{font-size:15px;color:var(--fg-2);margin-top:4px}
+.j3d-cap a{color:#7AB8FF;font-weight:600;display:inline-block;margin-top:8px;padding:6px 0}
+.j3d-block blockquote{font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-.02em;max-width:760px;margin:0 auto}
+.j3d-chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.j3d-chips span{border:1px solid var(--hair-strong);border-radius:999px;padding:8px 14px;font-size:13.5px;color:var(--fg-2);background:var(--panel)}
+.j3d-block .foot-family{justify-content:center;margin-top:34px}
+.j3d-block .disclaimer{max-width:640px;margin:18px auto 0;font-size:12px;color:var(--fg-3)}
+html:not(.j3d-on) .j3d-block{padding:72px 20px}
+html:not(.j3d-on) main{padding-top:84px}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="bar">
+    <a class="brand" href="/" aria-label="tebScribe home">
+      <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#0A84FF"/><stop offset="100%" stop-color="#5E5CE6"/></linearGradient></defs>
+        <path d="M32 2c20 0 30 10 30 30s-10 30-30 30S2 52 2 32 12 2 32 2Z" fill="url(#bg1)"/>
+        <circle cx="32" cy="32" r="13" fill="none" stroke="white" stroke-width="3.4"/>
+        <path d="M40 40 L48 48" stroke="white" stroke-width="3.4" stroke-linecap="round"/>
+        <circle cx="32" cy="32" r="2.2" fill="white"/>
+      </svg>
+      <span class="lin">teb<span class="strong">Scribe</span></span>
+    </a>
+    <div class="navlinks">
+      <a href="/#products">Products</a>
+      <a href="/products.html">Product hub</a>
+      <a href="/#platform">Platform</a>
+      <a href="/#principles">Why we're different</a>
+      <a href="/#vision">Vision</a>
+      <a class="btn btn-ghost" href="https://tebchart.com/dictate" target="_blank" rel="noopener">Free dictation</a>
+      <a class="btn btn-primary" href="https://tebiq.com" target="_blank" rel="noopener">
+        Try tebIQ <span class="arr">→</span>
+      </a>
+    </div>
+    <button class="menu-toggle" id="menuBtn" aria-label="Open menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="sheet" id="sheet">
+  <button class="close" id="closeBtn" aria-label="Close menu">&times;</button>
+  <a href="/#products">Products</a>
+  <a href="/#platform">Platform</a>
+  <a href="/#principles">Why we're different</a>
+  <a href="/#vision">Vision</a>
+  <a class="btn btn-ghost btn-lg" href="https://tebchart.com/dictate" target="_blank" rel="noopener">Free dictation →</a>
+  <a class="btn btn-primary btn-lg" href="https://tebiq.com" target="_blank" rel="noopener">Try tebIQ →</a>
+</div>
+
+<main id="top" data-j3d-main>
+  <section class="j3d-block" id="hero" data-z="10,10,-2,-14" data-pos="center" aria-labelledby="h-hero" data-interactive data-track-scene="hero">
+    <div class="j3d-wrap">
+      <div class="eyebrow"><span class="dot"></span> Clinical intelligence company · Built by clinicians</div>
+      <h1 id="h-hero">We build AI that<br><span class="shimmer">thinks like a clinician.</span></h1>
+      <p class="lead">tebScribe is the company behind <strong>tebIQ</strong> — the AI clinical scribe engineered by a practicing ER doctor for the way medicine actually works — with <strong>tebChart</strong> and <strong>tebDictate</strong> close behind. Private by default. Defensible by design.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" href="https://tebiq.com" target="_blank" rel="noopener" data-track-section="hero">Explore tebIQ <span class="arr">→</span></a>
+        <a class="btn btn-ghost btn-lg" href="/#products" data-track-section="hero">See all products</a>
+      </div>
+    </div>
+  </section>
+  <section class="j3d-block" id="products" data-z="-22,-30,-40,-46" data-pos="top" aria-labelledby="h-products" data-track-scene="products">
+    <div class="j3d-wrap">
+      <h2 id="h-products">Three products. One clinical engine.</h2>
+      <p class="lead">tebIQ is the flagship for clinicians. tebChart brings the same engineering to everyone's own health records. tebDictate turns any phone into a wireless microphone — and it's free to use right now.</p>
+    </div>
+  </section>
+  <section class="j3d-block" id="tebiq" data-z="-42,-48,-58,-66" data-pos="bottom" data-interactive data-track-scene="tebiq">
+    <div class="j3d-wrap">
+      <div class="j3d-cap"><h3>tebIQ — the clinician's scribe</h3><p>The AI clinical scribe built by a practicing ER doctor. Ambient documentation with real clinical scaffolding — screening tools, scoring, and specialty-aware notes that finish on shift, not at midnight.</p><a href="https://tebiq.com" target="_blank" rel="noopener" data-track-section="tebiq">Explore tebIQ →</a></div>
+    </div>
+  </section>
+  <section class="j3d-block" id="tebchart" data-z="-72,-78,-88,-96" data-pos="bottom" data-interactive data-track-scene="tebchart">
+    <div class="j3d-wrap">
+      <div class="j3d-cap"><h3>tebChart — everyone's medical vault</h3><p>Your health records, in your pocket. Visits, medications, and discharge instructions — organized, readable, and kept on your own device.</p><a href="https://tebchart.com" target="_blank" rel="noopener" data-track-section="tebchart">Visit tebchart.com →</a></div>
+    </div>
+  </section>
+  <section class="j3d-block" id="tebdictate" data-z="-102,-108,-118,-126" data-pos="bottom" data-interactive data-track-scene="tebdictate">
+    <div class="j3d-wrap">
+      <div class="j3d-cap"><h3>tebDictate — your phone is the microphone</h3><p>Scan a QR code and your phone becomes a wireless microphone for any computer. Speak, and your words type themselves onto the screen. Free on the web today.</p><a href="https://tebdictate.com" target="_blank" rel="noopener" data-track-section="tebdictate">Use it free →</a></div>
+    </div>
+  </section>
+  <section class="j3d-block" id="platform" data-z="-124,-132,-186,-196" data-pos="top" aria-labelledby="h-platform" data-track-scene="platform">
+    <div class="j3d-wrap">
+      <h2 id="h-platform">The infrastructure for <span class="shimmer">clinical intelligence.</span></h2>
+      <p class="lead">tebIQ is the first surface. Underneath it sits a platform built for trust, privacy, and reasoning at clinical-grade — designed to extend across the entire clinical workflow.</p>
+      <ul class="j3d-more">
+        <li><b>Privacy as architecture.</b> On-device transcription on the free tier. Patient audio that never has to leave the phone.</li>
+        <li><b>Reasoning, not transcription.</b> Clinical scaffolding built in: screening tools, scoring, and attestation that propose and confirm.</li>
+        <li><b>Specialty-aware by design.</b> Emergency medicine is the founding use case, but the engine generalizes.</li>
+        <li><b>Built by the user.</b> The roadmap is a working physician's own pain backlog.</li>
+        <li><b>Engineered, not assembled.</b> Purpose-built models, on-device STT, encryption at rest, audit logging, and role-based access.</li>
+        <li><b>Get home an hour sooner.</b> Every design decision serves one outcome: the documentation stops winning.</li>
+      </ul>
+    </div>
+  </section>
+  <section class="j3d-block" id="trust" data-z="-196,-204,-238,-248" data-pos="top" aria-labelledby="h-trust" data-track-scene="trust">
+    <div class="j3d-wrap">
+      <h2 id="h-trust">Trust in clinical AI has to be earned.</h2>
+      <p class="lead">We think you earn it by being the person who has to live with the thing you built. That belief shapes every product decision at tebScribe.</p>
+      <ul class="j3d-more">
+        <li><b>Private by default.</b> Free-tier dictation is transcribed on-device.</li>
+        <li><b>Built by a clinician, not for one.</b> It was built by the doctor — still on the schedule, still using it on shift.</li>
+        <li><b>You are always the clinician.</b> tebScribe builds documentation tools, not diagnosis. The clinician signs the note.</li>
+        <li><b>Earned, shipped, repeated.</b> We ship the unglamorous infrastructure — encryption, audit logging, access controls.</li>
+      </ul>
+    </div>
+  </section>
+  <section class="j3d-block" id="vision" data-z="-246,-254,-284,-294" data-pos="top" aria-labelledby="h-vision" data-track-scene="vision">
+    <div class="j3d-wrap">
+      <h2 id="h-vision">Documentation today. <span class="shimmer">Clinical intelligence tomorrow.</span></h2>
+      <p class="lead">The note is where we started — because it's where clinicians bleed the most time. But it's the front door to something larger.</p>
+    </div>
+  </section>
+  <section class="j3d-block" id="founder" data-z="-290,-298,-316,-326" data-pos="center" aria-labelledby="h-founder" data-track-scene="founder">
+    <div class="j3d-wrap">
+      <h2 id="h-founder">From the founder</h2>
+      <blockquote>&ldquo;At tebScribe, we don't just understand emergency medicine — we live it. I'm still on the schedule, and I built the tool I actually wanted to use on shift.&rdquo;</blockquote>
+      <p class="lead">— Founder, emergency physician &amp; builder. Our mission: to optimize physician well-being, elevate patient care, and protect the financial health of emergency medicine practice — without sacrificing speed, accuracy, or security.</p>
+      <div class="j3d-chips"><span>HIPAA-aligned · BAAs available for covered entities</span><span>SOC 2 underway</span><span>Encryption at rest</span><span>Audit logging · role-based access</span></div>
+    </div>
+  </section>
+  <section class="j3d-block" id="cta" data-z="-328,-338,-362,-362" data-pos="center" aria-labelledby="h-cta" data-interactive data-track-scene="cta">
+    <div class="j3d-wrap">
+      <h2 id="h-cta">The documentation has won long enough.</h2>
+      <p class="lead">Try the flagship. Built by a clinician who knows exactly what your night looks like — free to start, private on your device.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" href="https://tebiq.com" target="_blank" rel="noopener" data-track-section="cta">Try tebIQ free <span class="arr">→</span></a>
+        <a class="btn btn-ghost btn-lg" href="mailto:mchelehmal@tebscribe.com" data-track-section="cta">Talk to us</a>
+      </div>
+      <nav class="foot-family" aria-label="More from TebScribe">
+        <a href="/">tebScribe home</a>
+        <a href="/products.html">All products</a>
+        <a href="https://tebiq.com" target="_blank" rel="noopener">tebIQ — AI scribe for clinicians</a>
+        <a href="https://tebchart.com" target="_blank" rel="noopener">tebChart — your records, organized</a>
+        <a href="https://tebdictate.com" target="_blank" rel="noopener">tebDictate — free dictation</a>
+      </nav>
+      <p class="disclaimer">tebIQ is a clinical documentation assistant for licensed healthcare professionals. It supports — and never replaces — clinical judgment. tebIQ does not diagnose, treat, or make medical decisions; the clinician is always responsible for the note.</p>
+      <p class="disclaimer">© 2026 TebScribe LLC. All rights reserved.</p>
+    </div>
+  </section>
+</main>
+
+<noscript><style>.j3d-block{opacity:1!important}</style></noscript>
+<script>
+const nav = document.getElementById('nav');
+const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
+onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+const sheet = document.getElementById('sheet');
+document.getElementById('menuBtn').onclick = () => sheet.classList.add('open');
+document.getElementById('closeBtn').onclick = () => sheet.classList.remove('open');
+sheet.querySelectorAll('a').forEach(a => a.onclick = () => sheet.classList.remove('open'));
+</script>
+<script defer src="/3d/tebscribe-3d.js"></script>
+</body>
+</html>
