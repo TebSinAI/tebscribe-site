@@ -3,21 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>TebScribe — makers of tebIQ, the AI clinical scribe</title>
-<meta name="description" content="TebScribe builds tebIQ, the AI clinical scribe built by a practicing ER doctor — plus tebChart and free tebDictate." />
-<link rel="canonical" href="https://tebscribe.com/" />
+<title>tebScribe — AI Medical Scribe, Health Records & Dictation</title>
+<meta name="keywords" content="AI medical scribe, clinical documentation AI, ER documentation, medical records app, voice dictation app, tebIQ, tebChart, tebDictate, emergency medicine software, TebScribe" />
+<meta name="description" content="tebScribe builds tebIQ, an AI medical scribe for ER doctors; tebChart, a medical records organizer for iPhone; and tebDictate, free encrypted phone dictation." />
 <meta name="theme-color" content="#06070C" />
 
 <!-- Open Graph -->
-<meta property="og:title" content="TebScribe — makers of tebIQ, the AI clinical scribe" />
-<meta property="og:description" content="AI that thinks like a clinician. Maker of tebIQ, tebChart, and tebDictate — built by a practicing ER doctor, private by default. Free QR dictation: your phone, any computer." />
+<meta property="og:title" content="tebScribe — AI Medical Scribe, Health Records & Dictation" />
+<meta property="og:description" content="tebScribe builds tebIQ, an AI medical scribe for ER doctors; tebChart, a medical records organizer for iPhone; and tebDictate, free encrypted phone dictation." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://tebscribe.com" />
-<meta property="og:image" content="https://tebscribe.com/assets/og-image.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://tebscribe.com/assets/og-image.png" />
+<meta property="og:url" content="https://tebscribe.com/" />
+<meta property="og:site_name" content="tebScribe" />
 
 <!-- Unified entity graph. @id "https://tebscribe.com/#org" is the ONE canonical
      identifier for the company; every other TebScribe site must reference this exact
@@ -84,6 +80,18 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 
+
+<link rel="canonical" href="https://tebscribe.com/" />
+<!-- PROTOTYPE: noindex until the founder approves the 3D page as the homepage. On go-live: delete this
+     line, set canonical to https://tebscribe.com/3d/ (or swap the page in at /), add to sitemap.xml. -->
+<meta name="robots" content="index, follow" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="tebScribe — AI Medical Scribe, Health Records & Dictation" />
+<meta name="twitter:description" content="tebScribe builds tebIQ, an AI medical scribe for ER doctors; tebChart, a medical records organizer for iPhone; and tebDictate, free encrypted phone dictation." />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://tebscribe.com/3d/#page","url":"https://tebscribe.com/3d/",
+ "name":"tebScribe — AI Medical Scribe, Health Records & Dictation","description":"tebScribe builds tebIQ, an AI medical scribe for ER doctors; tebChart, a medical records organizer for iPhone; and tebDictate, free encrypted phone dictation.","isPartOf":{"@id":"https://tebscribe.com/#website"},"about":{"@id":"https://tebscribe.com/#org"},"inLanguage":"en"}
+</script>
 <style>
 /* =======================================================================
    tebScribe — Corporate landing. Cinematic dark, medical-grade, on-brand.
@@ -375,16 +383,6 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
 .dict-art{display:grid;place-items:center}
 .dict-art svg{width:100%;max-width:230px;height:auto}
 
-/* ---- ACEP26 announcement ----------------------------------------------- */
-.acep-card{position:relative;border-radius:30px;overflow:hidden;
-  border:1px solid var(--hair-strong);background:linear-gradient(180deg,rgba(14,17,25,.85),rgba(8,9,15,.85));
-  display:grid;grid-template-columns:240px 1fr;gap:44px;align-items:center;padding:46px}
-.acep-photo{border-radius:22px;overflow:hidden;border:1px solid var(--hair);
-  box-shadow:0 30px 70px rgba(0,0,0,.45);aspect-ratio:4/5}
-.acep-photo img{width:100%;height:100%;object-fit:cover;display:block}
-.acep-body .sec-title{margin-bottom:14px}
-.acep-body .sec-lead{margin-bottom:0;max-width:560px}
-
 /* ---- responsive ------------------------------------------------------- */
 @media(max-width:880px){
   .dict-band{grid-template-columns:1fr;padding:38px 26px;gap:30px}
@@ -397,9 +395,6 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
   .grid3{grid-template-columns:1fr}
   .stats{grid-template-columns:1fr 1fr;gap:36px 16px}
   .princ{grid-template-columns:1fr}
-  .acep-card{grid-template-columns:1fr;padding:34px 26px;gap:26px;text-align:center}
-  .acep-photo{max-width:200px;margin:0 auto}
-  .acep-body .sec-lead{margin-left:auto;margin-right:auto}
   .foot-grid{grid-template-columns:1fr 1fr;gap:34px}
   .hero{padding:150px 0 80px}
   section{padding:80px 0}
@@ -425,22 +420,38 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
 .sheet .close{position:absolute;top:24px;right:24px;background:none;border:0;color:var(--fg);font-size:30px;cursor:pointer}
 </style>
 <script defer src="/tb-beacon.js" data-property="tebscribe"></script>
+
+
+<style>
+/* ---- 3D journey content (page chrome above is the live site, unchanged) ---- */
+.bgwrap,#neural,.grain{display:none!important}
+.j3d-block{padding:0 20px}
+.j3d-wrap{max-width:900px;margin:0 auto}
+.j3d-block h1{font-size:clamp(40px,6.6vw,88px);line-height:1.02;letter-spacing:-.045em;font-weight:800}
+.j3d-block h2{font-size:clamp(28px,4.4vw,56px);line-height:1.08;letter-spacing:-.035em;font-weight:700}
+.j3d-block .lead{font-size:clamp(16px,1.9vw,20px);color:var(--fg-2);margin:16px auto 0;max-width:640px}
+.j3d-block .hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.j3d-block ul.j3d-more{list-style:none;margin:18px auto 0;max-width:640px;text-align:left;color:var(--fg-2)}
+.j3d-block ul.j3d-more li{margin:10px 0}
+.j3d-block ul.j3d-more b{color:var(--fg)}
+.j3d-cap{max-width:560px;margin:0 auto;padding:12px 18px;border-radius:14px;background:rgba(6,7,12,.72);backdrop-filter:blur(8px);border:1px solid var(--hair)}
+.j3d-cap h3{font-size:18px;letter-spacing:-.02em}
+.j3d-cap p{font-size:15px;color:var(--fg-2);margin-top:4px}
+.j3d-cap a{color:#7AB8FF;font-weight:600;display:inline-block;margin-top:8px;padding:6px 0}
+.j3d-block blockquote{font-size:clamp(20px,2.6vw,30px);font-weight:500;letter-spacing:-.02em;max-width:760px;margin:0 auto}
+.j3d-chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.j3d-chips span{border:1px solid var(--hair-strong);border-radius:999px;padding:8px 14px;font-size:13.5px;color:var(--fg-2);background:var(--panel)}
+.j3d-block .foot-family{justify-content:center;margin-top:34px}
+.j3d-block .disclaimer{max-width:640px;margin:18px auto 0;font-size:12px;color:var(--fg-3)}
+html:not(.j3d-on) .j3d-block{padding:72px 20px}
+html:not(.j3d-on) main{padding-top:84px}
+</style>
 </head>
 <body>
 
-<!-- ambient background -->
-<div class="bgwrap">
-  <div class="aurora a1"></div>
-  <div class="aurora a2"></div>
-  <div class="aurora a3"></div>
-</div>
-<canvas id="neural"></canvas>
-<div class="grain"></div>
-
-<!-- ===================== NAV ===================== -->
 <nav id="nav">
   <div class="bar">
-    <a class="brand" href="#top" aria-label="tebScribe home">
+    <a class="brand" href="/" aria-label="tebScribe home">
       <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stop-color="#0A84FF"/><stop offset="100%" stop-color="#5E5CE6"/></linearGradient></defs>
@@ -452,12 +463,11 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
       <span class="lin">teb<span class="strong">Scribe</span></span>
     </a>
     <div class="navlinks">
-      <a href="#products">Products</a>
+      <a href="/#products">Products</a>
       <a href="/products.html">Product hub</a>
-      <a href="#platform">Platform</a>
-      <a href="#principles">Why we're different</a>
-      <a href="#vision">Vision</a>
-      <a href="#acep26">ACEP26</a>
+      <a href="/#platform">Platform</a>
+      <a href="/#principles">Why we're different</a>
+      <a href="/#vision">Vision</a>
       <a class="btn btn-ghost" href="https://tebchart.com/dictate" target="_blank" rel="noopener">Free dictation</a>
       <a class="btn btn-primary" href="https://tebiq.com" target="_blank" rel="noopener">
         Try tebIQ <span class="arr">→</span>
@@ -471,592 +481,119 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
 
 <div class="sheet" id="sheet">
   <button class="close" id="closeBtn" aria-label="Close menu">&times;</button>
-  <a href="#products">Products</a>
-  <a href="#platform">Platform</a>
-  <a href="#principles">Why we're different</a>
-  <a href="#vision">Vision</a>
-  <a href="#acep26">ACEP26</a>
+  <a href="/#products">Products</a>
+  <a href="/#platform">Platform</a>
+  <a href="/#principles">Why we're different</a>
+  <a href="/#vision">Vision</a>
   <a class="btn btn-ghost btn-lg" href="https://tebchart.com/dictate" target="_blank" rel="noopener">Free dictation →</a>
   <a class="btn btn-primary btn-lg" href="https://tebiq.com" target="_blank" rel="noopener">Try tebIQ →</a>
 </div>
 
-<main id="top">
-
-  <!-- ===================== HERO ===================== -->
-  <section class="hero">
-    <div class="wrap">
-      <div class="eyebrow reveal"><span class="dot"></span> Clinical intelligence company · Built by clinicians</div>
-      <h1 class="hero-title reveal d1">
-        We build AI that<br><span class="shimmer">thinks like a clinician.</span>
-      </h1>
-      <p class="hero-sub reveal d2">
-        tebScribe is the company behind <strong style="color:var(--fg);font-weight:600">tebIQ</strong> — the AI clinical scribe
-        engineered by a practicing ER doctor for the way medicine actually works — with
-        <strong style="color:var(--fg);font-weight:600">tebChart</strong> and
-        <strong style="color:var(--fg);font-weight:600">tebDictate</strong> close behind.
-        Private by default. Defensible by design.
-      </p>
-      <div class="hero-cta reveal d3">
-        <a class="btn btn-primary btn-lg" href="https://tebiq.com" target="_blank" rel="noopener">
-          Explore tebIQ <span class="arr">→</span>
-        </a>
-        <a class="btn btn-ghost btn-lg" href="#products">See all products</a>
-      </div>
-      <div class="trust-row reveal d4">
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5l-8-3Z"/></svg> On-device privacy</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Clinician-built</span>
-        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Real clinical reasoning</span>
+<main id="top" data-j3d-main>
+<section class="j3d-more j3d-seo" aria-label="About this page"><h2>AI medical scribe, health records organizer and voice dictation — built by an ER doctor</h2><p>tebScribe is a clinician-built healthcare software company. Its flagship, tebIQ, is an AI clinical scribe and documentation assistant for emergency medicine, built by a practicing ER doctor.</p><p>tebChart organizes discharge papers, medications, follow-up visits and an ER card on your iPhone. tebDictate turns your phone into a wireless, encrypted dictation microphone that types into any computer.</p></section>
+  <section class="j3d-block" id="hero" data-z="10,10,-2,-14" data-pos="center" aria-labelledby="h-hero" data-interactive data-track-scene="hero">
+    <div class="j3d-wrap">
+      <div class="eyebrow"><span class="dot"></span> Clinical intelligence company · Built by clinicians</div>
+      <h1 id="h-hero">We build AI that<br><span class="shimmer">thinks like a clinician.</span></h1>
+      <p class="lead">tebScribe is the company behind <strong>tebIQ</strong> — the AI clinical scribe engineered by a practicing ER doctor for the way medicine actually works — with <strong>tebChart</strong> and <strong>tebDictate</strong> close behind. Private by default. Defensible by design.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" href="https://tebiq.com" target="_blank" rel="noopener" data-track-section="hero">Explore tebIQ <span class="arr">→</span></a>
+        <a class="btn btn-ghost btn-lg" href="/#products" data-track-section="hero">See all products</a>
       </div>
     </div>
   </section>
-
-  <!-- ===================== STAT BAND ===================== -->
-  <section style="padding:0">
-    <div class="wrap">
-      <div class="stats reveal">
-        <div class="stat"><div class="num" data-count="10000" data-suffix="+">0</div><div class="lbl">Notes the founder has written by hand</div></div>
-        <div class="stat"><div class="num" data-count="1" data-suffix="hr">0</div><div class="lbl">Saved per shift on documentation</div></div>
-        <div class="stat"><div class="num" data-count="100" data-suffix="%">0</div><div class="lbl">On-device transcription on free tier</div></div>
-        <div class="stat"><div class="num" data-count="0" data-prefix="$" data-suffix="">0</div><div class="lbl">To start — free, no card required</div></div>
-      </div>
+  <section class="j3d-block" id="products" data-z="-22,-30,-40,-46" data-pos="top" aria-labelledby="h-products" data-track-scene="products">
+    <div class="j3d-wrap">
+      <h2 id="h-products">Three products. One clinical engine.</h2>
+      <p class="lead">tebIQ is the flagship for clinicians. tebChart brings the same engineering to everyone's own health records. tebDictate turns any phone into a wireless microphone — and it's free to use right now.</p>
     </div>
   </section>
-
-  <!-- ===================== FLAGSHIP ===================== -->
-  <section id="flagship" class="flagship">
-    <div class="wrap">
-      <div class="center reveal" style="margin-bottom:54px">
-        <div class="sec-eyebrow">The flagship product</div>
-        <h2 class="sec-title">Meet tebIQ — the scribe that does the thinking.</h2>
-        <p class="sec-lead">Most AI scribes capture what was <em>said</em>. tebIQ is built around how a clinician <em>reasons</em> — turning dictation into structured, defensible notes, including the medical decision-making a transcript never captures.</p>
-      </div>
-
-      <div class="flag-card reveal d1">
-        <div class="flag-glow"></div>
-        <div class="flag-inner">
-          <div>
-            <span class="flag-tag">★ Flagship · Live now</span>
-            <div class="flag-name">
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <defs><linearGradient id="fg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0A84FF"/><stop offset="100%" stop-color="#5E5CE6"/></linearGradient></defs>
-                <path d="M32 2c20 0 30 10 30 30s-10 30-30 30S2 52 2 32 12 2 32 2Z" fill="url(#fg1)"/>
-                <circle cx="32" cy="32" r="13" fill="none" stroke="white" stroke-width="3.4"/>
-                <path d="M40 40 L48 48" stroke="white" stroke-width="3.4" stroke-linecap="round"/>
-                <circle cx="32" cy="32" r="2.2" fill="white"/>
-              </svg>
-              <span class="nm">teb<b>IQ</b></span>
-            </div>
-            <h3>An AI clinical scribe, specced on shift — between patients.</h3>
-            <p>Not built in a boardroom. Every feature started as a moment where documentation got in the way at 3am, and a physician who writes code thought: <em>this should work differently.</em></p>
-            <ul class="flag-feats">
-              <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></span> HPI + gated medical decision-making that reads like a clinician wrote it</li>
-              <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></span> Built-in sepsis screening, CMS critical-care attestation & MDCalc-style scoring</li>
-              <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></span> Private by default — free-tier dictation transcribed on your device</li>
-              <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></span> Surfaces reimbursable critical-care time &amp; MDM complexity — so billing reflects the work you actually did</li>
-              <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg></span> Specialty-aware templates, with emergency medicine as the founding use case</li>
-            </ul>
-            <div style="display:flex;gap:14px;flex-wrap:wrap">
-              <a class="btn btn-primary btn-lg" href="https://tebiq.com" target="_blank" rel="noopener">Try tebIQ free <span class="arr">→</span></a>
-              <a class="btn btn-ghost btn-lg" href="https://tebiq.com" target="_blank" rel="noopener">Read the story</a>
-            </div>
-          </div>
-
-          <!-- live device mock -->
-          <div>
-            <div class="device">
-              <div class="screen">
-                <div class="dev-top">
-                  <div class="row">
-                    <span class="dev-title">ED Note · Room 4</span>
-                    <span class="dev-dot"><i></i> On-device</span>
-                  </div>
-                  <div class="wave" id="wave"></div>
-                </div>
-                <div class="dev-body">
-                  <div class="lab">History of Present Illness</div>
-                  <div class="typed" id="typed1"></div>
-                  <div class="lab" style="margin-top:14px">Medical Decision-Making</div>
-                  <div class="typed" id="typed2"></div>
-                  <div style="margin-top:14px">
-                    <span class="chip">SIRS 2/4</span><span class="chip">qSOFA 1</span>
-                    <span class="chip">HEART 3</span><span class="chip">CC time ✓</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  <section class="j3d-block" id="tebiq" data-z="-42,-48,-58,-66" data-pos="bottom" data-interactive data-track-scene="tebiq">
+    <div class="j3d-wrap">
+      <div class="j3d-cap"><h3>tebIQ — the clinician's scribe</h3><p>The AI clinical scribe built by a practicing ER doctor. Ambient documentation with real clinical scaffolding — screening tools, scoring, and specialty-aware notes that finish on shift, not at midnight.</p><a href="https://tebiq.com" target="_blank" rel="noopener" data-track-section="tebiq">Explore tebIQ →</a></div>
     </div>
   </section>
-
-  <!-- ===================== PLATFORM / FEATURES ===================== -->
-  <!-- ===================== PRODUCTS ===================== -->
-  <section id="products">
-    <div class="wrap">
-      <div class="center reveal" style="margin-bottom:8px">
-        <div class="sec-eyebrow">The product family</div>
-        <h2 class="sec-title">Three products. One clinical engine.</h2>
-        <p class="sec-lead">tebIQ is the flagship for clinicians. tebChart brings the same engineering to everyone's own health records. tebDictate turns any phone into a wireless microphone — and it's free to use right now.</p>
-      </div>
-      <div class="grid3">
-
-        <!-- tebIQ -->
-        <div class="card prod reveal d1">
-          <div class="prod-head">
-            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M5 10v1a7 7 0 0 0 14 0v-1M12 18v4"/></svg></div>
-            <span class="badge live">Available now</span>
-          </div>
-          <h4>tebIQ</h4>
-          <div class="prod-tag">The clinician's scribe</div>
-          <p>The AI clinical scribe built by a practicing ER doctor. Ambient documentation with real clinical scaffolding — screening tools, scoring, and specialty-aware notes that finish on shift, not at midnight.</p>
-          <a class="prod-link" href="https://tebiq.com" target="_blank" rel="noopener">Explore tebIQ <span class="arr">→</span></a>
-        </div>
-
-        <!-- tebChart -->
-        <div class="card prod reveal d2">
-          <div class="prod-head">
-            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 5a4.5 4.5 0 0 0-7 .8A4.5 4.5 0 0 0 5 5C2.8 6.4 2.3 9.5 4 11.6L12 20l8-8.4c1.7-2.1 1.2-5.2-1-6.6Z"/></svg></div>
-            <span class="badge soon">Coming soon</span>
-          </div>
-          <h4>tebChart</h4>
-          <div class="prod-tag">Everyone's medical vault</div>
-          <p>Your health records, in your pocket. Visits, medications, and discharge instructions — organized, readable, and kept on your own device. The same privacy engineering as the clinical product, built for patients and families.</p>
-          <a class="prod-link" href="https://tebchart.com" target="_blank" rel="noopener">Visit tebchart.com <span class="arr">→</span></a>
-        </div>
-
-        <!-- tebDictate -->
-        <div class="card prod reveal d3">
-          <div class="prod-head">
-            <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M14 14h3v3h-3zM19 19h2v2h-2z"/></svg></div>
-            <span class="badge soon">Apps coming</span>
-          </div>
-          <h4>tebDictate</h4>
-          <div class="prod-tag">Your phone is the microphone</div>
-          <p>Scan a QR code and your phone becomes a wireless microphone for any computer. Speak, and your words type themselves onto the screen — into any text box, on any system. Free on the web today; iPhone and Android apps are on the way.</p>
-          <a class="prod-link" href="https://tebchart.com/dictate" target="_blank" rel="noopener">Use it free <span class="arr">→</span></a>
-        </div>
-      </div>
-
-      <!-- free dictation band -->
-      <div class="dict-band reveal">
-        <div>
-          <div class="sec-eyebrow" style="margin-bottom:14px">Free · No sign-up · Available today</div>
-          <h3>Turn any phone into a wireless mic for any computer.</h3>
-          <p>Open the page on your computer, scan the code with your phone, and start talking. Your words appear on the computer as you speak. Nothing to install, no account to create — it works on the phone you already have.</p>
-          <div class="dict-steps">
-            <span class="dict-step"><b>1</b> Open it on your computer</span>
-            <span class="dict-step"><b>2</b> Scan the code with your phone</span>
-            <span class="dict-step"><b>3</b> Talk — it types</span>
-          </div>
-          <a class="btn btn-primary btn-lg" href="https://tebchart.com/dictate" target="_blank" rel="noopener">
-            Start dictating — free <span class="arr">→</span>
-          </a>
-          <p class="dict-fine">Speech is recognized on your phone. Encrypted in transit and at rest (AES). Never used for training. Never sold.</p>
-        </div>
-        <div class="dict-art" aria-hidden="true">
-          <svg viewBox="0 0 240 170" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="dg" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#0A84FF"/><stop offset="100%" stop-color="#5E5CE6"/></linearGradient></defs>
-            <rect x="10" y="34" width="56" height="102" rx="11" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.18)"/>
-            <rect x="16" y="42" width="44" height="86" rx="6" fill="rgba(10,132,255,.10)"/>
-            <circle cx="38" cy="85" r="13" fill="url(#dg)"/>
-            <path d="M38 79v8M34 83v1.5M42 83v1.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-            <path d="M74 74a22 22 0 0 1 0 22M84 66a34 34 0 0 1 0 38" stroke="url(#dg)" stroke-width="2.5" stroke-linecap="round" opacity=".85"/>
-            <path d="M98 85h30" stroke="rgba(255,255,255,.28)" stroke-width="2" stroke-dasharray="4 4"/>
-            <path d="M126 80l6 5-6 5" stroke="rgba(255,255,255,.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="142" y="44" width="90" height="62" rx="6" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.18)"/>
-            <rect x="148" y="50" width="78" height="50" rx="3" fill="rgba(94,92,230,.10)"/>
-            <path d="M134 112h106l-7 9H141z" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.16)"/>
-            <rect x="154" y="59" width="56" height="4" rx="2" fill="url(#dg)"/>
-            <rect x="154" y="69" width="42" height="4" rx="2" fill="rgba(255,255,255,.26)"/>
-            <rect x="154" y="79" width="64" height="4" rx="2" fill="rgba(255,255,255,.18)"/>
-            <rect x="154" y="89" width="28" height="4" rx="2" fill="rgba(255,255,255,.12)"/>
-          </svg>
-        </div>
-      </div>
+  <section class="j3d-block" id="tebchart" data-z="-72,-78,-88,-96" data-pos="bottom" data-interactive data-track-scene="tebchart">
+    <div class="j3d-wrap">
+      <div class="j3d-cap"><h3>tebChart — everyone's medical vault</h3><p>Your health records, in your pocket. Visits, medications, and discharge instructions — organized, readable, and kept on your own device.</p><a href="https://tebchart.com" target="_blank" rel="noopener" data-track-section="tebchart">Visit tebchart.com →</a></div>
     </div>
   </section>
-
-  <section id="platform">
-    <div class="wrap">
-      <div class="center reveal" style="margin-bottom:8px">
-        <div class="sec-eyebrow">More than a product · A platform</div>
-        <h2 class="sec-title">The infrastructure for clinical intelligence.</h2>
-        <p class="sec-lead">tebIQ is the first surface. Underneath it sits a platform built for trust, privacy, and reasoning at clinical-grade — designed to extend across the entire clinical workflow.</p>
-      </div>
-      <div class="grid3">
-        <div class="card reveal d1">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5l-8-3Z"/></svg></div>
-          <h4>Privacy as architecture</h4>
-          <p>On-device transcription on the free tier. Patient audio that never has to leave the phone. Privacy isn't a setting — it's the foundation everything is built on.</p>
-        </div>
-        <div class="card reveal d2">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-          <h4>Reasoning, not transcription</h4>
-          <p>Clinical scaffolding built in: screening tools, scoring, and attestation that propose and confirm. The hard part — the defensible decision-making — happens in the product.</p>
-        </div>
-        <div class="card reveal d3">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8"/></svg></div>
-          <h4>Specialty-aware by design</h4>
-          <p>Emergency medicine is the founding use case, but the engine generalizes. Templates and clinical logic adapt to the specialty, not the other way around.</p>
-        </div>
-        <div class="card reveal d1">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
-          <h4>Built by the user</h4>
-          <p>The roadmap is a working physician's own pain backlog. When something breaks on a real shift, it gets fixed for everyone. No advisory board — the doctor is on the schedule.</p>
-        </div>
-        <div class="card reveal d2">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17l6-6-6-6M12 19h8"/></svg></div>
-          <h4>Engineered, not assembled</h4>
-          <p>Purpose-built models, on-device STT, encryption at rest, audit logging, and role-based access — the kind of infrastructure healthcare actually requires, built in from day one.</p>
-        </div>
-        <div class="card reveal d3">
-          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-          <h4>Get home an hour sooner</h4>
-          <p>Every design decision serves one outcome: the documentation stops winning. Clinicians finish their notes on shift — and get their evenings back.</p>
-        </div>
-      </div>
+  <section class="j3d-block" id="tebdictate" data-z="-102,-108,-118,-126" data-pos="bottom" data-interactive data-track-scene="tebdictate">
+    <div class="j3d-wrap">
+      <div class="j3d-cap"><h3>tebDictate — your phone is the microphone</h3><p>Scan a QR code and your phone becomes a wireless microphone for any computer. Speak, and your words type themselves onto the screen. Free on the web today.</p><a href="https://tebdictate.com" target="_blank" rel="noopener" data-track-section="tebdictate">Use it free →</a></div>
     </div>
   </section>
-
-  <!-- ===================== PRINCIPLES ===================== -->
-  <section id="principles">
-    <div class="wrap">
-      <div class="reveal">
-        <div class="sec-eyebrow">Why we're different</div>
-        <h2 class="sec-title">Trust in clinical AI has to be earned.</h2>
-        <p class="sec-lead">We think you earn it by being the person who has to live with the thing you built. That belief shapes every product decision at tebScribe.</p>
-      </div>
-      <div class="princ">
-        <div class="row reveal d1">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5l-8-3Z"/></svg></div>
-          <div><h4>Private by default</h4><p>Free-tier dictation is transcribed on-device. We designed for the clinician holding the phone in the room with the patient — and we weren't comfortable with anything less.</p></div>
-        </div>
-        <div class="row reveal d2">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-          <div><h4>Built by a clinician, not for one</h4><p>tebIQ wasn't specced by a growth team with a doctor on the advisory board. It was built by the doctor — still on the schedule, still using it on shift this weekend.</p></div>
-        </div>
-        <div class="row reveal d1">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-          <div><h4>You are always the clinician</h4><p>tebScribe builds documentation tools, not diagnosis. The product supports your judgment and reasoning — it never replaces it. The clinician signs the note.</p></div>
-        </div>
-        <div class="row reveal d2">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg></div>
-          <div><h4>Earned, shipped, repeated</h4><p>We ship the unglamorous infrastructure — encryption, audit logging, access controls — because that's what earns the right to handle clinical work at scale.</p></div>
-        </div>
-      </div>
+  <section class="j3d-block" id="platform" data-z="-124,-132,-186,-196" data-pos="top" aria-labelledby="h-platform" data-track-scene="platform">
+    <div class="j3d-wrap">
+      <h2 id="h-platform">The infrastructure for <span class="shimmer">clinical intelligence.</span></h2>
+      <p class="lead">tebIQ is the first surface. Underneath it sits a platform built for trust, privacy, and reasoning at clinical-grade — designed to extend across the entire clinical workflow.</p>
+      <ul class="j3d-more">
+        <li><b>Privacy as architecture.</b> On-device transcription on the free tier. Patient audio that never has to leave the phone.</li>
+        <li><b>Reasoning, not transcription.</b> Clinical scaffolding built in: screening tools, scoring, and attestation that propose and confirm.</li>
+        <li><b>Specialty-aware by design.</b> Emergency medicine is the founding use case, but the engine generalizes.</li>
+        <li><b>Built by the user.</b> The roadmap is a working physician's own pain backlog.</li>
+        <li><b>Engineered, not assembled.</b> Purpose-built models, on-device STT, encryption at rest, audit logging, and role-based access.</li>
+        <li><b>Get home an hour sooner.</b> Every design decision serves one outcome: the documentation stops winning.</li>
+      </ul>
     </div>
   </section>
-
-  <!-- ===================== VISION / TIMELINE ===================== -->
-  <section id="vision">
-    <div class="wrap">
-      <div class="vision">
-        <div class="reveal">
-          <div class="sec-eyebrow">Where this is going</div>
-          <h2 class="sec-title" style="font-size:clamp(28px,3.8vw,44px)">Documentation today. Clinical intelligence tomorrow.</h2>
-          <p class="sec-lead" style="margin-bottom:34px">The note is where we started — because it's where clinicians bleed the most time. But it's the front door to something larger.</p>
-          <div class="timeline">
-            <div class="tl-item now reveal d1">
-              <div class="tl-node">01</div>
-              <div>
-                <h4>The scribe <span class="badge">Live</span></h4>
-                <p>tebIQ — private, reasoning-first clinical documentation. Available now to licensed clinicians, free to start.</p>
-              </div>
-            </div>
-            <div class="tl-item reveal d2">
-              <div class="tl-node">02</div>
-              <div>
-                <h4>The clinical layer <span class="badge soon">In build</span></h4>
-                <p>Screening, scoring, attestation and handoff woven through the workflow — the decision-support scaffolding that lives beside every note.</p>
-              </div>
-            </div>
-            <div class="tl-item reveal d3">
-              <div class="tl-node">03</div>
-              <div>
-                <h4>The platform <span class="badge soon">Next</span></h4>
-                <p>A trusted, private foundation other clinical surfaces are built on — extending across specialties, settings, and the systems clinicians already use.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="vis-panel reveal d2">
-          <div class="glow"></div>
-          <h3>From the founder</h3>
-          <p>Founded by an active emergency room physician, tebScribe was created to solve a problem every ER doctor knows too well: the crushing burden of documentation, the risk of missed critical-care billing, and note tools that were never designed for the ER.</p>
-          <blockquote class="vis-quote">
-            "At tebScribe, we don't just understand emergency medicine — we live it. I'm still on the schedule,
-            and I built the tool I actually wanted to use on shift."
-            <span class="by">— Founder, emergency physician &amp; builder</span>
-          </blockquote>
-          <p style="margin-top:22px;font-size:14px;color:var(--fg-3);border-top:1px solid var(--hair);padding-top:18px">
-            <strong style="color:var(--fg-2);font-weight:600">Our mission:</strong> to optimize physician well-being,
-            elevate patient care, and protect the financial health of emergency medicine practice — without
-            sacrificing speed, accuracy, or security.
-          </p>
-        </div>
-      </div>
+  <section class="j3d-block" id="trust" data-z="-196,-204,-238,-248" data-pos="top" aria-labelledby="h-trust" data-track-scene="trust">
+    <div class="j3d-wrap">
+      <h2 id="h-trust">Trust in clinical AI has to be earned.</h2>
+      <p class="lead">We think you earn it by being the person who has to live with the thing you built. That belief shapes every product decision at tebScribe.</p>
+      <ul class="j3d-more">
+        <li><b>Private by default.</b> Free-tier dictation is transcribed on-device.</li>
+        <li><b>Built by a clinician, not for one.</b> It was built by the doctor — still on the schedule, still using it on shift.</li>
+        <li><b>You are always the clinician.</b> tebScribe builds documentation tools, not diagnosis. The clinician signs the note.</li>
+        <li><b>Earned, shipped, repeated.</b> We ship the unglamorous infrastructure — encryption, audit logging, access controls.</li>
+      </ul>
     </div>
   </section>
-
-  <!-- ===================== COMPLIANCE STRIP ===================== -->
-  <section style="padding-top:0">
-    <div class="wrap">
-      <div class="center reveal" style="margin-bottom:34px">
-        <div class="sec-eyebrow">Built for healthcare-grade trust</div>
-        <h2 class="sec-title" style="font-size:clamp(26px,3.4vw,40px)">Security isn't a feature. It's the foundation.</h2>
-      </div>
-      <div class="trust-band">
-        <div class="trust-pill reveal d1">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V5l-8-3Z"/></svg></div>
-          <div><div class="t">HIPAA-aligned</div><div class="s">BAAs available for covered entities</div></div>
-        </div>
-        <div class="trust-pill reveal d2">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-          <div><div class="t">SOC 2 underway</div><div class="s">Designed-in from day one</div></div>
-        </div>
-        <div class="trust-pill reveal d3">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
-          <div><div class="t">Encryption at rest</div><div class="s">On-device by default</div></div>
-        </div>
-        <div class="trust-pill reveal d4">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></div>
-          <div><div class="t">Audit logging</div><div class="s">Role-based access control</div></div>
-        </div>
-      </div>
+  <section class="j3d-block" id="vision" data-z="-246,-254,-284,-294" data-pos="top" aria-labelledby="h-vision" data-track-scene="vision">
+    <div class="j3d-wrap">
+      <h2 id="h-vision">Documentation today. <span class="shimmer">Clinical intelligence tomorrow.</span></h2>
+      <p class="lead">The note is where we started — because it's where clinicians bleed the most time. But it's the front door to something larger.</p>
     </div>
   </section>
-
-  <!-- ===================== ACEP26 ===================== -->
-  <section id="acep26">
-    <div class="wrap">
-      <div class="acep-card reveal">
-        <div class="acep-photo">
-          <img src="assets/founder-acep26.jpg"
-               srcset="assets/founder-acep26-sm.jpg 320w, assets/founder-acep26.jpg 800w"
-               sizes="(max-width:880px) 200px, 240px"
-               width="800" height="1000" loading="lazy"
-               alt="Dr. Mohammad Chelehmalzadeh, emergency physician and TebScribe founder" />
-        </div>
-        <div class="acep-body">
-          <div class="sec-eyebrow">ACEP26 · Chicago</div>
-          <h2 class="sec-title" style="font-size:clamp(26px,3.4vw,40px)">Dr. Chelehmalzadeh will be at ACEP26 in Chicago</h2>
-          <p class="sec-lead">TebScribe founder Dr. Mohammad Chelehmalzadeh, an emergency physician, is exhibiting at the ACEP26 Scientific Assembly, McCormick Place, October 5–8, 2026. Stop by, bring a case, and get your ACEP26 access code for tebIQ.</p>
-          <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:26px">
-            <a class="btn btn-primary btn-lg" href="https://tebiq.com/acep?src=tebscribe" target="_blank" rel="noopener">Open the ACEP26 page <span class="arr">→</span></a>
-          </div>
-          <a class="prod-link" style="margin-top:18px" href="https://tebiq.com/acep?src=tebscribe" target="_blank" rel="noopener">tebIQ for emergency physicians <span class="arr">→</span></a>
-        </div>
-      </div>
+  <section class="j3d-block" id="founder" data-z="-290,-298,-316,-326" data-pos="center" aria-labelledby="h-founder" data-track-scene="founder">
+    <div class="j3d-wrap">
+      <h2 id="h-founder">From the founder</h2>
+      <blockquote>&ldquo;At tebScribe, we don't just understand emergency medicine — we live it. I'm still on the schedule, and I built the tool I actually wanted to use on shift.&rdquo;</blockquote>
+      <p class="lead">— Founder, emergency physician &amp; builder. Our mission: to optimize physician well-being, elevate patient care, and protect the financial health of emergency medicine practice — without sacrificing speed, accuracy, or security.</p>
+      <div class="j3d-chips"><span>HIPAA-aligned · BAAs available for covered entities</span><span>SOC 2 underway</span><span>Encryption at rest</span><span>Audit logging · role-based access</span></div>
     </div>
   </section>
-
-  <!-- ===================== CTA BAND ===================== -->
-  <section>
-    <div class="wrap">
-      <div class="cta-band reveal">
-        <h2>The documentation has won long enough.</h2>
-        <p>Try the flagship. Built by a clinician who knows exactly what your night looks like — free to start, private on your device.</p>
-        <div class="hero-cta" style="margin-bottom:0">
-          <a class="btn btn-primary btn-lg" href="https://tebiq.com" target="_blank" rel="noopener">Try tebIQ free <span class="arr">→</span></a>
-          <a class="btn btn-ghost btn-lg" href="mailto:mchelehmal@tebscribe.com">Talk to us</a>
-        </div>
+  <section class="j3d-block" id="cta" data-z="-328,-338,-362,-362" data-pos="center" aria-labelledby="h-cta" data-interactive data-track-scene="cta">
+    <div class="j3d-wrap">
+      <h2 id="h-cta">The documentation has won long enough.</h2>
+      <p class="lead">Try the flagship. Built by a clinician who knows exactly what your night looks like — free to start, private on your device.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" href="https://tebiq.com" target="_blank" rel="noopener" data-track-section="cta">Try tebIQ free <span class="arr">→</span></a>
+        <a class="btn btn-ghost btn-lg" href="mailto:mchelehmal@tebscribe.com" data-track-section="cta">Talk to us</a>
       </div>
+      <nav class="foot-family" aria-label="More from TebScribe">
+        <a href="/">tebScribe home</a>
+        <a href="/products.html">All products</a>
+        <a href="https://tebiq.com" target="_blank" rel="noopener">tebIQ — AI scribe for clinicians</a>
+        <a href="https://tebchart.com" target="_blank" rel="noopener">tebChart — your records, organized</a>
+        <a href="https://tebdictate.com" target="_blank" rel="noopener">tebDictate — free dictation</a>
+      </nav>
+      <p class="disclaimer">tebIQ is a clinical documentation assistant for licensed healthcare professionals. It supports — and never replaces — clinical judgment. tebIQ does not diagnose, treat, or make medical decisions; the clinician is always responsible for the note.</p>
+      <p class="disclaimer">© 2026 TebScribe LLC. All rights reserved.</p>
     </div>
   </section>
-
 </main>
 
-<!-- ===================== FOOTER ===================== -->
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <a class="brand" href="#top">
-          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs><linearGradient id="ftg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#0A84FF"/><stop offset="100%" stop-color="#5E5CE6"/></linearGradient></defs>
-            <path d="M32 2c20 0 30 10 30 30s-10 30-30 30S2 52 2 32 12 2 32 2Z" fill="url(#ftg)"/>
-            <circle cx="32" cy="32" r="13" fill="none" stroke="white" stroke-width="3.4"/>
-            <path d="M40 40 L48 48" stroke="white" stroke-width="3.4" stroke-linecap="round"/>
-            <circle cx="32" cy="32" r="2.2" fill="white"/>
-          </svg>
-          <span class="lin">teb<span class="strong">Scribe</span></span>
-        </a>
-        <p>Building AI that thinks like a clinician. Maker of tebIQ, tebChart, and tebDictate — private, reasoning-first clinical intelligence.</p>
-      </div>
-      <div class="foot-col">
-        <h5>Products</h5>
-        <a href="https://tebiq.com" target="_blank" rel="noopener">tebIQ →</a>
-        <a href="https://tebchart.com" target="_blank" rel="noopener">tebChart →</a>
-        <a href="https://tebdictate.com" target="_blank" rel="noopener">tebDictate — free →</a>
-        <a href="#platform">Platform</a>
-        <a href="#vision">Vision</a>
-      </div>
-      <div class="foot-col">
-        <h5>Company</h5>
-        <a href="#principles">Why we're different</a>
-        <a href="mailto:mchelehmal@tebscribe.com">Contact</a>
-        <a href="https://tebiq.com" target="_blank" rel="noopener">The story</a>
-        <a href="https://tebiq.com/acep?src=tebscribe" target="_blank" rel="noopener">ACEP26 — meet the founder →</a>
-        <!-- Staff door: auth lives ONLY on the app (tebiq.com Cognito) — this is a link, never a login form on this static site. -->
-        <a href="https://tebiq.com/tebiqadmin" target="_blank" rel="noopener">Team sign-in</a>
-      </div>
-      <div class="foot-col">
-        <h5>Legal</h5>
-        <a href="https://tebiq.com" target="_blank" rel="noopener">Privacy policy</a>
-        <a href="https://tebiq.com" target="_blank" rel="noopener">Terms</a>
-        <a href="mailto:mchelehmal@tebscribe.com">Security</a>
-      </div>
-    </div>
-    <!-- "More from TebScribe" cross-link block. Entity consolidation: these anchors are
-         the human/crawler-visible half of the Organization @id graph declared in <head>. -->
-    <nav class="foot-family" aria-label="More from TebScribe">
-      <span class="foot-family-label">More from TebScribe</span>
-      <a href="/products.html">All products</a>
-      <a href="https://tebiq.com" target="_blank" rel="noopener">tebIQ — AI scribe for clinicians</a>
-      <a href="https://tebchart.com" target="_blank" rel="noopener">tebChart — your records, organized</a>
-      <a href="https://tebdictate.com" target="_blank" rel="noopener">tebDictate — free dictation</a>
-    </nav>
-
-    <p class="disclaimer">
-      tebIQ is a clinical documentation assistant for licensed healthcare professionals. It supports — and never replaces —
-      clinical judgment. tebIQ does not diagnose, treat, or make medical decisions; the clinician is always responsible for the note.
-    </p>
-    <div class="foot-bottom">
-      <span>© <span id="year">2026</span> TebScribe LLC. All rights reserved.</span>
-      <div class="legal">
-        <a href="https://tebiq.com" target="_blank" rel="noopener">tebiq.com</a>
-        <a href="mailto:mchelehmal@tebscribe.com">mchelehmal@tebscribe.com</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
+<noscript><style>.j3d-block{opacity:1!important}</style></noscript>
 <script>
-/* ---- year ---- */
-document.getElementById('year').textContent = new Date().getFullYear();
-
-/* ---- nav scroll state ---- */
 const nav = document.getElementById('nav');
 const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
 onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
-
-/* ---- mobile menu ---- */
 const sheet = document.getElementById('sheet');
 document.getElementById('menuBtn').onclick = () => sheet.classList.add('open');
 document.getElementById('closeBtn').onclick = () => sheet.classList.remove('open');
 sheet.querySelectorAll('a').forEach(a => a.onclick = () => sheet.classList.remove('open'));
-
-/* ---- scroll reveal ---- */
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-}, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-/* ---- animated counters ---- */
-const fmt = (n) => n >= 1000 ? n.toLocaleString() : n;
-const countEls = document.querySelectorAll('[data-count]');
-const cio = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    const el = e.target, target = +el.dataset.count;
-    const pre = el.dataset.prefix||'', suf = el.dataset.suffix||'';
-    const dur = 1600, t0 = performance.now();
-    const tick = (t) => {
-      const p = Math.min((t - t0)/dur, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = pre + fmt(Math.round(target*eased)) + suf;
-      if (p < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-    cio.unobserve(el);
-  });
-}, {threshold:0.6});
-countEls.forEach(el => cio.observe(el));
-
-/* ---- device waveform bars ---- */
-const wave = document.getElementById('wave');
-if (wave){ for(let i=0;i<22;i++){ const b=document.createElement('i');
-  b.style.animationDelay=(i*0.06)+'s'; b.style.animationDuration=(0.8+Math.random()*0.7)+'s'; wave.appendChild(b);} }
-
-/* ---- typewriter in device ---- */
-function typeInto(el, text, speed, done){
-  let i=0; const cur=document.createElement('span'); cur.className='cursor';
-  el.appendChild(cur);
-  (function step(){
-    if(i<text.length){ cur.insertAdjacentText('beforebegin', text[i++]); setTimeout(step, speed);}
-    else if(done) done(cur);
-  })();
-}
-const t1 = document.getElementById('typed1');
-const t2 = document.getElementById('typed2');
-const tio = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(!e.isIntersecting) return;
-    typeInto(t1, "32M, chest pressure x2h, radiating to L arm, diaphoretic. Onset at rest…", 24, (c1)=>{
-      c1.remove();
-      typeInto(t2, "ACS ruled in for workup. Serial troponins + ECG. Risk-stratified, HEART 3 — admit for obs.", 22, ()=>{});
-    });
-    tio.unobserve(e.target);
-  });
-}, {threshold:0.5});
-if(t1) tio.observe(t1);
-
-/* ---- neural network canvas ---- */
-(function(){
-  const c = document.getElementById('neural');
-  if(!c || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const ctx = c.getContext('2d');
-  let w,h,dpr,nodes=[];
-  const COUNT = () => Math.min(70, Math.floor(window.innerWidth/22));
-  function resize(){
-    dpr = Math.min(window.devicePixelRatio||1, 2);
-    w = c.width = innerWidth*dpr; h = c.height = innerHeight*dpr;
-    c.style.width=innerWidth+'px'; c.style.height=innerHeight+'px';
-    nodes = Array.from({length:COUNT()}, ()=>({
-      x:Math.random()*w, y:Math.random()*h,
-      vx:(Math.random()-.5)*0.25*dpr, vy:(Math.random()-.5)*0.25*dpr,
-      r:(Math.random()*1.6+0.6)*dpr
-    }));
-  }
-  resize(); addEventListener('resize', resize);
-  const mouse={x:-9999,y:-9999};
-  addEventListener('mousemove', e=>{ mouse.x=e.clientX*dpr; mouse.y=e.clientY*dpr; });
-  addEventListener('mouseleave', ()=>{ mouse.x=-9999; mouse.y=-9999; });
-  const LINK = 150;
-  function frame(){
-    ctx.clearRect(0,0,w,h);
-    for(const n of nodes){
-      n.x+=n.vx; n.y+=n.vy;
-      if(n.x<0||n.x>w) n.vx*=-1;
-      if(n.y<0||n.y>h) n.vy*=-1;
-      // mouse attraction
-      const dxm=mouse.x-n.x, dym=mouse.y-n.y, dm=Math.hypot(dxm,dym);
-      if(dm<200*dpr){ n.x+=dxm*0.0009; n.y+=dym*0.0009; }
-    }
-    const L = LINK*dpr;
-    for(let i=0;i<nodes.length;i++){
-      for(let j=i+1;j<nodes.length;j++){
-        const a=nodes[i], b=nodes[j];
-        const dx=a.x-b.x, dy=a.y-b.y, d=Math.hypot(dx,dy);
-        if(d<L){
-          const o=(1-d/L)*0.5;
-          const g=ctx.createLinearGradient(a.x,a.y,b.x,b.y);
-          g.addColorStop(0,`rgba(10,132,255,${o})`);
-          g.addColorStop(1,`rgba(94,92,230,${o})`);
-          ctx.strokeStyle=g; ctx.lineWidth=0.7*dpr;
-          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
-        }
-      }
-    }
-    for(const n of nodes){
-      ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
-      ctx.fillStyle='rgba(150,180,255,0.55)'; ctx.fill();
-    }
-    requestAnimationFrame(frame);
-  }
-  frame();
-})();
 </script>
+<script defer src="/3d/tebscribe-3d.js"></script>
 </body>
 </html>
