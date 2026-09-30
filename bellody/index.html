@@ -43,6 +43,19 @@ html:not(.j3d-on) .j3d-block{padding:48px 0}
 html:not(.j3d-on) .j3d-block .app{justify-content:flex-start}
 </style>
 
+<style id="j3d-i18n-css">
+/* Get started: on a phone it is ALWAYS on screen — before, during and after the tour (founder 2026-09-30) */
+.j3d-fab{display:none}
+@media (max-width:768px){
+  .j3d-fab{display:flex;position:fixed;z-index:120;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom));min-height:52px;align-items:center;justify-content:center;border-radius:999px;background:#0A84FF;color:#fff;font:800 17px/1 -apple-system,Inter,system-ui,sans-serif;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.18)}
+  .j3d-fab:active{transform:scale(.98)}
+  html.j3d-on .j3d-block[data-pos=bottom]{bottom:calc(9vh + 70px)}
+  html:not(.j3d-on) body{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+}
+.j3d-lang{appearance:none;-webkit-appearance:none;margin-inline-start:auto;max-width:9.5em;min-height:36px;padding:0 26px 0 12px;border-radius:999px;border:1px solid rgba(127,127,127,.35);background:rgba(255,255,255,.06) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23999' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 10px center;color:#f5f6fa;font:600 13px/1 -apple-system,Inter,system-ui,sans-serif;cursor:pointer}
+.j3d-lang option{color:#111;background:#fff}
+[data-j3d-main][dir=rtl] .j3d-block ul,[data-j3d-main][dir=rtl] .j3d-block ol{text-align:right}
+</style>
 </head>
 <body>
 <div class="bgwrap"><div class="aurora a1"></div><div class="aurora a2"></div></div>
@@ -68,58 +81,58 @@ html:not(.j3d-on) .j3d-block .app{justify-content:flex-start}
 <section class="j3d-more j3d-seo" aria-label="About this page"><h2>A private family organizer for iPhone: schedule, school, chores, co-parenting and caregivers</h2><p>Bellody is a private family organizer for iPhone, iPad and Apple Watch from TebScribe. It keeps the invisible list every parent carries — who has practice today, whose form is due, who is picking up whom — with no account, no ads and no tracking.</p><p>It includes a shared custody schedule and swap requests for co-parenting, time-limited caregiver access you can revoke in one tap, and the whole household: school, meals, chores, the grocery list and every code for the house. Understanding runs on your iPhone.</p><p>Co-parenting is free on both phones, so the other parent never pays. Bellody Plus is one price for the whole family, shared with up to six people through Apple Family Sharing: $19.99 a year, $2.99 a month or $79.99 once (US prices).</p></section>
   <section class="j3d-block" id="hero" data-z="10,10,-2,-14" data-pos="center" aria-labelledby="h-hero" data-interactive data-track-scene="hero">
     <div class="j3d-wrap">
-      <div class="app"><img src="/bellody/bellody-icon.png" alt="Bellody app icon" width="84" height="84" /><div class="name">Bellody</div></div>
-      <h1 id="h-hero">A private second brain for your family.</h1>
-      <p class="lead">Bellody carries the invisible list every parent carries: who has practice today, whose form is due, who&rsquo;s picking up whom. It lives on your iPhone, with no account, no ads and no tracking.</p>
-      <p class="fine">Coming soon to the App Store for iPhone, iPad and Apple Watch.</p>
+      <div class="app"><img src="/bellody/bellody-icon.png" alt="Bellody app icon" width="84" height="84" /><div data-i18n-html="tfb2cbeee" class="name">Bellody</div></div>
+      <h1 data-i18n-html="t2ddb9c7f" id="h-hero">A private second brain for your family.</h1>
+      <p data-i18n-html="t74f81747" class="lead">Bellody carries the invisible list every parent carries: who has practice today, whose form is due, who&rsquo;s picking up whom. It lives on your iPhone, with no account, no ads and no tracking.</p>
+      <p data-i18n-html="tb9ac529f" class="fine">Coming soon to the App Store for iPhone, iPad and Apple Watch.</p>
     </div>
   </section>
   <section class="j3d-block" id="glance" data-z="-14,-22,-44,-54" data-pos="top" aria-labelledby="h-glance" data-track-scene="glance">
     <div class="j3d-wrap">
-      <p class="eyebrow">Today, at a glance</p>
-      <h2 id="h-glance">The loose notes become one calm week.</h2>
-      <p class="lead">What&rsquo;s next, what&rsquo;s waiting on you, and what&rsquo;s coming up for everyone at home.</p>
+      <p data-i18n-html="t9be99f38" class="eyebrow">Today, at a glance</p>
+      <h2 data-i18n-html="t823fe959" id="h-glance">The loose notes become one calm week.</h2>
+      <p data-i18n-html="t1214fbd8" class="lead">What&rsquo;s next, what&rsquo;s waiting on you, and what&rsquo;s coming up for everyone at home.</p>
     </div>
   </section>
   <section class="j3d-block" id="tell" data-z="-54,-62,-84,-94" data-pos="top" aria-labelledby="h-tell" data-track-scene="tell">
     <div class="j3d-wrap">
-      <p class="eyebrow">Tell it anything</p>
-      <h2 id="h-tell">Type, speak or point the camera.</h2>
-      <p class="lead">Bellody shows what it understood before anything is saved.</p>
+      <p data-i18n-html="t19f75bb3" class="eyebrow">Tell it anything</p>
+      <h2 data-i18n-html="t34b3cdf0" id="h-tell">Type, speak or point the camera.</h2>
+      <p data-i18n-html="t6c5a96d4" class="lead">Bellody shows what it understood before anything is saved.</p>
     </div>
   </section>
   <section class="j3d-block" id="coparent" data-z="-94,-102,-126,-136" data-pos="top" aria-labelledby="h-coparent" data-track-scene="coparent">
     <div class="j3d-wrap">
-      <p class="eyebrow">Co-parenting, calmly</p>
-      <h2 id="h-coparent">Two homes. One schedule.</h2>
-      <p class="lead">A shared custody schedule, swap requests, a structured child journal, a parenting plan and shared expenses. Free on both phones: the other parent never pays.</p>
+      <p data-i18n-html="t2f072186" class="eyebrow">Co-parenting, calmly</p>
+      <h2 data-i18n-html="t3f362610" id="h-coparent">Two homes. One schedule.</h2>
+      <p data-i18n-html="t2679453d" class="lead">A shared custody schedule, swap requests, a structured child journal, a parenting plan and shared expenses. Free on both phones: the other parent never pays.</p>
     </div>
   </section>
   <section class="j3d-block" id="caregivers" data-z="-136,-144,-166,-176" data-pos="top" aria-labelledby="h-caregivers" data-track-scene="caregivers">
     <div class="j3d-wrap">
-      <p class="eyebrow">Caregivers</p>
-      <h2 id="h-caregivers">Exactly what they need, until tonight.</h2>
-      <p class="lead">Give a babysitter or nurse exactly the child info they need, until tonight, then revoke it in one tap.</p>
+      <p data-i18n-html="t0d84557a" class="eyebrow">Caregivers</p>
+      <h2 data-i18n-html="tb7265054" id="h-caregivers">Exactly what they need, until tonight.</h2>
+      <p data-i18n-html="t0a40b010" class="lead">Give a babysitter or nurse exactly the child info they need, until tonight, then revoke it in one tap.</p>
     </div>
   </section>
   <section class="j3d-block" id="household" data-z="-176,-184,-206,-216" data-pos="top" aria-labelledby="h-household" data-track-scene="household">
     <div class="j3d-wrap">
-      <p class="eyebrow">The whole household</p>
-      <h2 id="h-household">Everything the house runs on.</h2>
-      <p class="lead">School, meals, chores, the grocery list, occasions, and every service and code for the house.</p>
+      <p data-i18n-html="taf21e5fa" class="eyebrow">The whole household</p>
+      <h2 data-i18n-html="t43b2ea66" id="h-household">Everything the house runs on.</h2>
+      <p data-i18n-html="t53052d28" class="lead">School, meals, chores, the grocery list, occasions, and every service and code for the house.</p>
     </div>
   </section>
   <section class="j3d-block" id="privacy" data-z="-216,-224,-244,-252" data-pos="top" aria-labelledby="h-privacy" data-track-scene="privacy">
     <div class="j3d-wrap">
-      <p class="eyebrow">Private by design</p>
-      <h2 id="h-privacy">Understanding runs on your iPhone.</h2>
-      <p class="lead">Nothing leaves it unless you turn on a feature that needs to. No account, no ads, no tracking.</p>
+      <p data-i18n-html="tdf37cdd1" class="eyebrow">Private by design</p>
+      <h2 data-i18n-html="tdf23423c" id="h-privacy">Understanding runs on your iPhone.</h2>
+      <p data-i18n-html="t451e6c79" class="lead">Nothing leaves it unless you turn on a feature that needs to. No account, no ads, no tracking.</p>
     </div>
   </section>
   <section class="j3d-block" id="why" data-z="-252,-258,-272,-278" data-pos="center" aria-labelledby="h-why" data-track-scene="why">
     <div class="j3d-wrap">
-      <p class="eyebrow">Why I made Bellody</p>
-      <blockquote>Bellody is my way of not losing track of the important dates and the fun times with my family and kids. My wife and I both work full time in healthcare, and we absolutely can't drop the ball with our kids, so I designed it for co-parenting.<span class="sig">&mdash; Mohammad, Bellody</span></blockquote>
+      <p data-i18n-html="t875e59d6" class="eyebrow">Why I made Bellody</p>
+      <blockquote data-i18n-html="t94fa5f9c">Bellody is my way of not losing track of the important dates and the fun times with my family and kids. My wife and I both work full time in healthcare, and we absolutely can't drop the ball with our kids, so I designed it for co-parenting.<span class="sig">&mdash; Mohammad, Bellody</span></blockquote>
     </div>
   </section>
   <section id="why-full" data-static-only aria-label="Why I made Bellody, in full"><div class="j3d-wrap"><h2>Why I made Bellody</h2><p>Bellody is my way of not losing track of the important dates and the fun times with my family and kids. My wife and I both work full time in healthcare, and we absolutely can't drop the ball with our kids, so I designed it for co-parenting. I also wanted our kids to have direct, headache-free connections with us, through games, wish lists, puzzles and private messages: something personal, without Google, Facebook or Microsoft capturing every moment for their own benefit.</p>
@@ -128,14 +141,15 @@ html:not(.j3d-on) .j3d-block .app{justify-content:flex-start}
     <p><strong>— Mohammad, Bellody</strong></p></div></section>
   <section class="j3d-block" id="cta" data-z="-280,-288,-300,-300" data-pos="center" aria-labelledby="h-cta" data-interactive data-track-scene="cta">
     <div class="j3d-wrap">
-      <h2 id="h-cta">Yours, by design.</h2>
-      <p class="lead">Free to start, and co-parenting is free on both phones. Bellody Plus is one price for your whole family: $19.99 a year, $2.99 a month or $79.99 once. The other parent never pays, and neither do your kids.</p>
-      <p class="lead">Coming soon to the App Store for iPhone, iPad and Apple Watch. Tell me what else you&rsquo;d like to see: <a href="mailto:mchelehmal@tebscribe.com?subject=Bellody%20idea">mchelehmal@tebscribe.com</a></p>
-      <div class="row"><a class="btn" href="/bellody/support/">Support</a><a class="btn btn-ghost" href="/bellody/privacy/">Privacy Policy</a><a class="btn btn-ghost" href="/bellody/classic.html">Read the plain page</a></div>
-      <nav class="fnav" aria-label="Footer"><span>&copy; 2026 TebScribe LLC</span><a href="/">TebScribe</a><a href="/bellody/privacy/">Privacy</a><a href="/bellody/support/">Support</a></nav>
+      <h2 data-i18n-html="t2b56f3ea" id="h-cta">Yours, by design.</h2>
+      <p data-i18n-html="t847ec2dc" class="lead">Free to start, and co-parenting is free on both phones. Bellody Plus is one price for your whole family: $19.99 a year, $2.99 a month or $79.99 once. The other parent never pays, and neither do your kids.</p>
+      <p data-i18n-html="t1384a9b0" class="lead">Coming soon to the App Store for iPhone, iPad and Apple Watch. Tell me what else you&rsquo;d like to see: <a href="mailto:mchelehmal@tebscribe.com?subject=Bellody%20idea">mchelehmal@tebscribe.com</a></p>
+      <div class="row"><a data-i18n-html="t6be6f488" class="btn" href="/bellody/support/">Support</a><a data-i18n-html="t2526541f" class="btn btn-ghost" href="/bellody/privacy/">Privacy Policy</a><a data-i18n-html="t041800f5" class="btn btn-ghost" href="/bellody/classic.html">Read the plain page</a></div>
+      <nav class="fnav" aria-label="Footer"><span data-i18n-html="t6a911111">&copy; 2026 TebScribe LLC</span><a data-i18n-html="tb8ec34ae" href="/">TebScribe</a><a data-i18n-html="tebfa87e7" href="/bellody/privacy/">Privacy</a><a data-i18n-html="t6be6f488" href="/bellody/support/">Support</a></nav>
     </div>
   </section>
 </main>
+<a class="j3d-fab" href="#cta" data-track-section="fab" data-i18n-html="te83ca5ee">Get started</a>
 
 <footer>
   <span>© 2026 TebScribe LLC</span>
@@ -144,6 +158,7 @@ html:not(.j3d-on) .j3d-block .app{justify-content:flex-start}
   <a href="/bellody/support/">Support</a>
 </footer>
 <script defer src="/tb-beacon.js" data-property="tebscribe"></script>
+<script src="/bellody/i18n-bellody.js?v=d0bec586"></script>
 <script defer src="/bellody/bellody-3d.js"></script>
 </body>
 </html>

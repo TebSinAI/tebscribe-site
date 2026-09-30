@@ -446,6 +446,19 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
 html:not(.j3d-on) .j3d-block{padding:72px 20px}
 html:not(.j3d-on) main{padding-top:84px}
 </style>
+<style id="j3d-i18n-css">
+/* Get started: on a phone it is ALWAYS on screen — before, during and after the tour (founder 2026-09-30) */
+.j3d-fab{display:none}
+@media (max-width:768px){
+  .j3d-fab{display:flex;position:fixed;z-index:120;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom));min-height:52px;align-items:center;justify-content:center;border-radius:999px;background:#0A84FF;color:#fff;font:800 17px/1 -apple-system,Inter,system-ui,sans-serif;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.18)}
+  .j3d-fab:active{transform:scale(.98)}
+  html.j3d-on .j3d-block[data-pos=bottom]{bottom:calc(9vh + 70px)}
+  html:not(.j3d-on) body{padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+}
+.j3d-lang{appearance:none;-webkit-appearance:none;margin-inline-start:auto;max-width:9.5em;min-height:36px;padding:0 26px 0 12px;border-radius:999px;border:1px solid rgba(127,127,127,.35);background:rgba(255,255,255,.06) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23999' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat right 10px center;color:#f5f6fa;font:600 13px/1 -apple-system,Inter,system-ui,sans-serif;cursor:pointer}
+.j3d-lang option{color:#111;background:#fff}
+[data-j3d-main][dir=rtl] .j3d-block ul,[data-j3d-main][dir=rtl] .j3d-block ol{text-align:right}
+</style>
 </head>
 <body>
 
@@ -493,96 +506,97 @@ html:not(.j3d-on) main{padding-top:84px}
 <section class="j3d-more j3d-seo" aria-label="About this page"><h2>AI medical scribe, health records organizer and voice dictation — built by an ER doctor</h2><p>tebScribe is a clinician-built healthcare software company. Its flagship, tebIQ, is an AI clinical scribe and documentation assistant for emergency medicine, built by a practicing ER doctor.</p><p>tebChart organizes discharge papers, medications, follow-up visits and an ER card on your iPhone. tebDictate turns your phone into a wireless, encrypted dictation microphone that types into any computer.</p></section>
   <section class="j3d-block" id="hero" data-z="10,10,-2,-14" data-pos="center" aria-labelledby="h-hero" data-interactive data-track-scene="hero">
     <div class="j3d-wrap">
-      <div class="eyebrow"><span class="dot"></span> Clinical intelligence company · Built by clinicians</div>
-      <h1 id="h-hero">We build AI that<br><span class="shimmer">thinks like a clinician.</span></h1>
-      <p class="lead">tebScribe is the company behind <strong>tebIQ</strong> — the AI clinical scribe engineered by a practicing ER doctor for the way medicine actually works — with <strong>tebChart</strong> and <strong>tebDictate</strong> close behind. Private by default. Defensible by design.</p>
+      <div data-i18n-html="te09e9fb4" class="eyebrow"><span class="dot"></span> Clinical intelligence company · Built by clinicians</div>
+      <h1 data-i18n-html="t759d7032" id="h-hero">We build AI that<br><span class="shimmer">thinks like a clinician.</span></h1>
+      <p data-i18n-html="t6e8994ba" class="lead">tebScribe is the company behind <strong>tebIQ</strong> — the AI clinical scribe engineered by a practicing ER doctor for the way medicine actually works — with <strong>tebChart</strong> and <strong>tebDictate</strong> close behind. Private by default. Defensible by design.</p>
       <div class="hero-cta">
-        <a class="btn btn-primary btn-lg" href="https://tebiq.com" target="_blank" rel="noopener" data-track-section="hero">Explore tebIQ <span class="arr">→</span></a>
-        <a class="btn btn-ghost btn-lg" href="/#products" data-track-section="hero">See all products</a>
+        <a data-i18n-html="t7c32993a" class="btn btn-primary btn-lg" href="https://tebiq.com" target="_blank" rel="noopener" data-track-section="hero">Explore tebIQ <span class="arr">→</span></a>
+        <a data-i18n-html="t7c909c51" class="btn btn-ghost btn-lg" href="/#products" data-track-section="hero">See all products</a>
       </div>
     </div>
   </section>
   <section class="j3d-block" id="products" data-z="-22,-30,-40,-46" data-pos="top" aria-labelledby="h-products" data-track-scene="products">
     <div class="j3d-wrap">
-      <h2 id="h-products">Three products. One clinical engine.</h2>
-      <p class="lead">tebIQ is the flagship for clinicians. tebChart brings the same engineering to everyone's own health records. tebDictate turns any phone into a wireless microphone — and it's free to use right now.</p>
+      <h2 data-i18n-html="tf96a8462" id="h-products">Three products. One clinical engine.</h2>
+      <p data-i18n-html="t216472fb" class="lead">tebIQ is the flagship for clinicians. tebChart brings the same engineering to everyone's own health records. tebDictate turns any phone into a wireless microphone — and it's free to use right now.</p>
     </div>
   </section>
   <section class="j3d-block" id="tebiq" data-z="-42,-48,-58,-66" data-pos="bottom" data-interactive data-track-scene="tebiq">
     <div class="j3d-wrap">
-      <div class="j3d-cap"><h3>tebIQ — the clinician's scribe</h3><p>The AI clinical scribe built by a practicing ER doctor. Ambient documentation with real clinical scaffolding — screening tools, scoring, and specialty-aware notes that finish on shift, not at midnight.</p><a href="https://tebiq.com" target="_blank" rel="noopener" data-track-section="tebiq">Explore tebIQ →</a></div>
+      <div class="j3d-cap"><h3 data-i18n-html="t363c8b6f">tebIQ — the clinician's scribe</h3><p data-i18n-html="t331011ce">The AI clinical scribe built by a practicing ER doctor. Ambient documentation with real clinical scaffolding — screening tools, scoring, and specialty-aware notes that finish on shift, not at midnight.</p><a data-i18n-html="ta92d1853" href="https://tebiq.com" target="_blank" rel="noopener" data-track-section="tebiq">Explore tebIQ →</a></div>
     </div>
   </section>
   <section class="j3d-block" id="tebchart" data-z="-72,-78,-88,-96" data-pos="bottom" data-interactive data-track-scene="tebchart">
     <div class="j3d-wrap">
-      <div class="j3d-cap"><h3>tebChart — everyone's medical vault</h3><p>Your health records, in your pocket. Visits, medications, and discharge instructions — organized, readable, and kept on your own device.</p><a href="https://tebchart.com" target="_blank" rel="noopener" data-track-section="tebchart">Visit tebchart.com →</a></div>
+      <div class="j3d-cap"><h3 data-i18n-html="t9a9dfdf0">tebChart — everyone's medical vault</h3><p data-i18n-html="tf49ac4a2">Your health records, in your pocket. Visits, medications, and discharge instructions — organized, readable, and kept on your own device.</p><a data-i18n-html="t6d3ccd70" href="https://tebchart.com" target="_blank" rel="noopener" data-track-section="tebchart">Visit tebchart.com →</a></div>
     </div>
   </section>
   <section class="j3d-block" id="tebdictate" data-z="-102,-108,-118,-126" data-pos="bottom" data-interactive data-track-scene="tebdictate">
     <div class="j3d-wrap">
-      <div class="j3d-cap"><h3>tebDictate — your phone is the microphone</h3><p>Scan a QR code and your phone becomes a wireless microphone for any computer. Speak, and your words type themselves onto the screen. Free on the web today.</p><a href="https://tebdictate.com" target="_blank" rel="noopener" data-track-section="tebdictate">Use it free →</a></div>
+      <div class="j3d-cap"><h3 data-i18n-html="t64ce528a">tebDictate — your phone is the microphone</h3><p data-i18n-html="t3d0d221b">Scan a QR code and your phone becomes a wireless microphone for any computer. Speak, and your words type themselves onto the screen. Free on the web today.</p><a data-i18n-html="t635e794b" href="https://tebdictate.com" target="_blank" rel="noopener" data-track-section="tebdictate">Use it free →</a></div>
     </div>
   </section>
   <section class="j3d-block" id="platform" data-z="-124,-132,-186,-196" data-pos="top" aria-labelledby="h-platform" data-track-scene="platform">
     <div class="j3d-wrap">
-      <h2 id="h-platform">The infrastructure for <span class="shimmer">clinical intelligence.</span></h2>
-      <p class="lead">tebIQ is the first surface. Underneath it sits a platform built for trust, privacy, and reasoning at clinical-grade — designed to extend across the entire clinical workflow.</p>
+      <h2 data-i18n-html="t2d4445f5" id="h-platform">The infrastructure for <span class="shimmer">clinical intelligence.</span></h2>
+      <p data-i18n-html="t2c82c835" class="lead">tebIQ is the first surface. Underneath it sits a platform built for trust, privacy, and reasoning at clinical-grade — designed to extend across the entire clinical workflow.</p>
       <ul class="j3d-more">
-        <li><b>Privacy as architecture.</b> On-device transcription on the free tier. Patient audio that never has to leave the phone.</li>
-        <li><b>Reasoning, not transcription.</b> Clinical scaffolding built in: screening tools, scoring, and attestation that propose and confirm.</li>
-        <li><b>Specialty-aware by design.</b> Emergency medicine is the founding use case, but the engine generalizes.</li>
-        <li><b>Built by the user.</b> The roadmap is a working physician's own pain backlog.</li>
-        <li><b>Engineered, not assembled.</b> Purpose-built models, on-device STT, encryption at rest, audit logging, and role-based access.</li>
-        <li><b>Get home an hour sooner.</b> Every design decision serves one outcome: the documentation stops winning.</li>
+        <li data-i18n-html="tf7e0366c"><b>Privacy as architecture.</b> On-device transcription on the free tier. Patient audio that never has to leave the phone.</li>
+        <li data-i18n-html="td9b06294"><b>Reasoning, not transcription.</b> Clinical scaffolding built in: screening tools, scoring, and attestation that propose and confirm.</li>
+        <li data-i18n-html="teaca4c6e"><b>Specialty-aware by design.</b> Emergency medicine is the founding use case, but the engine generalizes.</li>
+        <li data-i18n-html="t91e8d5e1"><b>Built by the user.</b> The roadmap is a working physician's own pain backlog.</li>
+        <li data-i18n-html="tc0141e18"><b>Engineered, not assembled.</b> Purpose-built models, on-device STT, encryption at rest, audit logging, and role-based access.</li>
+        <li data-i18n-html="tadbd3d25"><b>Get home an hour sooner.</b> Every design decision serves one outcome: the documentation stops winning.</li>
       </ul>
     </div>
   </section>
   <section class="j3d-block" id="trust" data-z="-196,-204,-238,-248" data-pos="top" aria-labelledby="h-trust" data-track-scene="trust">
     <div class="j3d-wrap">
-      <h2 id="h-trust">Trust in clinical AI has to be earned.</h2>
-      <p class="lead">We think you earn it by being the person who has to live with the thing you built. That belief shapes every product decision at tebScribe.</p>
+      <h2 data-i18n-html="tf25c0f18" id="h-trust">Trust in clinical AI has to be earned.</h2>
+      <p data-i18n-html="t0e847658" class="lead">We think you earn it by being the person who has to live with the thing you built. That belief shapes every product decision at tebScribe.</p>
       <ul class="j3d-more">
-        <li><b>Private by default.</b> Free-tier dictation is transcribed on-device.</li>
-        <li><b>Built by a clinician, not for one.</b> It was built by the doctor — still on the schedule, still using it on shift.</li>
-        <li><b>You are always the clinician.</b> tebScribe builds documentation tools, not diagnosis. The clinician signs the note.</li>
-        <li><b>Earned, shipped, repeated.</b> We ship the unglamorous infrastructure — encryption, audit logging, access controls.</li>
+        <li data-i18n-html="tf9a1c9b6"><b>Private by default.</b> Free-tier dictation is transcribed on-device.</li>
+        <li data-i18n-html="t6546001a"><b>Built by a clinician, not for one.</b> It was built by the doctor — still on the schedule, still using it on shift.</li>
+        <li data-i18n-html="t9363c642"><b>You are always the clinician.</b> tebScribe builds documentation tools, not diagnosis. The clinician signs the note.</li>
+        <li data-i18n-html="t39578a37"><b>Earned, shipped, repeated.</b> We ship the unglamorous infrastructure — encryption, audit logging, access controls.</li>
       </ul>
     </div>
   </section>
   <section class="j3d-block" id="vision" data-z="-246,-254,-284,-294" data-pos="top" aria-labelledby="h-vision" data-track-scene="vision">
     <div class="j3d-wrap">
-      <h2 id="h-vision">Documentation today. <span class="shimmer">Clinical intelligence tomorrow.</span></h2>
-      <p class="lead">The note is where we started — because it's where clinicians bleed the most time. But it's the front door to something larger.</p>
+      <h2 data-i18n-html="tfbdfe208" id="h-vision">Documentation today. <span class="shimmer">Clinical intelligence tomorrow.</span></h2>
+      <p data-i18n-html="t679d1d84" class="lead">The note is where we started — because it's where clinicians bleed the most time. But it's the front door to something larger.</p>
     </div>
   </section>
   <section class="j3d-block" id="founder" data-z="-290,-298,-316,-326" data-pos="center" aria-labelledby="h-founder" data-track-scene="founder">
     <div class="j3d-wrap">
-      <h2 id="h-founder">From the founder</h2>
-      <blockquote>&ldquo;At tebScribe, we don't just understand emergency medicine — we live it. I'm still on the schedule, and I built the tool I actually wanted to use on shift.&rdquo;</blockquote>
-      <p class="lead">— Founder, emergency physician &amp; builder. Our mission: to optimize physician well-being, elevate patient care, and protect the financial health of emergency medicine practice — without sacrificing speed, accuracy, or security.</p>
-      <div class="j3d-chips"><span>HIPAA-aligned · BAAs available for covered entities</span><span>SOC 2 underway</span><span>Encryption at rest</span><span>Audit logging · role-based access</span></div>
+      <h2 data-i18n-html="tce2a476d" id="h-founder">From the founder</h2>
+      <blockquote data-i18n-html="tc746b4c8">&ldquo;At tebScribe, we don't just understand emergency medicine — we live it. I'm still on the schedule, and I built the tool I actually wanted to use on shift.&rdquo;</blockquote>
+      <p data-i18n-html="tbba88145" class="lead">— Founder, emergency physician &amp; builder. Our mission: to optimize physician well-being, elevate patient care, and protect the financial health of emergency medicine practice — without sacrificing speed, accuracy, or security.</p>
+      <div class="j3d-chips"><span data-i18n-html="t15888aba">HIPAA-aligned · BAAs available for covered entities</span><span data-i18n-html="t37ab259f">SOC 2 underway</span><span data-i18n-html="t84d98435">Encryption at rest</span><span data-i18n-html="t77cf9aec">Audit logging · role-based access</span></div>
     </div>
   </section>
   <section class="j3d-block" id="cta" data-z="-328,-338,-362,-362" data-pos="center" aria-labelledby="h-cta" data-interactive data-track-scene="cta">
     <div class="j3d-wrap">
-      <h2 id="h-cta">The documentation has won long enough.</h2>
-      <p class="lead">Try the flagship. Built by a clinician who knows exactly what your night looks like — free to start, private on your device.</p>
+      <h2 data-i18n-html="tc30358aa" id="h-cta">The documentation has won long enough.</h2>
+      <p data-i18n-html="t34087e0b" class="lead">Try the flagship. Built by a clinician who knows exactly what your night looks like — free to start, private on your device.</p>
       <div class="hero-cta">
-        <a class="btn btn-primary btn-lg" href="https://tebiq.com" target="_blank" rel="noopener" data-track-section="cta">Try tebIQ free <span class="arr">→</span></a>
-        <a class="btn btn-ghost btn-lg" href="mailto:mchelehmal@tebscribe.com" data-track-section="cta">Talk to us</a>
+        <a data-i18n-html="t4270f29c" class="btn btn-primary btn-lg" href="https://tebiq.com" target="_blank" rel="noopener" data-track-section="cta">Try tebIQ free <span class="arr">→</span></a>
+        <a data-i18n-html="t4bf776d0" class="btn btn-ghost btn-lg" href="mailto:mchelehmal@tebscribe.com" data-track-section="cta">Talk to us</a>
       </div>
       <nav class="foot-family" aria-label="More from TebScribe">
-        <a href="/">tebScribe home</a>
-        <a href="/products.html">All products</a>
-        <a href="https://tebiq.com" target="_blank" rel="noopener">tebIQ — AI scribe for clinicians</a>
-        <a href="https://tebchart.com" target="_blank" rel="noopener">tebChart — your records, organized</a>
-        <a href="https://tebdictate.com" target="_blank" rel="noopener">tebDictate — free dictation</a>
+        <a data-i18n-html="t2df61ff5" href="/">tebScribe home</a>
+        <a data-i18n-html="t62dc6870" href="/products.html">All products</a>
+        <a data-i18n-html="t522e4fe6" href="https://tebiq.com" target="_blank" rel="noopener">tebIQ — AI scribe for clinicians</a>
+        <a data-i18n-html="tf8f62d4c" href="https://tebchart.com" target="_blank" rel="noopener">tebChart — your records, organized</a>
+        <a data-i18n-html="tb25a9373" href="https://tebdictate.com" target="_blank" rel="noopener">tebDictate — free dictation</a>
       </nav>
-      <p class="disclaimer">tebIQ is a clinical documentation assistant for licensed healthcare professionals. It supports — and never replaces — clinical judgment. tebIQ does not diagnose, treat, or make medical decisions; the clinician is always responsible for the note.</p>
-      <p class="disclaimer">© 2026 TebScribe LLC. All rights reserved.</p>
+      <p data-i18n-html="tb3dfb238" class="disclaimer">tebIQ is a clinical documentation assistant for licensed healthcare professionals. It supports — and never replaces — clinical judgment. tebIQ does not diagnose, treat, or make medical decisions; the clinician is always responsible for the note.</p>
+      <p data-i18n-html="t6fae9fa0" class="disclaimer">© 2026 TebScribe LLC. All rights reserved.</p>
     </div>
   </section>
 </main>
+<a class="j3d-fab" href="https://tebiq.com/get-started" target="_blank" rel="noopener" data-track-section="fab" data-i18n-html="te83ca5ee">Get started</a>
 
 <noscript><style>.j3d-block{opacity:1!important}</style></noscript>
 <script>
@@ -594,6 +608,7 @@ document.getElementById('menuBtn').onclick = () => sheet.classList.add('open');
 document.getElementById('closeBtn').onclick = () => sheet.classList.remove('open');
 sheet.querySelectorAll('a').forEach(a => a.onclick = () => sheet.classList.remove('open'));
 </script>
+<script src="/i18n-tebscribe.js?v=a0f50e30"></script>
 <script defer src="/3d/tebscribe-3d.js"></script>
 </body>
 </html>
