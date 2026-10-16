@@ -85,13 +85,16 @@
 
   function css() {
     var st = document.createElement("style");
+    // Site tokens win (--bg-2/--fg on the dark hub pages, --panel/--ink on the
+    // light/dark product pages); otherwise follow the OS colour scheme.
     st.textContent =
-      "#tb-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:2147483000;" +
+      "#tb-consent{--tbc-bg:var(--bg-2,var(--panel,#fff));--tbc-fg:var(--fg,var(--ink,#111));" +
+      "position:fixed;left:16px;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:2147483000;" +
       "max-width:720px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center;" +
       "padding:14px 16px;border-radius:14px;box-sizing:border-box;" +
-      "background:var(--bg-2,#fff);color:var(--fg,#111);border:1px solid var(--hair-strong,rgba(128,128,128,.4));" +
+      "background:var(--tbc-bg);color:var(--tbc-fg);border:1px solid var(--hair-strong,rgba(128,128,128,.45));" +
       "box-shadow:0 8px 30px rgba(0,0,0,.35);font:14px/1.45 var(--font,-apple-system,system-ui,sans-serif)}" +
-      "@media (prefers-color-scheme:light){#tb-consent{background:var(--bg-2,#fff);color:var(--fg,#111)}}" +
+      "@media (prefers-color-scheme:dark){#tb-consent{--tbc-bg:var(--bg-2,var(--panel,#16181F));--tbc-fg:var(--fg,var(--ink,#F5F6FA))}}" +
       "#tb-consent p{margin:0;flex:1 1 260px;color:inherit}" +
       "#tb-consent a{color:var(--blue,#0A84FF);text-decoration:underline}" +
       "#tb-consent .tbc-b{display:flex;gap:8px;flex:0 0 auto}" +
@@ -126,6 +129,12 @@
     banner.appendChild(css());
     banner.appendChild(p); banner.appendChild(box);
     document.body.appendChild(banner);
+    // Phones: sit above the pinned "Get started" bar instead of covering it.
+    var fab = document.querySelector(".j3d-fab");
+    if (fab && getComputedStyle(fab).display !== "none") {
+      var r = fab.getBoundingClientRect();
+      if (r.height) banner.style.bottom = Math.round(window.innerHeight - r.top + 10) + "px";
+    }
   }
 
   window.tbConsent = { open: show };

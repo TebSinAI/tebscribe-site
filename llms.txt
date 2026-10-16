@@ -13,7 +13,8 @@
 ## Links
 
 - [All products](https://tebscribe.com/products.html): the TebScribe product hub with frequently asked questions.
-- [Pricing](https://tebiq.com): tebIQ plans and pricing.
-- [Security](https://tebiq.com): how tebIQ protects data. Encrypted in transit and at rest (AES). Never used for training. Never sold.
+- [Pricing](https://tebiq.com/pricing): tebIQ plans and pricing.
+- [Security](https://tebiq.com/security): how tebIQ protects data. Encrypted in transit and at rest (AES). Never used for training. Never sold.
 - [Privacy](https://tebiq.com/privacy): privacy policy.
-- [Support](https://tebscribe.com/bellody/support/): Bellody support; for everything else write to mchelehmal@tebscribe.com.
+- [Support](https://tebiq.com/support): tebIQ support.
+- [Bellody support](https://tebscribe.com/bellody/support/): help for the Bellody app.
