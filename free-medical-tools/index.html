@@ -165,6 +165,7 @@ footer nav a:hover{color:var(--fg)}
 .card .btn{margin-top:20px}
 .navlinks a.on{color:var(--fg)}
 [hidden]{display:none!important}
+.gpt{display:flex;gap:16px;align-items:flex-start}.gpt img{width:56px;height:56px;border-radius:50%;flex:none}.gpt h3{margin:0 0 4px;font-size:18px}.gpt p{margin:0 0 8px}.gpt a{font-weight:700}.gpt-group{margin:30px 0 0}.gpt-note{font-size:13px;opacity:.75;margin-top:22px}
 </style>
 </head>
 <body>
@@ -198,12 +199,12 @@ footer nav a:hover{color:var(--fg)}
         <div class="card">
           <h3>Clinical score calculators</h3>
           <p>Free medical calculators on tebiq.com, including scores such as HEART, Wells, CURB-65 and NEWS2. For clinicians. Supports, does not replace, clinical judgment.</p>
-          <a class="btn btn-primary" href="https://tebiq.com/free-medical-tools" target="_blank" rel="noopener">Open the calculators <span class="arr">→</span></a>
+          <span class="btn btn-ghost" aria-disabled="true"><!--CALC-LIVE: <a class="btn btn-primary" href="https://tebiq.com/free-medical-tools" target="_blank" rel="noopener">Open the calculators <span class="arr">→</span></a>-->Coming soon on tebiq.com</span>
         </div>
         <div class="card">
           <h3>tebCalc</h3>
           <p>tebCalc: clinical scores inside ChatGPT and Claude. One calculator engine that returns the score and its published interpretation.</p>
-          <a class="btn btn-ghost" href="https://tebiq.com/free-medical-tools" target="_blank" rel="noopener">See tebCalc on tebiq.com <span class="arr">→</span></a>
+          <span class="btn btn-ghost" aria-disabled="true">Coming soon</span>
         </div>
         <div class="card">
           <h3>Free medical dictation</h3>
@@ -213,12 +214,45 @@ footer nav a:hover{color:var(--fg)}
       </div>
     </div>
   </section>
-  <section id="gpts" class="about" hidden>
+  <section id="gpts" class="about">
     <div class="wrap">
       <div class="sec-eyebrow">ChatGPT</div>
       <h2 class="sec-title">Dr. C's ChatGPT GPTs</h2>
-      <p>Not medical devices and not diagnoses — tools to think with, from Dr. C.</p>
-      <div class="grid2" id="gpt-cards"></div>
+      <p>25 free GPTs Dr. C built for clinicians, students, patients and families. Not medical devices and not diagnoses.</p>
+      <div id="gpt-cards">
+<h3 class="gpt-group">For clinicians</h3><div class="grid2">
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/er-action-plan-builder.webp" alt="" width="56" height="56" loading="lazy"><div><h3>ER Action Plan Builder</h3><p>Summarizes guidelines into a quick ER and hospital action plan. Educational.</p><a href="https://chatgpt.com/g/g-6884b99380008191860961d2f6ecb584-er-action-plan-builder" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/critical-shift-assistant.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Critical Shift Assistant</h3><p>Educational helper for busy emergency department shifts.</p><a href="https://chatgpt.com/g/g-6841f3a9034c819183e3d7a24c0a95f0-critical-shift-assistant" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/clinical-compass.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Clinical Compass</h3><p>Summarizes clinical topics from trusted medical sources. Education only.</p><a href="https://chatgpt.com/g/g-683d663d72d881919b072a79eb68e621-clinical-compass" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/differential-diagnosis-maker.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Differential Diagnosis Maker</h3><p>Teaches how clinicians think through a differential diagnosis.</p><a href="https://chatgpt.com/g/g-68baedd848e08191a99d41631e9b8b55-differential-diagnosis-maker" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/clinicalc-pro.webp" alt="" width="56" height="56" loading="lazy"><div><h3>CliniCalc Pro</h3><p>Explains common clinical scores and how they are used. Educational.</p><a href="https://chatgpt.com/g/g-683fa96f6c988191aec194edde9b638c-clinicalc-pro" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/tebscribe.webp" alt="" width="56" height="56" loading="lazy"><div><h3>TebScribe GPT</h3><p>Drafts clinical note templates, follow-up and post-op notes to edit and sign yourself.</p><a href="https://chatgpt.com/g/g-682d370b1fac81918b5e6de49e3ad39c-tebscribe" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/physician-buddy.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Physician Buddy</h3><p>Wellness and stress-management ideas for doctors.</p><a href="https://chatgpt.com/g/g-6840cb3275bc819189612b6a3f91999b-physician-buddy" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/nurse-buddy.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Nurse Buddy</h3><p>Reference help for nurses: calculators, study support and multilingual templates.</p><a href="https://chatgpt.com/g/g-6840cf37a16481919a241f11b03fee0d-nurse-buddy" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/nurse-practitioner-buddy.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Nurse Practitioner Buddy</h3><p>Education, study and wellness support for nurse practitioners.</p><a href="https://chatgpt.com/g/g-6840dbb27dd08191a085f1dcdc8730fa-nurse-practitioner-buddy" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/physician-assistant-buddy.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Physician Assistant Buddy</h3><p>Career, study and wellness support for physician assistants.</p><a href="https://chatgpt.com/g/g-6840d822dd14819181bbdbf86626056f-physician-assistant-buddy" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/psychiatrist-buddy.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Psychiatrist Buddy</h3><p>Admin and reference support for psychiatrists.</p><a href="https://chatgpt.com/g/g-6841b30dd73c8191b60dce090248fea8-psychiatrist-buddy" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/surgeon-assistant.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Surgeon Assistant</h3><p>Help with the non-clinical admin side of surgical work.</p><a href="https://chatgpt.com/g/g-68417569ee7c81918be6c1d4c66e9cc5-surgeon-assistant" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+</div>
+<h3 class="gpt-group">For residents and students</h3><div class="grid2">
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/resident-buddy.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Resident Buddy</h3><p>Study, wellness and life-on-rotation support for residents.</p><a href="https://chatgpt.com/g/g-6840d70eebd081918e87eaab4f45f804-resident-buddy" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/medical-student-buddy.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Medical Student Buddy</h3><p>Study, wellness and career help for medical students.</p><a href="https://chatgpt.com/g/g-6840ce229bec819192b80009d668265b-medical-student-buddy" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+</div>
+<h3 class="gpt-group">For patients and families</h3><div class="grid2">
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/patient-buddy.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Patient Buddy</h3><p>Explains health topics in plain words, with stories and games.</p><a href="https://chatgpt.com/g/g-6840e10506ec8191a702ec62fde093ae-patient-buddy" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/hypertension-buddy.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Hypertension Buddy</h3><p>Plain-language companion for living with high blood pressure.</p><a href="https://chatgpt.com/g/g-6840e01457c08191b26f469e8d3adbf4-hypertension-buddy" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/diabetes-buddy.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Diabetes Buddy</h3><p>Plain-language coach for everyday life with diabetes.</p><a href="https://chatgpt.com/g/g-6840b831a0748191ae4250bd04c2b808-diabetes-buddy" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/asthma-buddy.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Asthma Buddy</h3><p>Everyday tips and reminders for living with asthma.</p><a href="https://chatgpt.com/g/g-6840c696b658819197d18fe71375ce88-asthma-buddy" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/copd-buddy.webp" alt="" width="56" height="56" loading="lazy"><div><h3>COPD Buddy</h3><p>Plain-language guide for living with COPD.</p><a href="https://chatgpt.com/g/g-6840c98541c08191867796694741fda7-copd-buddy" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/heart-failure-buddy.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Heart Failure Buddy</h3><p>Plain-language companion for living with heart failure.</p><a href="https://chatgpt.com/g/g-6840c5141cb88191994e7952a1ef38e7-heart-failure-buddy" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/wellness-buddy.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Wellness Buddy</h3><p>Healthy-habit coaching, tracking ideas and mindfulness.</p><a href="https://chatgpt.com/g/g-6840def1f0fc8191b6c2ed184330692b-wellness-buddy" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/medication-elder-care-assistant.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Medication Elder Care Assistant</h3><p>Day-to-day well-being help for older adults and their families.</p><a href="https://chatgpt.com/g/g-683ee852ea70819182df7832f74a9579-medication-elder-care-assistant" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/pharma-price-pro.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Pharma Price Pro</h3><p>Helps compare drug prices.</p><a href="https://chatgpt.com/g/g-683da12c01b88191925f2e4fb137a2cb-pharma-price-pro" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/grocery-health-lens.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Grocery Health Lens</h3><p>Snap a grocery shelf and get healthier-choice ideas.</p><a href="https://chatgpt.com/g/g-683d0e8b8bd08191a2dc514d701faa17-grocery-health-lens" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+<div class="card gpt"><img src="/free-medical-tools/gpt-icons/health-insurance-finder.webp" alt="" width="56" height="56" loading="lazy"><div><h3>Health Insurance Finder</h3><p>Helps you find health insurance options where you live.</p><a href="https://chatgpt.com/g/g-68cbc22f571c8191bf14ee76ef73184f-health-insurance-finder" target="_blank" rel="noopener">Open in ChatGPT →</a></div></div>
+</div>
+<p class="gpt-note">These GPTs run in ChatGPT (OpenAI). Educational; they do not replace a clinician. Do not enter patient-identifying information.</p>
+</div>
     </div>
   </section>
   <section>
@@ -328,25 +362,6 @@ footer nav a:hover{color:var(--fg)}
 }
 </script>
 <script>
-/* GPT cards come from gpts.json (mirrors CATALOG.md). Empty table = the section stays hidden. */
-(function(){
-  var sec=document.getElementById("gpts"), box=document.getElementById("gpt-cards");
-  if(!sec||!box)return;
-  fetch("/free-medical-tools/gpts.json",{credentials:"omit"}).then(function(r){return r.ok?r.json():null}).then(function(j){
-    var list=(j&&j.gpts)||[];
-    list=list.filter(function(g){return g&&g.name&&g.description&&/^https:\/\//.test(g.url||"")});
-    if(!list.length)return;
-    list.forEach(function(g){
-      var c=document.createElement("div");c.className="card";
-      var h=document.createElement("h3");h.textContent=g.name;
-      var p=document.createElement("p");p.textContent=g.description;
-      var a=document.createElement("a");a.className="btn btn-ghost";a.href=g.url;a.target="_blank";a.rel="noopener";a.textContent="Open in ChatGPT \u2192";
-      var n=document.createElement("div");n.className="note";n.textContent="Runs in ChatGPT (OpenAI). Do not enter patient-identifying information.";
-      c.appendChild(h);c.appendChild(p);c.appendChild(a);c.appendChild(n);box.appendChild(c);
-    });
-    sec.hidden=false;
-  }).catch(function(){});
-})();
 </script>
 </body>
 </html>

@@ -1,4 +1,154 @@
 {
-  "_note": "Mirrors Remotion/mkt-research/free-tools/CATALOG.md GPT table. Keys per row: name, description, url (https), audience. Empty list = the GPT section stays hidden.",
-  "gpts": []
+ "gpts": [
+  {
+   "name": "ER Action Plan Builder",
+   "description": "Summarizes guidelines into a quick ER and hospital action plan. Educational.",
+   "url": "https://chatgpt.com/g/g-6884b99380008191860961d2f6ecb584-er-action-plan-builder",
+   "audience": "clinician"
+  },
+  {
+   "name": "Critical Shift Assistant",
+   "description": "Educational helper for busy emergency department shifts.",
+   "url": "https://chatgpt.com/g/g-6841f3a9034c819183e3d7a24c0a95f0-critical-shift-assistant",
+   "audience": "clinician"
+  },
+  {
+   "name": "Clinical Compass",
+   "description": "Summarizes clinical topics from trusted medical sources. Education only.",
+   "url": "https://chatgpt.com/g/g-683d663d72d881919b072a79eb68e621-clinical-compass",
+   "audience": "clinician"
+  },
+  {
+   "name": "Differential Diagnosis Maker",
+   "description": "Teaches how clinicians think through a differential diagnosis.",
+   "url": "https://chatgpt.com/g/g-68baedd848e08191a99d41631e9b8b55-differential-diagnosis-maker",
+   "audience": "clinician"
+  },
+  {
+   "name": "CliniCalc Pro",
+   "description": "Explains common clinical scores and how they are used. Educational.",
+   "url": "https://chatgpt.com/g/g-683fa96f6c988191aec194edde9b638c-clinicalc-pro",
+   "audience": "clinician"
+  },
+  {
+   "name": "TebScribe GPT",
+   "description": "Drafts clinical note templates, follow-up and post-op notes to edit and sign yourself.",
+   "url": "https://chatgpt.com/g/g-682d370b1fac81918b5e6de49e3ad39c-tebscribe",
+   "audience": "clinician"
+  },
+  {
+   "name": "Physician Buddy",
+   "description": "Wellness and stress-management ideas for doctors.",
+   "url": "https://chatgpt.com/g/g-6840cb3275bc819189612b6a3f91999b-physician-buddy",
+   "audience": "clinician"
+  },
+  {
+   "name": "Nurse Buddy",
+   "description": "Reference help for nurses: calculators, study support and multilingual templates.",
+   "url": "https://chatgpt.com/g/g-6840cf37a16481919a241f11b03fee0d-nurse-buddy",
+   "audience": "clinician"
+  },
+  {
+   "name": "Nurse Practitioner Buddy",
+   "description": "Education, study and wellness support for nurse practitioners.",
+   "url": "https://chatgpt.com/g/g-6840dbb27dd08191a085f1dcdc8730fa-nurse-practitioner-buddy",
+   "audience": "clinician"
+  },
+  {
+   "name": "Physician Assistant Buddy",
+   "description": "Career, study and wellness support for physician assistants.",
+   "url": "https://chatgpt.com/g/g-6840d822dd14819181bbdbf86626056f-physician-assistant-buddy",
+   "audience": "clinician"
+  },
+  {
+   "name": "Psychiatrist Buddy",
+   "description": "Admin and reference support for psychiatrists.",
+   "url": "https://chatgpt.com/g/g-6841b30dd73c8191b60dce090248fea8-psychiatrist-buddy",
+   "audience": "clinician"
+  },
+  {
+   "name": "Surgeon Assistant",
+   "description": "Help with the non-clinical admin side of surgical work.",
+   "url": "https://chatgpt.com/g/g-68417569ee7c81918be6c1d4c66e9cc5-surgeon-assistant",
+   "audience": "clinician"
+  },
+  {
+   "name": "Resident Buddy",
+   "description": "Study, wellness and life-on-rotation support for residents.",
+   "url": "https://chatgpt.com/g/g-6840d70eebd081918e87eaab4f45f804-resident-buddy",
+   "audience": "learner"
+  },
+  {
+   "name": "Medical Student Buddy",
+   "description": "Study, wellness and career help for medical students.",
+   "url": "https://chatgpt.com/g/g-6840ce229bec819192b80009d668265b-medical-student-buddy",
+   "audience": "learner"
+  },
+  {
+   "name": "Patient Buddy",
+   "description": "Explains health topics in plain words, with stories and games.",
+   "url": "https://chatgpt.com/g/g-6840e10506ec8191a702ec62fde093ae-patient-buddy",
+   "audience": "patient"
+  },
+  {
+   "name": "Hypertension Buddy",
+   "description": "Plain-language companion for living with high blood pressure.",
+   "url": "https://chatgpt.com/g/g-6840e01457c08191b26f469e8d3adbf4-hypertension-buddy",
+   "audience": "patient"
+  },
+  {
+   "name": "Diabetes Buddy",
+   "description": "Plain-language coach for everyday life with diabetes.",
+   "url": "https://chatgpt.com/g/g-6840b831a0748191ae4250bd04c2b808-diabetes-buddy",
+   "audience": "patient"
+  },
+  {
+   "name": "Asthma Buddy",
+   "description": "Everyday tips and reminders for living with asthma.",
+   "url": "https://chatgpt.com/g/g-6840c696b658819197d18fe71375ce88-asthma-buddy",
+   "audience": "patient"
+  },
+  {
+   "name": "COPD Buddy",
+   "description": "Plain-language guide for living with COPD.",
+   "url": "https://chatgpt.com/g/g-6840c98541c08191867796694741fda7-copd-buddy",
+   "audience": "patient"
+  },
+  {
+   "name": "Heart Failure Buddy",
+   "description": "Plain-language companion for living with heart failure.",
+   "url": "https://chatgpt.com/g/g-6840c5141cb88191994e7952a1ef38e7-heart-failure-buddy",
+   "audience": "patient"
+  },
+  {
+   "name": "Wellness Buddy",
+   "description": "Healthy-habit coaching, tracking ideas and mindfulness.",
+   "url": "https://chatgpt.com/g/g-6840def1f0fc8191b6c2ed184330692b-wellness-buddy",
+   "audience": "patient"
+  },
+  {
+   "name": "Medication Elder Care Assistant",
+   "description": "Day-to-day well-being help for older adults and their families.",
+   "url": "https://chatgpt.com/g/g-683ee852ea70819182df7832f74a9579-medication-elder-care-assistant",
+   "audience": "patient"
+  },
+  {
+   "name": "Pharma Price Pro",
+   "description": "Helps compare drug prices.",
+   "url": "https://chatgpt.com/g/g-683da12c01b88191925f2e4fb137a2cb-pharma-price-pro",
+   "audience": "patient"
+  },
+  {
+   "name": "Grocery Health Lens",
+   "description": "Snap a grocery shelf and get healthier-choice ideas.",
+   "url": "https://chatgpt.com/g/g-683d0e8b8bd08191a2dc514d701faa17-grocery-health-lens",
+   "audience": "patient"
+  },
+  {
+   "name": "Health Insurance Finder",
+   "description": "Helps you find health insurance options where you live.",
+   "url": "https://chatgpt.com/g/g-68cbc22f571c8191bf14ee76ef73184f-health-insurance-finder",
+   "audience": "patient"
+  }
+ ]
 }
