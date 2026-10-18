@@ -34,6 +34,9 @@ tebChart is a discharge instructions app and medication list app for iPhone, a h
 
 TebScribe LLC, New York. Founded and led by a practicing emergency medicine physician.
 
+- [Apps by Dr. C](https://tebscribe.com/products-by-dr-c/): every TebScribe app in one place.
+- [Free medical dictation](https://tebscribe.com/free-dictation/): your phone is the microphone; the words appear on any computer. Free.
+- [Free medical tools](https://tebscribe.com/free-medical-tools/): clinical score calculators, tebCalc for ChatGPT and Claude, and free dictation.
 - [All products](https://tebscribe.com/products.html): the TebScribe product hub with frequently asked questions.
 - [Full text for AI engines](https://tebscribe.com/llms-full.txt): the visible text of the home page and product hub.
 - [Privacy](https://tebiq.com/privacy): privacy policy.
