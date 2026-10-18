@@ -20,8 +20,7 @@
 <meta property="og:image" content="https://tebscribe.com/bellody/bellody-icon.png" />
 <!-- Site analytics, same as every tebscribe.com page: GA4 + the first-party beacon (founder ruling
      2026-09-29: the websites get tracking; the apps do not). three.js is bundled locally (bellody-3d.js). -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XZK7XBL67"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-1XZK7XBL67');</script>
+<script defer src="/tb-consent.js" data-ga="G-1XZK7XBL67"></script>
 <style>
 html.j3d-on .bgwrap{display:none}
 html.j3d-on header.top{position:fixed;left:0;right:0;top:0;max-width:none;padding:18px 24px 12px;z-index:4;background:linear-gradient(#06070C 60%,transparent)}
@@ -156,6 +155,7 @@ html:not(.j3d-on) .j3d-block .app{justify-content:flex-start}
   <a href="/">TebScribe</a>
   <a href="/bellody/privacy/">Privacy</a>
   <a href="/bellody/support/">Support</a>
+  <a href="#" data-tb-consent-open>Your Privacy Choices</a>
 </footer>
 <script defer src="/tb-beacon.js" data-property="tebscribe"></script>
 <script src="/bellody/i18n-bellody.js?v=d0bec586"></script>

@@ -59,9 +59,74 @@
 }
 </script>
 
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Are tebIQ, tebChart, and tebDictate the same company?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. All three are products of TebScribe LLC, a New York limited liability company founded by Dr. Mohammad Chelehmalzadeh, a practicing emergency medicine physician. tebIQ is the clinician product, tebChart is the patient product, and tebDictate is a free dictation tool anyone can use."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is tebIQ?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "tebIQ is an AI medical scribe for clinicians. It captures the patient encounter and generates a structured clinical note — history, medical decision making, assessment and plan — shaped for the specialty the clinician actually practices. It runs in a web browser, on iPhone, and on Apple Watch. Encrypted in transit and at rest (AES). Never used for training. Never sold."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is tebDictate, and is it really free?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "tebDictate turns any phone into a wireless microphone for any computer. You open the page on your computer, scan the QR code with your phone, and speak — the text appears on the computer. It is free to use, requires no account and no installation, and the connection is end-to-end encrypted. Speech is recognized on your phone."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Who is TebScribe built for?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "tebIQ is for clinicians — physicians, residents, advanced practice providers, and the clinics they work in. tebChart is for patients and families organizing their own records after a hospital or emergency department visit. tebDictate is for anyone, clinical or not, who would rather talk than type."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Where can I get the apps?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "tebIQ runs in a web browser at tebiq.com, on the App Store for iPhone and Apple Watch, and on Google Play for Android. tebChart is on the App Store for iPhone. tebDictate works in any phone browser at tebdictate.com with nothing to install, and is also on the App Store."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is my data used for training or sold?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Encrypted in transit and at rest (AES). Never used for training. Never sold."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does tebIQ replace clinical judgment?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "tebIQ is a clinical documentation assistant for licensed healthcare professionals. It supports — and never replaces — clinical judgment. tebIQ does not diagnose, treat, or make medical decisions; the clinician is always responsible for the note."
+   }
+  }
+ ]
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%230A84FF'/%3E%3Cstop offset='100%25' stop-color='%235E5CE6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M32 2c20 0 30 10 30 30s-10 30-30 30S2 52 2 32 12 2 32 2Z' fill='url(%23g)'/%3E%3Ccircle cx='32' cy='32' r='13' fill='none' stroke='white' stroke-width='3.4'/%3E%3Cpath d='M40 40 L48 48' stroke='white' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E" />
 
-<!-- Google Analytics (GA4) — tebscribe.com ONLY. Never copy this tag to any other
+<!-- Google Analytics (GA4) — tebscribe.com ONLY, loaded by tb-consent.js only after the
+     visitor clicks Accept (never with Global Privacy Control). Never copy this tag to any other
      host: tebiq.com's live privacy policy (scripta web/legal/privacy.html) promises
      "no third-party analytics" and is covered by scripta's first-party server-side
      analytics middleware instead; tebchart.com and /dictate publish a "no cookies,
@@ -69,13 +134,7 @@
      namespace "tebDictate"). An earlier version of this comment claimed the
      property was "shared with tebiq.com" — that was aspirational and never built;
      ruled out 2026-08-01 (privacy-policy conflict). -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XZK7XBL67"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-1XZK7XBL67');
-</script>
+<script defer src="/tb-consent.js" data-ga="G-1XZK7XBL67"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -504,7 +563,7 @@ html:not(.j3d-on) main{padding-top:84px}
 </div>
 
 <main id="top" data-j3d-main>
-<section class="j3d-more j3d-seo" aria-label="About this page"><h2>AI medical scribe, health records organizer and voice dictation — built by an ER doctor</h2><p>tebScribe is a clinician-built healthcare software company. Its flagship, tebIQ, is an AI clinical scribe and documentation assistant for emergency medicine, built by a practicing ER doctor.</p><p>tebChart is on the App Store for iPhone and organizes discharge papers, medications, follow-up visits and an ER card. tebDictate turns your phone into a wireless, encrypted dictation microphone that types into any computer.</p></section>
+<section class="j3d-more j3d-seo" aria-label="About this page"><h2>AI medical scribe, health records organizer and voice dictation — built by an ER doctor</h2><p>tebScribe is a clinician-built healthcare software company. Its flagship, tebIQ, is an AI clinical scribe and documentation assistant for emergency medicine, built by a practicing ER doctor.</p><p>tebChart is on the App Store for iPhone and organizes discharge papers, medications, follow-up visits and an ER card. tebDictate turns your phone into a wireless, encrypted dictation microphone that types into any computer.</p><div class="j3d-faq" aria-label="Frequently asked questions"><h2>Frequently asked</h2><details><summary>Are tebIQ, tebChart, and tebDictate the same company?</summary><p>Yes. All three are products of TebScribe LLC, a New York limited liability company founded by Dr. Mohammad Chelehmalzadeh, a practicing emergency medicine physician. tebIQ is the clinician product, tebChart is the patient product, and tebDictate is a free dictation tool anyone can use.</p></details><details><summary>What is tebIQ?</summary><p>tebIQ is an AI medical scribe for clinicians. It captures the patient encounter and generates a structured clinical note — history, medical decision making, assessment and plan — shaped for the specialty the clinician actually practices. It runs in a web browser, on iPhone, and on Apple Watch. Encrypted in transit and at rest (AES). Never used for training. Never sold.</p></details><details><summary>What is tebDictate, and is it really free?</summary><p>tebDictate turns any phone into a wireless microphone for any computer. You open the page on your computer, scan the QR code with your phone, and speak — the text appears on the computer. It is free to use, requires no account and no installation, and the connection is end-to-end encrypted. Speech is recognized on your phone.</p></details><details><summary>Who is TebScribe built for?</summary><p>tebIQ is for clinicians — physicians, residents, advanced practice providers, and the clinics they work in. tebChart is for patients and families organizing their own records after a hospital or emergency department visit. tebDictate is for anyone, clinical or not, who would rather talk than type.</p></details><details><summary>Where can I get the apps?</summary><p>tebIQ runs in a web browser at tebiq.com, on the App Store for iPhone and Apple Watch, and on Google Play for Android. tebChart is on the App Store for iPhone. tebDictate works in any phone browser at tebdictate.com with nothing to install, and is also on the App Store.</p></details><details><summary>Is my data used for training or sold?</summary><p>Encrypted in transit and at rest (AES). Never used for training. Never sold.</p></details><details><summary>Does tebIQ replace clinical judgment?</summary><p>tebIQ is a clinical documentation assistant for licensed healthcare professionals. It supports — and never replaces — clinical judgment. tebIQ does not diagnose, treat, or make medical decisions; the clinician is always responsible for the note.</p></details></div></section>
   <section class="j3d-block" id="hero" data-z="10,10,-2,-14" data-pos="center" aria-labelledby="h-hero" data-interactive data-track-scene="hero">
     <div class="j3d-wrap">
       <div data-i18n-html="te09e9fb4" class="eyebrow"><span class="dot"></span> Clinical intelligence company · Built by clinicians</div>
@@ -591,6 +650,7 @@ html:not(.j3d-on) main{padding-top:84px}
         <a data-i18n-html="t522e4fe6" href="https://tebiq.com" target="_blank" rel="noopener">tebIQ — AI scribe for clinicians</a>
         <a data-i18n-html="tc5981ba8" href="https://apps.apple.com/us/app/tebchart-after-the-hospital/id6782081865" target="_blank" rel="noopener">tebChart — on the App Store</a>
         <a data-i18n-html="tb25a9373" href="https://tebdictate.com" target="_blank" rel="noopener">tebDictate — free dictation</a>
+        <a href="#" data-tb-consent-open>Your Privacy Choices</a>
       </nav>
       <p data-i18n-html="tb3dfb238" class="disclaimer">tebIQ is a clinical documentation assistant for licensed healthcare professionals. It supports — and never replaces — clinical judgment. tebIQ does not diagnose, treat, or make medical decisions; the clinician is always responsible for the note.</p>
       <p data-i18n-html="t6fae9fa0" class="disclaimer">© 2026 TebScribe LLC. All rights reserved.</p>
