@@ -9,8 +9,43 @@
   </url>
   <url>
     <loc>https://tebscribe.com/products.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tebscribe.com/apps.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://tebscribe.com/apps/tebiq.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tebscribe.com/apps/tebchart.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tebscribe.com/apps/tebdictate.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tebscribe.com/apps/tebintake.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://tebscribe.com/apps/tebcapture.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://tebscribe.com/apps/tebrounds.html</loc>
+    <lastmod>2026-09-12</lastmod>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://tebscribe.com/products-by-dr-c/</loc>
