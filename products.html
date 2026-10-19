@@ -3,30 +3,35 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>TebScribe Products — tebIQ, tebChart, and tebDictate</title>
-<meta name="description" content="TebScribe LLC builds three products: tebIQ, the AI clinical scribe for clinicians; tebChart, a private health-records app for patients; and tebDictate, free QR dictation that turns any phone into a wireless microphone." />
+<title>TebScribe Products — AI Medical Scribe, Medical Dictation App, Discharge Instructions App</title>
+<meta name="description" content="TebScribe LLC, built by an ER doctor in New York: tebIQ, an AI medical scribe for clinical documentation; tebDictate, a free medical dictation app; tebChart, a discharge instructions app." />
+<meta name="keywords" content="AI medical scribe, AI scribe for doctors, ambient scribe, SOAP note, clinical documentation, medical dictation app, voice to text, speech to text, dictate to any computer, wireless microphone, nurse dictation, free dictation app, discharge instructions app, after visit summary, medication list app, hospital discharge app, caregiver app, tebIQ, tebDictate, tebChart, TebScribe LLC, built by an ER doctor, New York" />
+<meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://tebscribe.com/products.html" />
 <meta name="theme-color" content="#06070C" />
 
 <!-- Open Graph -->
-<meta property="og:title" content="TebScribe Products — tebIQ, tebChart, and tebDictate" />
-<meta property="og:description" content="One company, three products. tebIQ for clinicians, tebChart for patients, tebDictate free for anyone. Built by a practicing emergency physician." />
+<meta property="og:title" content="TebScribe Products — AI Medical Scribe, Medical Dictation App, Discharge Instructions App" />
+<meta property="og:description" content="TebScribe LLC, built by an ER doctor in New York: tebIQ, an AI medical scribe for clinical documentation; tebDictate, a free medical dictation app; tebChart, a discharge instructions app." />
+<meta property="og:site_name" content="tebScribe" />
+<meta name="twitter:title" content="TebScribe Products — AI Medical Scribe, Medical Dictation App, Discharge Instructions App" />
+<meta name="twitter:description" content="TebScribe LLC, built by an ER doctor in New York: tebIQ, an AI medical scribe for clinical documentation; tebDictate, a free medical dictation app; tebChart, a discharge instructions app." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://tebscribe.com/products.html" />
+<meta property="og:image" content="https://tebscribe.com/assets/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://tebscribe.com/assets/og-image.png" />
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%230A84FF'/%3E%3Cstop offset='100%25' stop-color='%235E5CE6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M32 2c20 0 30 10 30 30s-10 30-30 30S2 52 2 32 12 2 32 2Z' fill='url(%23g)'/%3E%3Ccircle cx='32' cy='32' r='13' fill='none' stroke='white' stroke-width='3.4'/%3E%3Cpath d='M40 40 L48 48' stroke='white' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E" />
 
-<!-- Google Analytics (GA4) — tebscribe.com ONLY, same property as index.html.
+<!-- Google Analytics (GA4) — tebscribe.com ONLY, same property as index.html, loaded by
+     tb-consent.js only after the visitor clicks Accept (never with Global Privacy Control).
      Never copy this tag to any other host: tebiq.com's live privacy policy promises
      "no third-party analytics"; tebchart.com and /dictate publish a "no cookies,
      no analytics trackers" promise. See index.html for the full note. -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1XZK7XBL67"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-1XZK7XBL67');
-</script>
+<script defer src="/tb-consent.js" data-ga="G-1XZK7XBL67"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -118,6 +123,13 @@ nav .bar{display:flex;align-items:center;justify-content:space-between;
 .prod-link{display:inline-flex;align-items:center;gap:7px;margin-top:22px;font-size:14.5px;
            font-weight:550;color:#7AB8FF;transition:gap .25s var(--ease)}
 .prod-link:hover{gap:11px}
+.prod-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto;padding-top:22px}
+.prod-actions .btn{padding:10px 16px;font-size:14px}
+.btn-store{background:#fff;color:#0b0c10;border:1px solid #fff;gap:9px;padding:8px 14px}
+.btn-store:hover{background:#e9ecf3}
+.btn-store svg{width:20px;height:20px;flex:0 0 20px}
+.btn-store span{display:flex;flex-direction:column;line-height:1.05;font-weight:650;font-size:14px}
+.btn-store small{font-size:10px;font-weight:500;letter-spacing:.02em;opacity:.75}
 
 .answer{background:var(--grad-soft);border:1px solid var(--hair);border-radius:20px;
         padding:30px 34px;max-width:820px;margin:0 auto}
@@ -153,10 +165,11 @@ footer nav a:hover{color:var(--fg)}
   <div class="bar">
     <a class="brand" href="/"><span class="mark"></span> tebScribe</a>
     <div class="navlinks">
-      <a href="/#products">Overview</a>
+      <a href="/products-by-dr-c/">Apps by Dr. C</a>
       <a href="/apps.html">Apps</a>
-      <a href="/#platform">Platform</a>
       <a href="/#principles">Why we're different</a>
+      <a href="/free-dictation/">Free dictation</a>
+      <a href="/free-medical-tools/">Free medical tools</a>
       <a href="/#vision">Vision</a>
     </div>
     <a class="btn btn-primary" href="https://tebiq.com" target="_blank" rel="noopener">Try tebIQ <span class="arr">→</span></a>
@@ -171,7 +184,7 @@ footer nav a:hover{color:var(--fg)}
       <div class="sec-eyebrow">TebScribe LLC · Product family</div>
       <h1 class="sec-title">One company. Three products. Every one of them built by a practicing ER doctor.</h1>
       <div class="answer">
-        <p><strong>TebScribe LLC is a New York limited liability company founded by Dr.&nbsp;Mohammad Chelehmalzadeh, a practicing emergency medicine physician.</strong> It builds three products: <strong>tebIQ</strong>, an AI clinical scribe that turns the patient encounter into a structured note; <strong>tebChart</strong>, a private health-records app that keeps a patient's own discharge papers and medications organized on their iPhone; and <strong>tebDictate</strong>, a free tool that turns any phone into a wireless microphone for any computer.</p>
+        <p><strong>TebScribe LLC is a New York limited liability company founded by Dr.&nbsp;Mohammad Chelehmalzadeh, a practicing emergency medicine physician.</strong> It builds three products: <strong>tebIQ</strong>, an AI medical scribe that turns the patient encounter into a structured clinical note; <strong>tebChart</strong>, a discharge instructions app that keeps a patient's own discharge papers and medications organized on their iPhone; and <strong>tebDictate</strong>, a free medical dictation app that turns any phone into a wireless microphone for any computer.</p>
       </div>
     </div>
   </section>
@@ -194,13 +207,17 @@ footer nav a:hover{color:var(--fg)}
           </div>
           <h3>tebIQ</h3>
           <div class="prod-tag">The clinician's AI scribe</div>
-          <p>An AI medical scribe that listens to the encounter and produces a structured clinical note — HPI, MDM, assessment and plan — in the specialty's own shape. Built on shift by an emergency physician who needed his charts finished before he went home.</p>
+          <p>An AI medical scribe — an ambient scribe for doctors — that listens to the encounter and produces a structured clinical note, a SOAP note or HPI, MDM, assessment and plan, in the specialty's own shape. It also helps with nurse notes and clinical documentation for emergency medicine. Built on shift by an emergency physician who needed his charts finished before he went home.</p>
           <ul class="prod-meta">
             <li><b>Who it's for</b><span>Physicians, residents, APPs, and clinics</span></li>
-            <li><b>Where it runs</b><span>Web browser, iPhone, and Apple&nbsp;Watch</span></li>
+            <li><b>Where it runs</b><span>Web browser, iPhone, Android, and Apple&nbsp;Watch</span></li>
             <li><b>Privacy</b><span>Encrypted in transit and at rest (AES). Never used for training. Never sold.</span></li>
           </ul>
-          <a class="prod-link" href="https://tebiq.com" target="_blank" rel="noopener">Explore tebiq.com <span class="arr">→</span></a>
+          <div class="prod-actions">
+            <a class="btn btn-ghost" href="https://tebiq.com" target="_blank" rel="noopener">Open tebiq.com <span class="arr">→</span></a>
+            <a class="btn btn-store" href="https://apps.apple.com/app/id6756632709" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.8 1.3 10.3.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.1ZM13.9 5c.7-.8 1.2-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4Z"/></svg><span><small>Download on the</small>App Store</span></a>
+            <a class="btn btn-store" href="https://play.google.com/store/apps/details?id=com.tebscribe.tebiq" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 2.3 13.4 12 3.6 21.7c-.4-.2-.6-.6-.6-1.1V3.4c0-.5.2-.9.6-1.1Zm11.3 8.2L5.5 2.2l11.8 6.8-2.4 1.5Zm2.4 1.5 3.3 1.9c.9.5.9 1.7 0 2.2l-3.3 1.9L14.9 12l2.4-2ZM5.5 21.8l9.4-8.3 2.4 1.5-11.8 6.8Z"/></svg><span><small>Get it on</small>Google Play</span></a>
+          </div>
           <a class="prod-link" href="/apps/tebiq.html" style="margin-top:8px">tebIQ app page <span class="arr">→</span></a>
         </div>
 
@@ -208,17 +225,20 @@ footer nav a:hover{color:var(--fg)}
         <div class="card prod">
           <div class="prod-head">
             <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 5a4.5 4.5 0 0 0-7 .8A4.5 4.5 0 0 0 5 5C2.8 6.4 2.3 9.5 4 11.6L12 20l8-8.4c1.7-2.1 1.2-5.2-1-6.6Z"/></svg></div>
-            <span class="badge soon">Coming soon</span>
+            <span class="badge live">Available now</span>
           </div>
           <h3>tebChart</h3>
           <div class="prod-tag">Your own records, in your pocket</div>
-          <p>Scan your discharge papers and tebChart organizes the medications, the follow-up visits, and the questions worth asking — stored privately on your iPhone, with no health records on TebScribe servers. The same engineering as the clinical product, pointed at the patient side of the discharge.</p>
+          <p>A discharge instructions app for your iPhone: scan your discharge papers and tebChart organizes the after visit summary, your medication list, the follow-up visits, and the questions worth asking after a hospital discharge, with a caregiver in mind — stored privately on your iPhone, with no health records on TebScribe servers. The same engineering as the clinical product, pointed at the patient side of the discharge.</p>
           <ul class="prod-meta">
             <li><b>Who it's for</b><span>Patients and families after a hospital or ER visit</span></li>
-            <li><b>Where it runs</b><span>iPhone (local-first; app not yet released)</span></li>
+            <li><b>Where it runs</b><span>iPhone app (local-first), on the App&nbsp;Store</span></li>
             <li><b>Privacy</b><span>Records stay on your iPhone; no health records on TebScribe servers</span></li>
           </ul>
-          <a class="prod-link" href="https://tebchart.com" target="_blank" rel="noopener">Visit tebchart.com <span class="arr">→</span></a>
+          <div class="prod-actions">
+            <a class="btn btn-ghost" href="https://tebchart.com" target="_blank" rel="noopener">Open tebchart.com <span class="arr">→</span></a>
+            <a class="btn btn-store" href="https://apps.apple.com/us/app/tebchart-after-the-hospital/id6782081865" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.8 1.3 10.3.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.1ZM13.9 5c.7-.8 1.2-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4Z"/></svg><span><small>Download on the</small>App Store</span></a>
+          </div>
           <a class="prod-link" href="/apps/tebchart.html" style="margin-top:8px">tebChart app page <span class="arr">→</span></a>
         </div>
 
@@ -230,13 +250,16 @@ footer nav a:hover{color:var(--fg)}
           </div>
           <h3>tebDictate</h3>
           <div class="prod-tag">Your phone is the microphone</div>
-          <p>Open the page on your computer, scan the QR code with your phone, and start talking — your words type themselves into whatever text box is in front of you. End-to-end encrypted, no account, nothing to install. It works on the phone you already have.</p>
+          <p>A free medical dictation app and dictation app for nurses and doctors: open the page on your computer, scan the QR code with your phone, and use voice to text (speech to text) to dictate to any computer — your words type themselves into whatever text box is in front of you. End-to-end encrypted, no account, nothing to install. It works on the phone you already have.</p>
           <ul class="prod-meta">
             <li><b>Who it's for</b><span>Anyone who would rather talk than type</span></li>
-            <li><b>Where it runs</b><span>Any phone browser paired to any computer</span></li>
+            <li><b>Where it runs</b><span>Any phone browser, or the iPhone app, paired to any computer</span></li>
             <li><b>Privacy</b><span>End-to-end encrypted; speech is recognized on your phone</span></li>
           </ul>
-          <a class="prod-link" href="https://tebdictate.com" target="_blank" rel="noopener">Use it free at tebdictate.com <span class="arr">→</span></a>
+          <div class="prod-actions">
+            <a class="btn btn-ghost" href="https://tebdictate.com" target="_blank" rel="noopener">Use it free at tebdictate.com <span class="arr">→</span></a>
+            <a class="btn btn-store" href="https://apps.apple.com/app/id6790673075" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.8 1.3 10.3.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.7-1-2.7-4.1ZM13.9 5c.7-.8 1.2-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4Z"/></svg><span><small>Download on the</small>App Store</span></a>
+          </div>
           <a class="prod-link" href="/apps/tebdictate.html" style="margin-top:8px">tebDictate app page <span class="arr">→</span></a>
         </div>
 
@@ -284,12 +307,24 @@ footer nav a:hover{color:var(--fg)}
           <p>tebDictate turns any phone into a wireless microphone for any computer. You open the page on your computer, scan the QR code with your phone, and speak — the text appears on the computer. It is free to use, requires no account and no installation, and the connection is end-to-end encrypted. Speech is recognized on your phone.</p>
         </details>
         <details>
+          <summary>Is there a free medical dictation app?</summary>
+          <p>Yes. tebDictate is a free medical dictation app. Scan the QR code with your phone and use voice to text to dictate to any computer; it works for nurse dictation and doctor dictation alike, with no account and nothing to install.</p>
+        </details>
+        <details>
+          <summary>How do I organize discharge instructions?</summary>
+          <p>Scan your discharge papers with tebChart, a discharge instructions app for iPhone. It organizes the after visit summary, a medication list, and follow-up visits, and keeps them on your own device.</p>
+        </details>
+        <details>
+          <summary>Is patient data used for training?</summary>
+          <p>Encrypted in transit and at rest (AES). Never used for training. Never sold.</p>
+        </details>
+        <details>
           <summary>Who is TebScribe built for?</summary>
           <p>tebIQ is for clinicians — physicians, residents, advanced practice providers, and the clinics they work in. tebChart is for patients and families organizing their own records after a hospital or emergency department visit. tebDictate is for anyone, clinical or not, who would rather talk than type.</p>
         </details>
         <details>
           <summary>Where can I get the apps?</summary>
-          <p>tebIQ is available in a web browser at tebiq.com and on the App Store for iPhone and Apple Watch. tebDictate works in any phone browser at tebdictate.com — nothing to install. The tebChart iPhone app has not been released yet; tebchart.com is the place to follow it.</p>
+          <p>tebIQ is available in a web browser at tebiq.com and on the App Store for iPhone and Apple Watch. tebChart is on the App Store for iPhone. tebDictate works in any phone browser at tebdictate.com — nothing to install.</p>
         </details>
       </div>
     </div>
@@ -302,13 +337,17 @@ footer nav a:hover{color:var(--fg)}
     <a class="brand" href="/"><span class="mark"></span> tebScribe</a>
     <nav aria-label="Footer">
       <a href="https://tebiq.com" target="_blank" rel="noopener">tebIQ</a>
-      <a href="https://tebchart.com" target="_blank" rel="noopener">tebChart</a>
+      <a href="https://apps.apple.com/us/app/tebchart-after-the-hospital/id6782081865" target="_blank" rel="noopener">tebChart on the App Store</a>
       <a href="https://tebdictate.com" target="_blank" rel="noopener">tebDictate — free</a>
+      <a href="/products-by-dr-c/">Apps by Dr. C</a>
+      <a href="/free-dictation/">Free dictation</a>
+      <a href="/free-medical-tools/">Free medical tools</a>
       <a href="/apps.html">Apps</a>
       <a href="/#platform">Platform</a>
       <a href="/#vision">Vision</a>
       <a href="/#principles">Why we're different</a>
       <a href="mailto:mchelehmal@tebscribe.com">Contact</a>
+      <a href="#" data-tb-consent-open>Your Privacy Choices</a>
       <a href="https://tebiq.com/tebiqadmin" target="_blank" rel="noopener">Team sign-in</a>
     </nav>
     <div class="fine">© 2026 TebScribe LLC. tebIQ is a clinical documentation tool used by licensed clinicians; it does not provide medical advice, diagnosis, or treatment. tebChart organizes health information and does not provide medical advice. Apple, iPhone, Apple Watch, and the Apple logo are trademarks of Apple Inc.</div>
@@ -344,6 +383,7 @@ footer nav a:hover{color:var(--fg)}
         "https://tebscribe.com",
         "https://tebiq.com",
         "https://tebchart.com",
+        "https://apps.apple.com/us/app/tebchart-after-the-hospital/id6782081865",
         "https://tebdictate.com",
         "https://apps.apple.com/us/app/id6756632709"
       ]
@@ -359,7 +399,7 @@ footer nav a:hover{color:var(--fg)}
       "@type": "CollectionPage",
       "@id": "https://tebscribe.com/products.html#page",
       "url": "https://tebscribe.com/products.html",
-      "name": "TebScribe Products — tebIQ, tebChart, and tebDictate",
+      "name": "TebScribe Products — AI Medical Scribe, Medical Dictation App, Discharge Instructions App",
       "isPartOf": { "@id": "https://tebscribe.com/#website" },
       "about": { "@id": "https://tebscribe.com/#org" }
     },
@@ -383,6 +423,7 @@ footer nav a:hover{color:var(--fg)}
       "applicationCategory": "HealthApplication",
       "operatingSystem": "iOS",
       "url": "https://tebchart.com",
+      "downloadUrl": "https://apps.apple.com/us/app/tebchart-after-the-hospital/id6782081865",
       "description": "Scan your discharge papers and tebChart organizes medications, follow-up visits, and questions to ask — stored privately on your iPhone, with no health records on TebScribe servers. Built by a practicing ER doctor.",
       "publisher": { "@id": "https://tebscribe.com/#org" },
       "isPartOf": { "@id": "https://tebscribe.com/#org" }
@@ -394,6 +435,7 @@ footer nav a:hover{color:var(--fg)}
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "Any device with a modern web browser",
       "url": "https://tebdictate.com",
+      "downloadUrl": "https://apps.apple.com/app/id6790673075",
       "description": "Turn any phone into an end-to-end encrypted wireless microphone. Scan a QR code on your computer and dictate into any application. Free to use, no account, nothing to install.",
       "publisher": { "@id": "https://tebscribe.com/#org" },
       "isPartOf": { "@id": "https://tebscribe.com/#org" },
@@ -421,13 +463,28 @@ footer nav a:hover{color:var(--fg)}
         },
         {
           "@type": "Question",
+          "name": "Is there a free medical dictation app?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. tebDictate is a free medical dictation app. Scan the QR code with your phone and use voice to text to dictate to any computer; it works for nurse dictation and doctor dictation alike, with no account and nothing to install." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I organize discharge instructions?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Scan your discharge papers with tebChart, a discharge instructions app for iPhone. It organizes the after visit summary, a medication list, and follow-up visits, and keeps them on your own device." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is patient data used for training?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Encrypted in transit and at rest (AES). Never used for training. Never sold." }
+        },
+        {
+          "@type": "Question",
           "name": "Who is TebScribe built for?",
           "acceptedAnswer": { "@type": "Answer", "text": "tebIQ is for clinicians — physicians, residents, advanced practice providers, and the clinics they work in. tebChart is for patients and families organizing their own records after a hospital or emergency department visit. tebDictate is for anyone, clinical or not, who would rather talk than type." }
         },
         {
           "@type": "Question",
           "name": "Where can I get the apps?",
-          "acceptedAnswer": { "@type": "Answer", "text": "tebIQ is available in a web browser at tebiq.com and on the App Store for iPhone and Apple Watch. tebDictate works in any phone browser at tebdictate.com — nothing to install. The tebChart iPhone app has not been released yet; tebchart.com is the place to follow it." }
+          "acceptedAnswer": { "@type": "Answer", "text": "tebIQ runs in a web browser at tebiq.com, on the App Store for iPhone and Apple Watch, and on Google Play for Android. tebChart is on the App Store for iPhone. tebDictate works in any phone browser at tebdictate.com with nothing to install, and is also on the App Store. Every card above has the download buttons." }
         }
       ]
     }

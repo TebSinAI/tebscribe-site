@@ -1,0 +1,261 @@
+# TebScribe — full text
+
+Source: https://tebscribe.com/ and https://tebscribe.com/products.html (visible page text). Summary and links: https://tebscribe.com/llms.txt
+
+Products: tebIQ https://tebiq.com (App Store https://apps.apple.com/app/id6756632709) · tebDictate https://tebdictate.com (App Store https://apps.apple.com/app/id6790673075) · tebChart https://tebchart.com (App Store https://apps.apple.com/app/id6782081865)
+
+## Home page (https://tebscribe.com/)
+
+AI medical scribe, health records organizer and voice dictation — built by an ER doctor
+
+TebScribe LLC is a clinician-built healthcare software company in New York. Its flagship, tebIQ, is an AI medical scribe and clinical documentation assistant for emergency medicine, built by a practicing ER doctor.
+
+tebDictate is a free medical dictation app: it turns your phone into a wireless microphone that types into any computer, with voice to text on the phone. tebChart is a discharge instructions app: it organizes discharge papers, the after visit summary, your medication list, follow-up visits and an ER card on your iPhone.
+
+Frequently asked
+
+What is an AI medical scribe?
+
+An AI medical scribe listens to the patient encounter and drafts the clinical documentation for the clinician to review and sign. tebIQ is an AI scribe for doctors: it turns the visit into a structured note — a SOAP note, or history, medical decision making, assessment and plan for emergency medicine — shaped for the specialty. It is an ambient scribe that runs in a web browser, on iPhone, and on Apple Watch, and it also helps with nurse notes. The clinician is always responsible for the note.
+
+Is there a free medical dictation app?
+
+Yes. tebDictate is a free medical dictation app. Open tebdictate.com on your computer, scan the QR code with your phone, and use voice to text to dictate to any computer — your phone is the wireless microphone and the speech to text happens on the phone. It needs no account and nothing to install, works for nurse dictation and doctor dictation alike, and the connection is end-to-end encrypted.
+
+How do I organize discharge instructions?
+
+Scan your discharge papers with tebChart, a discharge instructions app for iPhone. It organizes the after visit summary, a medication list, follow-up visits, and the questions worth asking, so a hospital discharge is easier to follow for you and for a caregiver. Your records are stored privately on your iPhone, with no health records on TebScribe servers.
+
+Who builds these apps?
+
+TebScribe LLC, a New York limited liability company founded by Dr. Mohammad Chelehmalzadeh, a practicing emergency medicine physician. tebIQ, tebDictate and tebChart are built by an ER doctor who still works clinical shifts.
+
+Is patient data used for training?
+
+Encrypted in transit and at rest (AES). Never used for training. Never sold.
+
+Where can I download them?
+
+tebIQ: tebiq.com, the App Store or Google Play. tebDictate: tebdictate.com in any phone browser, or the App Store. tebChart: tebchart.com or the App Store.
+
+Clinical intelligence company · Built by clinicians
+
+We build AI that thinks like a clinician.
+
+tebScribe is the company behind tebIQ — the AI medical scribe engineered by a practicing ER doctor for the way medicine actually works — with tebChart and tebDictate close behind. Private by default. Defensible by design.
+
+Explore tebIQ →
+
+See all products
+
+Three products. One clinical engine.
+
+tebIQ is the flagship for clinicians. tebChart brings the same engineering to everyone's own health records. tebDictate turns any phone into a wireless microphone — and it's free to use right now.
+
+tebIQ — the clinician's scribe
+
+An AI medical scribe built by a practicing ER doctor. Ambient clinical documentation with real clinical scaffolding — screening tools, scoring, and specialty-aware notes that finish on shift, not at midnight.
+
+Explore tebIQ →
+
+tebChart — everyone's medical vault
+
+A discharge instructions app for your iPhone. Your after visit summary, medication list, and follow-up visits — organized, readable, and kept on your own device.
+
+Visit tebchart.com →
+
+tebDictate — your phone is the microphone
+
+A free medical dictation app: scan a QR code and your phone becomes a wireless microphone to dictate to any computer. Speak, and your voice to text types onto the screen. Free on the web today.
+
+Use it free →
+
+The infrastructure for clinical intelligence.
+
+tebIQ is the first surface. Underneath it sits a platform built for trust, privacy, and reasoning at clinical-grade — designed to extend across the entire clinical workflow.
+
+Privacy as architecture. On-device transcription on the free tier. Patient audio that never has to leave the phone.
+
+Reasoning, not transcription. Clinical scaffolding built in: screening tools, scoring, and attestation that propose and confirm.
+
+Specialty-aware by design. Emergency medicine is the founding use case, but the engine generalizes.
+
+Built by the user. The roadmap is a working physician's own pain backlog.
+
+Engineered, not assembled. Purpose-built models, on-device STT, encryption at rest, audit logging, and role-based access.
+
+Get home an hour sooner. Every design decision serves one outcome: the documentation stops winning.
+
+Trust in clinical AI has to be earned.
+
+We think you earn it by being the person who has to live with the thing you built. That belief shapes every product decision at tebScribe.
+
+Private by default. Free-tier dictation is transcribed on-device.
+
+Built by a clinician, not for one. It was built by the doctor — still on the schedule, still using it on shift.
+
+You are always the clinician. tebScribe builds documentation tools, not diagnosis. The clinician signs the note.
+
+Earned, shipped, repeated. We ship the unglamorous infrastructure — encryption, audit logging, access controls.
+
+Documentation today. Clinical intelligence tomorrow.
+
+The note is where we started — because it's where clinicians bleed the most time. But it's the front door to something larger.
+
+From the founder
+
+“At tebScribe, we don't just understand emergency medicine — we live it. I'm still on the schedule, and I built the tool I actually wanted to use on shift.”
+
+— Founder, emergency physician & builder. Our mission: to optimize physician well-being, elevate patient care, and protect the financial health of emergency medicine practice — without sacrificing speed, accuracy, or security.
+
+HIPAA-aligned · BAAs available for covered entitiesSOC 2 underwayEncryption at restAudit logging · role-based access
+
+The documentation has won long enough.
+
+Try the flagship. Built by a clinician who knows exactly what your night looks like — free to start, private on your device.
+
+Try tebIQ free →
+
+Talk to us
+
+tebScribe home
+
+All products
+
+tebIQ — AI scribe for clinicians
+
+tebChart — your records, organized
+
+tebDictate — free dictation
+
+Your Privacy Choices
+
+tebIQ is a clinical documentation assistant for licensed healthcare professionals. It supports — and never replaces — clinical judgment. tebIQ does not diagnose, treat, or make medical decisions; the clinician is always responsible for the note.
+
+© 2026 TebScribe LLC. All rights reserved.
+
+## Product hub (https://tebscribe.com/products.html)
+
+TebScribe LLC · Product family
+
+One company. Three products. Every one of them built by a practicing ER doctor.
+
+TebScribe LLC is a New York limited liability company founded by Dr. Mohammad Chelehmalzadeh, a practicing emergency medicine physician. It builds three products: tebIQ, an AI medical scribe that turns the patient encounter into a structured clinical note; tebChart, a discharge instructions app that keeps a patient's own discharge papers and medications organized on their iPhone; and tebDictate, a free medical dictation app that turns any phone into a wireless microphone for any computer.
+
+The product family
+
+What each product is, and who it's for.
+
+Available now
+
+tebIQ
+
+The clinician's AI scribe
+
+An AI medical scribe — an ambient scribe for doctors — that listens to the encounter and produces a structured clinical note, a SOAP note or HPI, MDM, assessment and plan, in the specialty's own shape. It also helps with nurse notes and clinical documentation for emergency medicine. Built on shift by an emergency physician who needed his charts finished before he went home.
+
+Who it's forPhysicians, residents, APPs, and clinics
+
+Where it runsWeb browser, iPhone, Android, and Apple Watch
+
+PrivacyEncrypted in transit and at rest (AES). Never used for training. Never sold.
+
+Open tebiq.com →
+
+Download on theApp Store
+
+Get it onGoogle Play
+
+Available now
+
+tebChart
+
+Your own records, in your pocket
+
+A discharge instructions app for your iPhone: scan your discharge papers and tebChart organizes the after visit summary, your medication list, the follow-up visits, and the questions worth asking after a hospital discharge, with a caregiver in mind — stored privately on your iPhone, with no health records on TebScribe servers. The same engineering as the clinical product, pointed at the patient side of the discharge.
+
+Who it's forPatients and families after a hospital or ER visit
+
+Where it runsiPhone app (local-first), on the App Store
+
+PrivacyRecords stay on your iPhone; no health records on TebScribe servers
+
+Open tebchart.com →
+
+Download on theApp Store
+
+Free today
+
+tebDictate
+
+Your phone is the microphone
+
+A free medical dictation app and dictation app for nurses and doctors: open the page on your computer, scan the QR code with your phone, and use voice to text (speech to text) to dictate to any computer — your words type themselves into whatever text box is in front of you. End-to-end encrypted, no account, nothing to install. It works on the phone you already have.
+
+Who it's forAnyone who would rather talk than type
+
+Where it runsAny phone browser, or the iPhone app, paired to any computer
+
+PrivacyEnd-to-end encrypted; speech is recognized on your phone
+
+Use it free at tebdictate.com →
+
+Download on theApp Store
+
+About TebScribe
+
+A physician-founded company, not a health-tech startup that hired a doctor.
+
+TebScribe LLC is a New York limited liability company. It was founded and is led by Dr. Mohammad Chelehmalzadeh, an emergency medicine physician who still works clinical shifts — the products are shaped by the documentation problem he has at 2 a.m., not by a roadmap written away from the bedside. tebIQ, tebChart, and tebDictate are all TebScribe products. Each states its own privacy terms on its own site.
+
+Legal entity
+
+TebScribe LLC, a New York limited liability company
+
+Founder & CEO
+
+Mohammad Chelehmalzadeh, MD — practicing emergency medicine physician
+
+Products
+
+tebIQ · tebChart · tebDictate
+
+Contact
+
+mchelehmal@tebscribe.com
+
+Questions people actually ask
+
+Frequently asked
+
+Are tebIQ, tebChart, and tebDictate the same company?
+
+Yes. All three are products of TebScribe LLC, a New York limited liability company founded by Dr. Mohammad Chelehmalzadeh, a practicing emergency medicine physician. tebIQ is the clinician product, tebChart is the patient product, and tebDictate is a free dictation tool anyone can use.
+
+What is tebIQ?
+
+tebIQ is an AI medical scribe for clinicians. It captures the patient encounter and generates a structured clinical note — history, medical decision making, assessment and plan — shaped for the specialty the clinician actually practices. It runs in a web browser, on iPhone, and on Apple Watch. Encrypted in transit and at rest (AES). Never used for training. Never sold.
+
+What is tebDictate, and is it really free?
+
+tebDictate turns any phone into a wireless microphone for any computer. You open the page on your computer, scan the QR code with your phone, and speak — the text appears on the computer. It is free to use, requires no account and no installation, and the connection is end-to-end encrypted. Speech is recognized on your phone.
+
+Is there a free medical dictation app?
+
+Yes. tebDictate is a free medical dictation app. Scan the QR code with your phone and use voice to text to dictate to any computer; it works for nurse dictation and doctor dictation alike, with no account and nothing to install.
+
+How do I organize discharge instructions?
+
+Scan your discharge papers with tebChart, a discharge instructions app for iPhone. It organizes the after visit summary, a medication list, and follow-up visits, and keeps them on your own device.
+
+Is patient data used for training?
+
+Encrypted in transit and at rest (AES). Never used for training. Never sold.
+
+Who is TebScribe built for?
+
+tebIQ is for clinicians — physicians, residents, advanced practice providers, and the clinics they work in. tebChart is for patients and families organizing their own records after a hospital or emergency department visit. tebDictate is for anyone, clinical or not, who would rather talk than type.
+
+Where can I get the apps?
+
+tebIQ runs in a web browser at tebiq.com, on the App Store for iPhone and Apple Watch, and on Google Play for Android. tebChart is on the App Store for iPhone. tebDictate works in any phone browser at tebdictate.com with nothing to install, and is also on the App Store. Every card above has the download buttons.
