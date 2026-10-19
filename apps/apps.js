@@ -152,6 +152,167 @@
     });
   }
 
+  /* ---------------------------------------------------------------------
+   * PROMOTIONS — live feed from scripta's public Promo Center feed.
+   * Contract: GET {API_ORIGIN}/api/promo/promotions -> {"apps":[{"slug","name","promotions":[...]}]}
+   *           GET {API_ORIGIN}/api/promo/<slug>/promotions -> same per-app shape
+   * 404 or a network failure both mean "no promotions" — the static fallback
+   * copy already in the HTML is left exactly as authored, never replaced with
+   * an error. `?feed=<url>` overrides the fetch target for local testing
+   * (e.g. a JSON file served by `python3 -m http.server`); it is a query
+   * param a visitor could type, not a switch anyone would flip by accident,
+   * and every value it can return is rendered through textContent below.
+   * -------------------------------------------------------------------- */
+  var HUB_SLUGS = ["tebiq", "tebchart", "tebdictate", "tebintake", "tebcapture", "tebrounds", "bellody", "momo-home"];
+
+  function promoFeedURL(defaultPath) {
+    try {
+      var override = new URLSearchParams(window.location.search).get("feed");
+      if (override) return override;
+    } catch (e) {}
+    return API_ORIGIN + defaultPath;
+  }
+
+  function fetchPromoFeed(url) {
+    if (!window.fetch) return Promise.resolve(null);
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 10000) : null;
+    return fetch(url, { headers: { Accept: "application/json" }, signal: ctrl ? ctrl.signal : undefined })
+      .then(function (res) {
+        if (timer) clearTimeout(timer);
+        if (res.status === 404 || !res.ok) return null;
+        return res.json().catch(function () { return null; });
+      })
+      .catch(function () {
+        if (timer) clearTimeout(timer);
+        return null; // 404 / network failure / timeout: treat as "no promotions"
+      });
+  }
+
+  function extractPromotions(data) {
+    if (!data) return null;
+    if (Array.isArray(data)) return data;
+    if (Array.isArray(data.promotions)) return data.promotions;
+    return null;
+  }
+
+  function grantLabel(grant) {
+    if (!grant || !grant.type) return "Special offer";
+    var n = parseInt(grant.value, 10);
+    switch (grant.type) {
+      case "pro_months":
+        return isNaN(n) ? "Special offer" : n + " month" + (n === 1 ? "" : "s") + " of Pro";
+      case "pro_lifetime":
+        return "Pro for life";
+      case "trial_days":
+        return isNaN(n) ? "Special offer" : n + "-day trial";
+      default:
+        return "Special offer";
+    }
+  }
+
+  function copyPromoCode(code, labelEl) {
+    if (!navigator.clipboard || !navigator.clipboard.writeText) return;
+    navigator.clipboard.writeText(code).then(function () {
+      if (!labelEl) return;
+      labelEl.textContent = "Copied";
+      setTimeout(function () { labelEl.textContent = "Copy"; }, 1600);
+    }).catch(function () { /* clipboard denied — code is already visible as text */ });
+  }
+
+  function buildPromoCard(promo) {
+    var card = document.createElement("div");
+    card.className = "promo-card";
+
+    var headline = document.createElement("div");
+    headline.className = "promo-headline";
+    headline.textContent = promo.headline || "";
+    card.appendChild(headline);
+
+    if (promo.blurb) {
+      var blurb = document.createElement("p");
+      blurb.className = "promo-blurb";
+      blurb.textContent = promo.blurb;
+      card.appendChild(blurb);
+    }
+
+    var grant = document.createElement("div");
+    grant.className = "promo-grant";
+    grant.textContent = grantLabel(promo.grant);
+    card.appendChild(grant);
+
+    if (promo.code) {
+      var copyLabel = document.createElement("span");
+      copyLabel.className = "promo-copy-label";
+      copyLabel.textContent = "Copy";
+
+      var codeText = document.createElement("span");
+      codeText.className = "promo-code-text";
+      codeText.textContent = promo.code;
+
+      var codeBtn = document.createElement("button");
+      codeBtn.type = "button";
+      codeBtn.className = "promo-code-btn";
+      codeBtn.setAttribute("aria-label", "Copy promo code " + promo.code);
+      codeBtn.appendChild(codeText);
+      codeBtn.appendChild(copyLabel);
+      codeBtn.addEventListener("click", function () { copyPromoCode(promo.code, copyLabel); });
+      card.appendChild(codeBtn);
+    }
+
+    var metaBits = [];
+    if (typeof promo.cap === "number" && promo.cap > 0 && typeof promo.remaining === "number") {
+      metaBits.push(promo.remaining + " left");
+    }
+    var exp = fmtDate(promo.expires_at);
+    if (exp) metaBits.push("Expires " + exp);
+    if (metaBits.length) {
+      var meta = document.createElement("div");
+      meta.className = "promo-meta";
+      meta.textContent = metaBits.join(" · ");
+      card.appendChild(meta);
+    }
+
+    return card;
+  }
+
+  function renderPromoCards(container, promotions) {
+    while (container.firstChild) container.removeChild(container.firstChild);
+    promotions.forEach(function (p) { container.appendChild(buildPromoCard(p)); });
+  }
+
+  function showPromos(root, promotions) {
+    var cardsEl = qs(".promo-cards", root);
+    var emptyEl = qs(".promo-empty", root);
+    if (!promotions || !promotions.length) return; // leave static fallback untouched
+    if (cardsEl) { renderPromoCards(cardsEl, promotions); cardsEl.hidden = false; }
+    if (emptyEl) emptyEl.hidden = true;
+  }
+
+  function initPromoBlock(root) {
+    var slug = root.getAttribute("data-promo");
+    if (!slug) return;
+    fetchPromoFeed(promoFeedURL("/api/promo/" + encodeURIComponent(slug) + "/promotions"))
+      .then(function (data) { showPromos(root, extractPromotions(data)); });
+  }
+
+  function initPromoHub(root) {
+    fetchPromoFeed(promoFeedURL("/api/promo/promotions")).then(function (data) {
+      if (!data || !Array.isArray(data.apps)) return;
+      var bySlug = {};
+      data.apps.forEach(function (app) { if (app && app.slug) bySlug[app.slug] = app; });
+      HUB_SLUGS.forEach(function (slug) {
+        var app = bySlug[slug];
+        if (!app) return;
+        var section = root.querySelector('[data-promo-section="' + slug + '"]');
+        if (!section) return;
+        var nameEl = qs(".promo-app-name", section);
+        if (nameEl && app.name) nameEl.textContent = app.name;
+        showPromos(section, app.promotions);
+      });
+    });
+  }
+
   function init() {
     document.querySelectorAll("[data-app-feedback]").forEach(function (root) {
       var app = root.getAttribute("data-app-feedback");
@@ -159,6 +320,9 @@
       loadComments(root, app);
       initForm(root, app);
     });
+    document.querySelectorAll("[data-promo]").forEach(initPromoBlock);
+    var hub = document.querySelector("[data-promo-hub]");
+    if (hub) initPromoHub(hub);
   }
 
   if (document.readyState === "loading") {
