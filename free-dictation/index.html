@@ -25,6 +25,7 @@
 <!-- Google Analytics (GA4) — tebscribe.com ONLY; loaded by tb-consent.js only after the visitor
      clicks Accept (never with Global Privacy Control). Same pattern as index.html / products.html. -->
 <script defer src="/tb-consent.js" data-ga="G-1XZK7XBL67"></script>
+<script defer src="/tb-beacon.js" data-property="tebscribe"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -166,10 +167,11 @@ footer nav a:hover{color:var(--fg)}
 .navlinks a.on{color:var(--fg)}
 [hidden]{display:none!important}
 </style>
+<script src="/tb-nav.js?v=1"></script>
 </head>
 <body>
 
-<nav>
+<nav data-tb-legacy-nav>
   <div class="bar">
     <a class="brand" href="/"><span class="mark"></span> tebScribe</a>
     <div class="navlinks">
