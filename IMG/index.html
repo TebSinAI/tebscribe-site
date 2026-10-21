@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-tb-nav-pad-off>
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,43 +13,257 @@
 <meta property="og:image" content="https://tebscribe.com/assets/og-image.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="theme-color" content="#06070C" />
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Foreign Doctor to U.S. Doctor: The IMG Roadmap","author":{"@type":"Person","name":"Mohammad Chelehmalzadeh","jobTitle":"Emergency physician"},"publisher":{"@type":"Organization","name":"TebScribe LLC","url":"https://tebscribe.com"},"dateModified":"2026-10-19","mainEntityOfPage":"https://tebscribe.com/IMG/"}</script>
+<meta name="color-scheme" content="dark light" />
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Foreign Doctor to U.S. Doctor: The IMG Roadmap","author":{"@type":"Person","name":"Mohammad Chelehmalzadeh","jobTitle":"Emergency physician"},"publisher":{"@type":"Organization","name":"TebScribe LLC","url":"https://tebscribe.com"},"dateModified":"2026-10-21","mainEntityOfPage":"https://tebscribe.com/IMG/"}</script>
+<script src="/tb-nav.js?v=1"></script>
 <script defer src="/tb-consent.js" data-ga="G-1XZK7XBL67"></script>
 <script defer src="/tb-beacon.js" data-property="tebscribe"></script>
+<script defer src="/IMG/img-i18n.js?v=1"></script>
+<script defer src="/IMG/img.js?v=1"></script>
 <style>
-:root{--bg:#06070C;--fg:#F5F6FA;--fg2:#A6ABBC;--blue:#0A84FF;--hair:rgba(255,255,255,.12)}
-@media (prefers-color-scheme:light){:root{--bg:#fff;--fg:#10131c;--fg2:#4a5163;--hair:rgba(0,0,0,.12)}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif}
-main{max-width:760px;margin:0 auto;padding:32px 20px 80px}
-a{color:var(--blue);word-break:break-word}h1{font-size:2.1rem;line-height:1.2;margin:.4em 0}h2{margin-top:2.4em;border-top:1px solid var(--hair);padding-top:1em}h3{font-size:1rem;letter-spacing:.03em;margin:1.6em 0 .2em}
-.lede{color:var(--fg2)}.note{border:1px solid var(--hair);border-radius:12px;padding:14px 16px;color:var(--fg2);font-size:.95rem}ul{padding-left:1.2em}
-.brand{font-weight:700;text-decoration:none;color:var(--fg)}footer{margin-top:3em;color:var(--fg2);font-size:.9rem}
+:root{--tbn-h:64px;--bg:#060A14;--bg2:#0A1222;--panel:#0D1830;--panel2:#12214A;--fg:#F3F6FC;--fg2:#AAB4CA;--blue:#4DA3FF;--amber:#FFC457;--amber-t:#FFD27A;--hair:rgba(255,255,255,.13);--shadow:0 18px 50px rgba(0,0,0,.45);--sm:calc(var(--tbn-h) + 96px)}
+@media (max-width:1180px){:root{--tbn-h:56px}}
+@media (max-width:1080px){:root{--sm:calc(var(--tbn-h) + 70px)}}
+@media (prefers-color-scheme:light){:root{--bg:#F5F8FD;--bg2:#E9F0FB;--panel:#FFFFFF;--panel2:#EEF3FC;--fg:#0B1326;--fg2:#44506B;--blue:#0A63D6;--amber-t:#8A5700;--hair:rgba(10,20,50,.15);--shadow:0 14px 40px rgba(20,40,90,.14)}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+:lang(ar) body,:lang(fa) body,:lang(ur) body{line-height:1.85}
+a{color:var(--blue);word-break:break-word}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #7AB8FF;outline-offset:2px}
+.skip{position:absolute;inset-inline-start:12px;top:-60px;z-index:2000;background:#fff;color:#06070C;padding:12px 16px;border-radius:10px;font-weight:700}
+.skip:focus{top:calc(var(--tbn-h) + 8px)}
+h1,h2,h3{margin:0}
+.serif,:lang(en) .hero h1,:lang(es) .hero h1,:lang(fr) .hero h1,:lang(pt) .hero h1{font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Source Serif 4",Georgia,serif}
 
-.search{position:sticky;top:0;background:var(--bg);padding:12px 0;z-index:5;border-bottom:1px solid var(--hair)}
-.search input{width:100%;padding:12px 14px;font-size:1rem;border-radius:10px;border:1px solid var(--hair);background:transparent;color:var(--fg)}
-#hits{list-style:none;padding:0;margin:8px 0 0;max-height:46vh;overflow:auto}#hits li{padding:8px 0;border-bottom:1px solid var(--hair)}#hits small{color:var(--fg2);display:block}
+/* ---------- hero: a night sky over the globe ---------- */
+.hero{position:relative;overflow:hidden;color:#F5F8FF;padding:calc(var(--tbn-h) + 28px) 20px 64px;
+  background:radial-gradient(1100px 680px at 78% 32%,#14357a 0%,transparent 62%),radial-gradient(800px 520px at 6% 0%,#0d2150 0%,transparent 58%),linear-gradient(180deg,#050914 0%,#07112b 72%,#060A14 100%)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.7;
+  background-image:radial-gradient(1.4px 1.4px at 7% 22%,#fff,transparent),radial-gradient(1px 1px at 17% 64%,#cfe3ff,transparent),radial-gradient(1.6px 1.6px at 31% 12%,#fff,transparent),radial-gradient(1px 1px at 44% 78%,#bcd6ff,transparent),radial-gradient(1.3px 1.3px at 58% 30%,#fff,transparent),radial-gradient(1px 1px at 66% 90%,#cfe3ff,transparent),radial-gradient(1.5px 1.5px at 83% 14%,#fff,transparent),radial-gradient(1px 1px at 93% 55%,#bcd6ff,transparent),radial-gradient(1.2px 1.2px at 49% 48%,#fff8,transparent),radial-gradient(1px 1px at 24% 92%,#fff9,transparent)}
+@media (prefers-color-scheme:light){.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(180deg,transparent,var(--bg));pointer-events:none}}
+.hero-in{position:relative;max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:28px;align-items:center;min-height:min(640px,calc(100vh - 150px))}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.chip{flex:none;min-height:44px;padding:0 15px;border-radius:999px;border:1px solid rgba(255,255,255,.26);background:rgba(255,255,255,.07);color:#F5F8FF;font:600 14.5px/1 -apple-system,"Segoe UI",system-ui,sans-serif;cursor:pointer;transition:background .15s,transform .15s}
+.chip:hover{background:rgba(255,255,255,.16)}
+.chip[aria-pressed=true]{background:#fff;color:#07112b;border-color:#fff}
+.greet{display:inline-block;margin:0 0 14px;padding:9px 16px;border-radius:999px;background:rgba(255,196,87,.14);border:1px solid rgba(255,196,87,.45);color:#FFDC9A;font-weight:650;font-size:1rem;line-height:1.4}
+.hero h1{font-size:clamp(2.05rem,4.7vw,3.55rem);line-height:1.14;letter-spacing:-.012em;font-weight:700;margin:.15em 0 .4em;text-wrap:balance}
+:lang(ar) .hero h1,:lang(fa) .hero h1,:lang(ur) .hero h1,:lang(hi) .hero h1,:lang(bn) .hero h1{line-height:1.5;letter-spacing:0}
+.lede{margin:0 0 26px;max-width:36em;color:#BCC6DC;font-size:1.1rem;line-height:1.65}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:0 26px;border-radius:999px;font:650 1.04rem/1.2 -apple-system,"Segoe UI",system-ui,sans-serif;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .15s,box-shadow .15s,background .15s}
+.btn.primary{background:linear-gradient(135deg,#0A6FE0,#4B49D6);color:#fff;box-shadow:0 10px 34px rgba(46,102,230,.45)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 16px 44px rgba(46,102,230,.6)}
+.btn.ghost{background:var(--panel);color:var(--fg);border-color:var(--hair)}
+.hero .btn.ghost{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.38)}
+.btn.ghost:hover{background:var(--panel2)}
+.hero .btn.ghost:hover{background:rgba(255,255,255,.17)}
+[dir=rtl] .arr{display:inline-block;transform:scaleX(-1)}
+.fine{margin:0;color:#97A4C2;font-size:.92rem}
+.mtnote{margin:14px 0 0;padding:10px 14px;border-radius:12px;border:1px dashed rgba(255,255,255,.3);color:#D5DDF0;font-size:.9rem;line-height:1.55;max-width:34em}
+.mtnote span{display:block}
+.globe{position:relative;width:min(560px,100%);aspect-ratio:1;margin-inline:auto}
+.globe::before{content:"";position:absolute;inset:8.5%;border-radius:50%;background:radial-gradient(circle at 36% 30%,#1c4fa8 0%,#0f2c66 42%,#081634 78%,#050c20 100%);box-shadow:0 0 0 1px rgba(125,185,255,.25),0 0 70px rgba(52,120,255,.38),inset -26px -30px 60px rgba(0,0,0,.45)}
+.globe::after{content:"";position:absolute;inset:6.3%;border-radius:50%;border:1px solid rgba(125,185,255,.16);pointer-events:none}
+.globe canvas{position:absolute;inset:0;width:100%;height:100%;cursor:grab}
+.globe canvas:active{cursor:grabbing}
+.hero-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ---------- layout: stepper rail + reading column ---------- */
+.layout{max-width:1200px;margin:0 auto;padding:36px 20px 0;display:grid;grid-template-columns:230px minmax(0,780px);gap:46px;justify-content:center;align-items:start}
+.col{min-width:0}
+.stepper{position:sticky;top:calc(var(--tbn-h) + 24px);align-self:start;max-height:calc(100vh - var(--tbn-h) - 40px);overflow:auto}
+.st-list{list-style:none;margin:0;padding:0}
+.st-list li{position:relative;margin:0 0 6px}
+.st-list li:not(:last-child):not(.st-search)::before{content:"";position:absolute;inset-inline-start:17px;top:38px;bottom:-6px;width:2px;background:var(--hair)}
+.st-list li.done::before{background:var(--amber)}
+.st-list a{display:flex;align-items:center;gap:12px;min-height:44px;padding:2px 8px 2px 0;color:var(--fg2);text-decoration:none;font-size:.92rem;line-height:1.3;border-radius:12px}
+[dir=rtl] .st-list a{padding:2px 0 2px 8px}
+.st-list a:hover{color:var(--fg)}
+.node{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:.9rem;background:var(--panel);border:2px solid var(--hair);color:var(--fg);transition:background .2s,border-color .2s,box-shadow .2s,transform .2s}
+.st-list li.done .node{border-color:var(--amber);color:var(--amber-t)}
+.st-list a.on{color:var(--fg);font-weight:650}
+.st-list a.on .node{background:var(--amber);border-color:var(--amber);color:#201400;box-shadow:0 0 0 5px rgba(255,196,87,.25);transform:scale(1.08)}
+.st-search{display:none}
+.st-sbtn{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--hair);background:var(--panel);color:var(--fg);cursor:pointer}
+.st-bar{display:none}
+
+/* search */
+.search{position:sticky;top:calc(var(--tbn-h) + 8px);z-index:30;background:var(--bg);padding:10px 0 14px;border-bottom:1px solid var(--hair)}
+#q{width:100%;min-height:58px;padding:0 18px 0 52px;font:inherit;font-size:1.05rem;color:var(--fg);background:var(--panel) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='%238A96B2' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-3.5-3.5'/%3E%3C/svg%3E") no-repeat 16px center;border:2px solid var(--hair);border-radius:16px;box-shadow:var(--shadow)}
+[dir=rtl] #q{padding:0 52px 0 18px;background-position:right 16px center}
+#q:focus{border-color:var(--blue);outline:none}
+#hits{list-style:none;padding:0;margin:8px 0 0;max-height:46vh;overflow:auto;border-radius:12px}
+#hits:not(:empty){background:var(--panel);border:1px solid var(--hair);padding:4px 14px}
+#hits li{padding:10px 0;border-bottom:1px solid var(--hair)}
+#hits li:last-child{border-bottom:0}
+#hits small{color:var(--fg2);display:block}
 mark{background:#ffd54a;color:#000;border-radius:3px;padding:0 2px}
-.toc{columns:2;column-gap:28px;padding-left:1.1em}.toc li{margin:.3em 0;break-inside:avoid}@media(max-width:600px){.toc{columns:1}}
-.upd{color:var(--fg2);font-size:.9rem}.sub{border:1px solid var(--hair);border-radius:12px;padding:16px;margin:20px 0}
-.sub input[type=email]{padding:11px 12px;font-size:1rem;border-radius:10px;border:1px solid var(--hair);background:transparent;color:var(--fg);width:min(320px,100%)}
-.sub button{padding:11px 16px;font-size:1rem;border-radius:10px;border:0;background:var(--blue);color:#fff;font-weight:600;cursor:pointer}.sub .m{font-size:.85rem;color:var(--fg2);margin:8px 0 0}
-.top{font-size:.9rem}
+
+/* blocks */
+.block{margin:46px 0 0}
+.block>h2{font-size:1.5rem;line-height:1.3;margin:0 0 6px}
+.block>.sub-l{margin:0 0 18px;color:var(--fg2)}
+.wcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;perspective:1100px}
+.wcard,.card{background:var(--panel);border:1px solid var(--hair);border-radius:20px;box-shadow:var(--shadow)}
+.wcard{display:flex;flex-direction:column;gap:6px;padding:20px 18px;text-decoration:none;color:var(--fg)}
+.wcard b{font-size:1.06rem;line-height:1.3}
+.wcard span.d{color:var(--fg2);font-size:.92rem;line-height:1.5}
+.wcard .go{margin-top:auto;padding-top:8px;color:var(--blue);font-weight:650}
+.wcard:hover{border-color:var(--blue)}
+.tilt{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .18s ease-out,border-color .15s;will-change:transform}
+#index{scroll-margin-top:var(--sm)}
+.cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;perspective:1100px;align-items:start}
+.card{overflow:hidden}
+.card-h{font-size:1rem}
+.card-b{display:flex;align-items:center;gap:14px;width:100%;min-height:72px;padding:12px 16px;background:none;border:0;color:var(--fg);text-align:start;font:inherit;cursor:pointer}
+.badge{flex:none;width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-weight:800;color:#fff;background:linear-gradient(135deg,#0A6FE0,#4B49D6);box-shadow:0 6px 18px rgba(46,102,230,.4)}
+.card-t{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.3}
+.card-n{font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--fg2)}
+.card-title{font-weight:650;font-size:1.02rem}
+.chev{flex:none;color:var(--fg2);transition:transform .25s}
+.card.open .chev{transform:rotate(180deg)}
+.card-p{display:grid;grid-template-rows:0fr;transition:grid-template-rows .26s ease}
+.card.open .card-p{grid-template-rows:1fr}
+.card-p>div{overflow:hidden;visibility:hidden;padding:0 16px;transition:visibility 0s .26s}
+.card.open .card-p>div{visibility:visible;padding-bottom:16px;transition-delay:0s}
+.card-in{margin:0 0 8px;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--fg2)}
+.pills{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.pill{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;border-radius:12px;background:var(--panel2);border:1px solid var(--hair);color:var(--fg);font-size:.72rem;letter-spacing:.03em;text-decoration:none;line-height:1.2}
+.pill:hover{border-color:var(--blue)}
+.more{color:var(--fg2);font-size:.85rem;padding:0 6px}
+.card-go{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:10px;font-weight:700;text-decoration:none}
+.toc{columns:2;column-gap:28px;padding-inline-start:1.1em}.toc li{margin:.3em 0;break-inside:avoid}
+@media(max-width:600px){.toc{columns:1}}
+.js .toc{display:none}
+
+.sub{margin:46px 0 0;padding:24px 22px;border-radius:22px;border:1px solid var(--hair);background:linear-gradient(135deg,rgba(10,111,224,.16),rgba(75,73,214,.16)),var(--panel);box-shadow:var(--shadow)}
+.sub strong{font-size:1.2rem;line-height:1.35}
+.sub form{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.sub input[type=email]{flex:1 1 240px;min-height:54px;padding:0 16px;font:inherit;font-size:1.02rem;border-radius:14px;border:2px solid var(--hair);background:var(--bg);color:var(--fg)}
+.sub input[type=email]:focus{border-color:var(--blue);outline:none}
+.sub button{min-height:54px;padding:0 24px;font:650 1.02rem/1 inherit;border-radius:14px;border:0;background:linear-gradient(135deg,#0A6FE0,#4B49D6);color:#fff;cursor:pointer}
+.sub .m{font-size:.88rem;color:var(--fg2);margin:10px 0 0}
+.note{border:1px solid var(--hair);border-radius:14px;padding:14px 16px;color:var(--fg2);font-size:.95rem;margin:30px 0 0}
+.note-t{border:1px solid var(--amber);border-radius:14px;padding:14px 16px;font-size:.95rem;margin:30px 0 -14px;line-height:1.7}
+.enbanner{margin:18px 0 0;padding:12px 14px;border-radius:12px;background:var(--panel2);border:1px solid var(--hair);color:var(--fg2);font-size:.92rem;line-height:1.6}
+.enbanner span{display:block}
+
+/* the guide itself (English) */
+.guide{margin-top:8px}
+.guide [id]{scroll-margin-top:var(--sm)}
+.part{position:relative}
+.part::before{content:attr(data-n);position:absolute;inset-inline-end:0;top:.55em;font:800 6.5rem/1 Georgia,serif;color:var(--fg);opacity:.045;pointer-events:none}
+.guide h2{margin-top:2.4em;border-top:1px solid var(--hair);padding-top:1em;font-size:1.7rem;line-height:1.25}
+.guide h3{font-size:1rem;letter-spacing:.03em;margin:1.6em 0 .2em}
+.kick{margin:.5em 0 0;color:var(--amber-t);font-weight:650}
+.upd{color:var(--fg2);font-size:.9rem}
+ul{padding-inline-start:1.2em}
+.closing{margin:64px 0 0;padding:34px 24px;border-radius:26px;text-align:center;background:linear-gradient(135deg,rgba(10,111,224,.2),rgba(75,73,214,.2)),var(--panel);border:1px solid var(--hair);box-shadow:var(--shadow)}
+.closing h2{font-size:1.45rem;line-height:1.35;margin:0 0 18px}
+.closing .cta-row{justify-content:center;margin:0}
+#sharemsg{min-height:1.4em;margin:12px 0 0;color:var(--fg2);font-size:.92rem}
+footer{max-width:1200px;margin:0 auto;padding:44px 20px 70px;color:var(--fg2);font-size:.9rem}
+footer p{margin:0;max-width:780px;margin-inline:auto}
+footer a.top{font-size:.9rem}
+.langhold{display:none}
+
+/* ---------- narrower screens: the rail becomes a sticky bar of numbered chips ---------- */
+@media (max-width:1080px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:0;padding-top:0}
+  .stepper{grid-column:1/-1;top:var(--tbn-h);z-index:40;margin:0 -20px;max-height:none;overflow:visible;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
+  .st-list{display:flex;gap:8px;align-items:center;overflow-x:auto;padding:6px 20px;scroll-snap-type:x proximity;scrollbar-width:none}
+  .st-list::-webkit-scrollbar{display:none}
+  .st-list li{flex:none;margin:0;scroll-snap-align:center}
+  .st-list li::before{display:none!important}
+  .st-search{display:block}
+  .st-list a{padding:0 4px;gap:8px;border-radius:999px}
+  [dir=rtl] .st-list a{padding:0 4px}
+  .st-l{display:none;white-space:nowrap;max-width:15em;overflow:hidden;text-overflow:ellipsis;padding-inline-end:10px}
+  .st-list a.on .st-l{display:inline}
+  .st-list a.on{background:var(--panel);box-shadow:inset 0 0 0 1px var(--hair)}
+  .st-bar{display:block;height:3px;background:var(--hair)}
+  .st-bar i{display:block;height:100%;width:100%;background:var(--amber);transform:scaleX(var(--p,0));transform-origin:left center}
+  [dir=rtl] .st-bar i{transform-origin:right center}
+  .search{position:static;background:none;border:0;padding:22px 0 8px}
+  .block{margin-top:36px}
+}
+@media (max-width:900px){
+  .hero{padding-bottom:40px}
+  .hero-in{grid-template-columns:minmax(0,1fr);gap:6px;min-height:0}
+  .globe{width:min(400px,92%)}
+  .chips{flex-wrap:nowrap;overflow-x:auto;margin-inline:-20px;padding:0 20px 4px;scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+}
+@media (max-width:700px){
+  .wcards,.cards{grid-template-columns:minmax(0,1fr)}
+  .wcard{padding:16px}
+  .part::before{font-size:4.5rem}
+  .btn{flex:1 1 100%}
+}
+@media (min-width:1081px){.st-bar{display:none}}
 </style>
 </head>
 <body id="top">
-<main>
-<a class="brand" href="/">TebScribe</a>
-<h1>Foreign Doctor → U.S. Doctor: The Complete Roadmap</h1>
-<p class="lede">A 10-part, step-by-step guide for international medical graduates who want to practice medicine in the United States. Written by Dr. Mohammad Chelehmalzadeh, an emergency physician, for the USMLE123 community.</p>
-<div class="search"><input id="q" type="search" placeholder="Search the roadmap: ECFMG, Step 2 CK, observership, visa, Match…" aria-label="Search the roadmap" autocomplete="off" /><ul id="hits" aria-live="polite"></ul></div>
-<div class="sub" id="signup" hidden>
-<strong>Get new parts and updates by email</strong>
-<form id="subform" style="margin-top:10px"><input type="email" id="subemail" required placeholder="you@email.com" aria-label="Email address" /> <button type="submit">Subscribe</button></form>
-<p class="m">Occasional emails with new parts of the IMG roadmap and tebIQ IMG practice news. Unsubscribe anytime.</p>
+<a class="skip" href="#guide" data-t="skip">Skip to the guide</a>
+<div class="langhold" id="langhold" hidden></div>
+
+<header class="hero" id="hero">
+ <div class="hero-in">
+  <div class="hero-copy">
+   <div class="chips" id="chips" role="group" aria-label="Language"></div>
+   <p class="greet" data-t="greet">Trained abroad? Welcome. This road is for you.</p>
+   <h1 data-t="h1">Foreign Doctor → U.S. Doctor: The Complete Roadmap</h1>
+   <p class="lede" data-t="sub">A 10-part, step-by-step guide for international medical graduates who want to practice medicine in the United States. Written by Dr. Mohammad Chelehmalzadeh, an emergency physician, for the USMLE123 community.</p>
+   <div class="cta-row">
+    <a class="btn primary" href="#part-1"><span data-t="cta1">Start at Part 1</span> <span class="arr" aria-hidden="true">→</span></a>
+    <a class="btn ghost" href="#signup" data-t="cta2">Get new parts by email</a>
+   </div>
+   <p class="fine" data-t="free">Free to read. No account needed.</p>
+   <p class="mtnote mtonly" hidden><span data-t="mt">Translations are machine-drafted; the English text is authoritative.</span><span data-t="guide_en">The full guide below is in English. Search also works on the English text.</span></p>
+  </div>
+  <div class="globe" id="globe" aria-hidden="true"><canvas id="gc"></canvas></div>
+ </div>
+</header>
+
+<main class="layout" id="main">
+ <nav class="stepper" id="stepper" aria-label="Roadmap progress">
+  <ol class="st-list" id="stlist"></ol>
+  <div class="st-bar" aria-hidden="true"><i></i></div>
+ </nav>
+
+ <div class="col">
+  <div class="search" id="find"><input id="q" type="search" placeholder="Search the roadmap: ECFMG, Step 2 CK, observership, visa, Match…" data-t-ph="srch_ph" aria-label="Search the roadmap" data-t-aria="srch_aria" autocomplete="off" /><ul id="hits" aria-live="polite"></ul></div>
+
+  <section class="block" aria-labelledby="where-h">
+   <h2 id="where-h" data-t="where_h">Where are you right now?</h2>
+   <p class="sub-l" data-t="where_s">Pick the closest one. It takes you to the checklist that fits.</p>
+   <div class="wcards">
+    <a class="wcard tilt" href="#part-10-s1"><b data-t="w1_t">Still in medical school</b><span class="d" data-t="w1_d">Check your school, plan electives, open your ECFMG account.</span><span class="go" aria-hidden="true"><span class="arr">→</span></span></a>
+    <a class="wcard tilt" href="#part-10-s3"><b data-t="w2_t">Already graduated</b><span class="d" data-t="w2_d">Exams, pathway, U.S. experience, then ERAS and the Match.</span><span class="go" aria-hidden="true"><span class="arr">→</span></span></a>
+    <a class="wcard tilt" href="#part-10-s6"><b data-t="w3_t">Experienced physician abroad</b><span class="d" data-t="w3_d">Look at the new state pathways before you decide to repeat training.</span><span class="go" aria-hidden="true"><span class="arr">→</span></span></a>
+   </div>
+  </section>
+
+  <section class="block" aria-labelledby="index">
+   <h2 id="index" data-t="journey_h">Index: the road in ten parts</h2>
+   <p class="sub-l" data-t="journey_s">Open a card to see what is inside, or go straight to the part.</p>
+   <ul class="cards" id="cards"></ul>
+   <ol class="toc"><li><a href="#part-1">Part 1: Where Do I Start?</a></li><li><a href="#part-2">Part 2: ECFMG Certification</a></li><li><a href="#part-3">Part 3: U.S. Clinical Experience</a></li><li><a href="#part-4">Part 4: Finding Residency</a></li><li><a href="#part-5">Part 5: If You Don&#x27;t Match</a></li><li><a href="#part-6">Part 6: Practicing Without Repeating Residency</a></li><li><a href="#part-7">Part 7: Visas for Doctors</a></li><li><a href="#part-8">Part 8: Physician Immigration Lawyers</a></li><li><a href="#part-9">Part 9: Bookmark These Websites</a></li><li><a href="#part-10">Part 10: The Master Checklist</a></li></ol>
+  </section>
+
+  <div class="sub" id="signup" hidden>
+<strong data-t="sub_h">Get new parts and updates by email</strong>
+<form id="subform"><input type="email" id="subemail" required placeholder="you@email.com" data-t-ph="email_ph" aria-label="Email address" data-t-aria="email_aria" /> <button type="submit" data-t="sub_btn">Subscribe</button></form>
+<p class="m" data-t="sub_fine">Occasional emails with new parts of the IMG roadmap and tebIQ IMG practice news. Unsubscribe anytime.</p>
 <p class="m" id="submsg" role="status"></p></div>
+
+  <p class="note-t mtonly" data-t="upd_short" hidden></p>
+  <p class="enbanner mtonly" hidden><span data-t="mt">Translations are machine-drafted; the English text is authoritative.</span><span data-t="guide_en">The full guide below is in English. Search also works on the English text.</span></p>
+  <div class="guide" id="guide" lang="en" dir="ltr">
 <p class="note">Updated October 2026. Requirements change. Always confirm current requirements with the official agency (ECFMG, USMLE, OET, NRMP, USCIS) before acting. This is general information, not legal or immigration advice. Names of firms or services mentioned are a resource list, not an endorsement.</p>
-<h2 id="index">Index</h2>
-<ol class="toc"><li><a href="#part-1">Part 1: Where Do I Start?</a></li><li><a href="#part-2">Part 2: ECFMG Certification</a></li><li><a href="#part-3">Part 3: U.S. Clinical Experience</a></li><li><a href="#part-4">Part 4: Finding Residency</a></li><li><a href="#part-5">Part 5: If You Don&#x27;t Match</a></li><li><a href="#part-6">Part 6: Practicing Without Repeating Residency</a></li><li><a href="#part-7">Part 7: Visas for Doctors</a></li><li><a href="#part-8">Part 8: Physician Immigration Lawyers</a></li><li><a href="#part-9">Part 9: Bookmark These Websites</a></li><li><a href="#part-10">Part 10: The Master Checklist</a></li></ol>
 <section class="part" id="part-1" data-title="Where Do I Start?"><h2>Part 1: Where Do I Start?</h2>
 <p>I am putting together a step-by-step guide for international medical graduates who want to practice medicine in the United States.</p>
 <p>Save these posts. I will take you from your foreign medical school all the way to practicing medicine in America.</p>
@@ -578,39 +792,20 @@ mark{background:#ffd54a;color:#000;border-radius:3px;padding:0 2px}
 <p>Share it with another doctor who needs it.</p>
 <p class="upd">Updated October 2026. Medical licensing, ECFMG and immigration requirements change. Always verify current requirements through the official agencies before acting.</p>
 </section>
-<footer><p>Practicing for the interview? <a href="https://tebiq.com/img">tebIQ Academy for IMGs</a> is in early build. <a href="/">TebScribe</a> · <a href="/products.html">Products</a> · <a href="#" data-tb-consent-open>Your Privacy Choices</a> · <a href="#top" class="top">Back to top</a></p></footer>
+
+  </div>
+
+  <section class="closing">
+   <h2 data-t="closing_h">Save this guide. Send it to another doctor who needs it.</h2>
+   <div class="cta-row">
+    <button type="button" class="btn primary" id="share" data-t="share">Share with another doctor</button>
+    <a class="btn ghost" href="#signup" data-t="cta2">Get new parts by email</a>
+   </div>
+   <p id="sharemsg" role="status"></p>
+  </section>
+ </div>
 </main>
-<script>
-(function(){
-var SIGNUP_LIVE=true;
-var secs=[].slice.call(document.querySelectorAll('section.part'));
-var q=document.getElementById('q'),hits=document.getElementById('hits');
-function esc(s){return s.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]});}
-function run(){
- var v=q.value.trim().toLowerCase();hits.innerHTML='';
- secs.forEach(function(s){s.querySelectorAll('mark').forEach(function(m){m.replaceWith(document.createTextNode(m.textContent));});s.normalize();});
- if(v.length<2)return;var n=0;
- secs.forEach(function(s){
-  var els=[].slice.call(s.querySelectorAll('h2,h3,p,li'));
-  els.forEach(function(el){
-   var t=el.textContent;var i=t.toLowerCase().indexOf(v);
-   if(i<0||n>=30)return;n++;
-   if(!el.id)el.id='h'+Math.random().toString(36).slice(2,8);
-   var li=document.createElement('li');
-   var sn=t.slice(Math.max(0,i-40),i+v.length+60);
-   li.innerHTML='<a href="#'+el.id+'">'+esc(sn)+'</a><small>'+esc(s.dataset.title?('Part '+s.id.replace('part-','')+': '+s.dataset.title):'')+'</small>';
-   hits.appendChild(li);
-  });
- });
- if(!n)hits.innerHTML='<li>No matches. Try a shorter word.</li>';
-}
-q.addEventListener('input',run);
-if(SIGNUP_LIVE){document.getElementById('signup').hidden=false;
-document.getElementById('subform').addEventListener('submit',function(e){e.preventDefault();var m=document.getElementById('submsg');m.textContent='Sending…';
-fetch('https://tebiq.com/api/pulse/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:document.getElementById('subemail').value,source:'img'})})
-.then(function(r){m.textContent=r.ok?'Subscribed. Thank you.':(r.status===429?'Too many tries. Please try again later.':'Please check the email address.');})
-.catch(function(){m.textContent='Could not subscribe. Please try again later.';});});}
-})();
-</script>
+
+<footer><p><span data-t="foot_a">Practicing for the interview?</span> <a href="https://tebiq.com/img">tebIQ Academy for IMGs</a> <span data-t="foot_b">is in early build.</span> <a href="/">TebScribe</a> · <a href="/products.html" data-t="foot_products">Products</a> · <a href="#" data-tb-consent-open>Your Privacy Choices</a> · <a href="#top" class="top" data-t="top">Back to top</a></p></footer>
 </body>
 </html>

@@ -422,6 +422,7 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
 </style>
 <script defer src="/tb-beacon.js" data-property="tebscribe"></script>
 <meta name="robots" content="noindex, follow" />
+<script src="/tb-nav.js?v=1"></script>
 </head>
 <body>
 
@@ -435,7 +436,7 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
 <div class="grain"></div>
 
 <!-- ===================== NAV ===================== -->
-<nav id="nav">
+<nav id="nav" data-tb-legacy-nav>
   <div class="bar">
     <a class="brand" href="#top" aria-label="tebScribe home">
       <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -466,7 +467,7 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
   </div>
 </nav>
 
-<div class="sheet" id="sheet">
+<div class="sheet" id="sheet" data-tb-legacy-nav>
   <button class="close" id="closeBtn" aria-label="Close menu">&times;</button>
   <a href="#products">Products</a>
   <a href="#platform">Platform</a>
@@ -912,6 +913,7 @@ footer{border-top:1px solid var(--hair);padding:70px 0 50px;margin-top:30px}
     <nav class="foot-family" aria-label="More from TebScribe">
       <span class="foot-family-label">More from TebScribe</span>
       <a href="/products.html">All products</a>
+      <a href="/IMG/">For IMGs: the roadmap</a>
       <a href="https://tebiq.com" target="_blank" rel="noopener">tebIQ — AI scribe for clinicians</a>
       <a href="https://apps.apple.com/us/app/tebchart-after-the-hospital/id6782081865" target="_blank" rel="noopener">tebChart — on the App Store</a>
       <a href="https://tebdictate.com" target="_blank" rel="noopener">tebDictate — free dictation</a>
