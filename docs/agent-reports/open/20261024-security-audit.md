@@ -16,7 +16,7 @@
 | 4 | tebscribe.com | https://tebscribe.com/ | GitHub Pages (`Server: GitHub.com`; A 185.199.108–111.153; `CNAME` file in this repo) |
 | 5 | tebchart.com | https://tebchart.com/ | S3 behind CloudFront (`Server: AmazonS3`, `Via: … (CloudFront)`) |
 | 6 | tebdictate.com | https://tebdictate.com/ | App Runner/envoy behind CloudFront (`server: envoy`, `Via: … (CloudFront)`) |
-| 7 | tebRounds site | https://tebscribe.com/apps/tebrounds.html | page in this repo (`apps/tebrounds.html:8` canonical). **tebrounds.com was not checked:** nothing in the repo points to it |
+| 7 | tebRounds site | https://tebscribe.com/apps/tebrounds.html | page in this repo (`apps/tebrounds.html:8` canonical). **tebrounds.com** is registered and hosted on Route 53 (NS awsdns-26/28/32/39), but it has no A record and `www` is NXDOMAIN, so it serves no website and there is nothing to probe |
 | 8 | Lovable landing | **NOT FOUND** | no Lovable URL anywhere in this repo, no `*.lovable.app` hit in search, no matching name in the CT logs. Founder to supply the URL |
 | 9 | ACEP page | https://tebiq.com/acep | linked from `classic.html:845`; served by the tebiq.com ALB (same headers) |
 
@@ -50,6 +50,7 @@ Paths: `/wp-login.php`, `/xmlrpc.php`, `/phpinfo.php`, `/.env`, `/.git/HEAD`, `/
 | tebiq.com | Google (smtp.google.com) | `v=spf1 include:_spf.google.com include:amazonses.com include:spf.mtasv.net ~all` ✓ | `p=none` (monitor only) | not found (may use another selector) |
 | tebchart.com | **none** | **none** | **none** (NXDOMAIN) | n/a |
 | tebdictate.com | **none** | **none** | **none** (NXDOMAIN) | n/a |
+| tebrounds.com | **none** | **none** (no TXT at all) | **none** (NXDOMAIN) | n/a |
 
 SES DKIM selectors are random CNAMEs and can't be listed from outside, so DKIM is only *partly* checked.
 
@@ -103,6 +104,12 @@ Severity: High = exploitable now; Medium = real abuse path; Low = hardening; Inf
 | No HSTS, CSP, X-Frame-Options, nosniff, Referrer-Policy or Permissions-Policy on a page that asks for the microphone | Medium | hackertarget headers for https://tebdictate.com/ | Recommendation (tebDictate repo / CloudFront): add the headers in the app or as a CloudFront response-headers policy, including `Permissions-Policy: microphone=(self)` and `frame-ancestors 'none'` |
 | No SPF, DMARC or MX | Medium | as tebchart.com | Recommendation (DNS): same three records |
 
+### tebrounds.com (domain only, no website)
+| Finding | Severity | Evidence | Fix |
+|---|---|---|---|
+| No web host, so PHP, headers and TLS do not apply | Info | dns.google: A none, `www` NXDOMAIN, NS on Route 53 | none |
+| No SPF, DMARC or MX: anyone can send mail "from" @tebrounds.com | Medium | dns.google TXT (none), `_dmarc` NXDOMAIN, MX none | Recommendation (DNS): same three records as tebchart.com |
+
 ### Lovable landing
 Not audited, because the URL could not be found (see the sites table). Send the URL and it can be run through the same passive checks.
 
@@ -110,7 +117,7 @@ Not audited, because the URL could not be found (see the sites table). Send the 
 - `tests/check-publish-safety.mjs` (new) and a line in `DEPLOY.md`: GitHub Pages publishes every committed file, so the check stops the most common AI-scanner wins (`.env`, `.php`, `.sql`, backup archives, keys) from ever being committed. It also blocks any static third-party `<script src>` that would load before consent. It passes on the current tree (90 files, 22 pages).
 
 ## For the other repos / infra (recommendations only)
-1. DNS: fix tebscribe.com SPF and DKIM; add SPF `-all`, DMARC `p=reject` and a null MX to tebchart.com and tebdictate.com; move tebiq.com and tebscribe.com DMARC towards `p=reject`; delete `api-dev.tebiq.com`.
+1. DNS: fix tebscribe.com SPF and DKIM; add SPF `-all`, DMARC `p=reject` and a null MX to tebchart.com, tebdictate.com and tebrounds.com; move tebiq.com and tebscribe.com DMARC towards `p=reject`; delete `api-dev.tebiq.com`.
 2. CloudFront response-headers policy for tebchart.com and tebdictate.com.
 3. tebIQ: enforce the CSP (drop `'unsafe-inline'`), return real 404s for scanner paths on v2, confirm gtag is consent-gated.
 4. tebscribe.com: a CDN in front of GitHub Pages if HSTS and CSP are wanted; self-host fonts.
