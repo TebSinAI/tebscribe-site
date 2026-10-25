@@ -2,6 +2,8 @@
 
 **Method (passive only).** Plain GETs of each URL, response headers via the hackertarget header API, TLS grade via SSL Labs (cached or standard scan, results not published), DNS via Google DNS-over-HTTPS (dns.google), and subdomain discovery from Certificate Transparency logs (crt.sh). No fuzzing, no brute force, no logins, no writes. No secrets or tokens are reproduced here; verification tokens are omitted on purpose.
 
+**Runs.** Two lane runs on 2026-10-24/25 each did the live checks on their own; this file merges both. A re-check on 2026-10-25 (~04:00 UTC) filled the gaps: SSL Labs for tebchart/tebdictate, www.tebscribe.com headers, `/vendor/phpunit/` and `/backup.sql`, and the tebscribe.com cert. The shell has no network (`curl`/`dig`/`openssl` are refused), so every check went through the read-only services above. `2026-10-24-outside-security-check-all-sites.md` is the other run's copy and is superseded by this file.
+
 **Bottom line.**
 - **PHP does not run on any of these sites.** Every PHP or CMS path that scanners probe returns 404, or 403 on tebchart. No `X-Powered-By` header, no `PHPSESSID` cookie and no `.php` route answers anywhere. The stacks are GitHub Pages, S3+CloudFront, AWS App Runner (envoy) behind CloudFront, and an AWS ALB. The current wave of PHP exploits, and the AI scanners that look for them, find nothing here.
 - **No secrets, git metadata, backups or bucket listings are exposed.**
@@ -25,23 +27,31 @@
 |---|---|---|---|---|---|---|---|---|
 | tebiq.com, www, /acep | **A+** (both ALB IPs) | 2027-01-16 (Amazon, auto-renew) | `max-age=31536000; includeSubDomains` | **Report-Only** (not enforced), `script-src 'self' 'unsafe-inline' …` | DENY | strict-origin-when-cross-origin | set (mic=self, others off) | none on 200; `awselb/2.0` on redirect |
 | v2.tebiq.com | same ALB as tebiq.com (no separate scan: rate-limited) | 2026-12-28 (Amazon, auto-renew) | same as tebiq.com | Report-Only, same | DENY | same | same | none |
-| tebscribe.com (+ tebRounds page) | **B** (TLS 1.2/1.3 only; capped by GitHub/Fastly's shared cipher list) | 2026-11-28 (Let's Encrypt, auto-renew by GitHub) | **absent** | **absent** | **absent** | absent (browser default applies) | absent | `GitHub.com` (no version) |
-| tebchart.com | **A** (finished CloudFront endpoints; the rest were still queued; A+ needs HSTS) | 2027-01-15 (Amazon, auto-renew) | **absent** | **absent** | **absent** | **absent** | **absent** | `AmazonS3` |
-| tebdictate.com | **A** (all 4 finished CloudFront endpoints; A+ needs HSTS) | 2027-01-25 (Amazon, auto-renew) | **absent** | **absent** | **absent** | **absent** | **absent** | `envoy` |
+| tebscribe.com (+ tebRounds page) | **B** on all 4 GitHub Pages IPs (TLS 1.2/1.3 only; capped by GitHub/Fastly's shared cipher list; OCSP stapling off) | 2026-11-28 (Let's Encrypt YR2, auto-renewed by GitHub). crt.sh also lists an unrelated Amazon cert for tebscribe.com valid to 2027-01-13; GitHub Pages does not serve it | **absent** | **absent** | **absent** | header absent. **Meta tag added on this branch** (`strict-origin-when-cross-origin`) | absent | `GitHub.com` (no version) |
+| www.tebscribe.com | same GitHub Pages edge | same cert | absent | absent | absent | absent | absent | `GitHub.com`. Answers 301 → https://tebscribe.com/ (hackertarget, 2026-10-25) |
+| tebchart.com | **A** on all 12 CloudFront endpoints (SSL Labs READY, 2026-10-25; A+ needs HSTS) | 2027-01-15 (Amazon, auto-renew) | **absent** | **absent** | **absent** | **absent** | **absent** | `AmazonS3` |
+| tebdictate.com | **A** on all 12 CloudFront endpoints (SSL Labs READY, 2026-10-25; A+ needs HSTS) | 2027-01-25 (Amazon, auto-renew) | **absent** | **absent** | **absent** | **absent** | **absent** | `envoy`, plus `x-envoy-upstream-service-time` |
+| tebrounds.com | n/a (no A record) | none in CT logs | n/a | n/a | n/a | n/a | n/a | n/a |
+| Lovable landing | NOT FOUND (no URL) | — | — | — | — | — | — | — |
 
 Every host redirects http→https with a 301 (checked tebiq.com, tebscribe.com, tebchart.com, tebdictate.com).
 
 ## PHP / exploit-path probes (one GET each)
-Paths: `/wp-login.php`, `/xmlrpc.php`, `/phpinfo.php`, `/.env`, `/.git/HEAD`, `/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php`, `/server-status`, `/backup.zip`, `/dump.sql` (tebscribe.com also `/wp-admin/` and `/.git/config`).
+Both runs combined. Extra paths tried: `/vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php` and `/dump.sql` everywhere, plus `/wp-admin/` and `/.git/config` on tebscribe.com; all gave the same code as the row below. www.tebiq.com and the www hosts 301 to their apex, so they get the apex's answer. tebrounds.com has no web host, so it was not probed.
 
-| Host | Result | Meaning |
-|---|---|---|
-| tebscribe.com | all **404** | safe; static site, nothing is served outside the repo |
-| tebiq.com | all **404** | safe |
-| www.tebiq.com | `/.env`, `/.git/HEAD`, `/wp-login.php`, `/phpinfo.php`, `/xmlrpc.php`, `/server-status` → **404** | safe |
-| tebchart.com | all **403** (S3 `AccessDenied` XML through CloudFront) | safe; the bucket is private and listing is denied |
-| tebdictate.com | all **404** | safe |
-| v2.tebiq.com | all **200**, but the body is the tebIQ SPA shell (catch-all route), with no env values, git refs or dumps | not an exposure, but scanners will log it as a hit (soft-404) |
+| Path | tebscribe.com | tebiq.com (+www, /acep) | v2.tebiq.com | tebchart.com | tebdictate.com |
+|---|---|---|---|---|---|
+| /wp-login.php | 404 | 404 | 200 SPA shell | 403 | 404 |
+| /xmlrpc.php | 404 | 404 | 200 SPA shell | 403 | 404 |
+| /phpinfo.php | 404 | 404 | 200 SPA shell | 403 | 404 |
+| /.env | 404 | 404 | 200 SPA shell | 403 | 404 |
+| /.git/HEAD | 404 | 404 | 200 SPA shell | 403 | 404 |
+| /vendor/phpunit/ | 404 | 404 | 200 SPA shell (no listing, no PHP source, re-checked 2026-10-25) | 403 | 404 |
+| /server-status | 404 | 404 | 200 SPA shell | 403 | 404 |
+| /backup.zip | 404 | 404 | 200 SPA shell | 403 | 404 |
+| /backup.sql | 404 | 404 | 200 SPA shell | 403 | 404 |
+
+**Every 200 is a finding, and the only 200s are on v2.tebiq.com.** In each case the body is the tebIQ single-page-app shell (a catch-all route) and contains no env values, git refs, PHP source or dumps. It is not an exposure, but scanners log it as a hit (a soft-404). See the v2 table. tebchart.com's 403 is S3 `AccessDenied` XML through CloudFront: the bucket is private and listing is denied.
 
 ## E-mail authentication and DNS
 | Domain | MX | SPF | DMARC | DKIM (`google` selector) |
@@ -68,7 +78,10 @@ Severity: High = exploitable now; Medium = real abuse path; Low = hardening; Inf
 | SPF omits Google although MX is Google Workspace; DMARC `p=none`; no `google._domainkey` | **Medium** | dns.google TXT/MX for tebscribe.com, `_dmarc`, `google._domainkey` (NXDOMAIN) | Recommendation (DNS): SPF `v=spf1 include:_spf.google.com include:amazonses.com ~all`; turn on Workspace DKIM; after 2–4 weeks of clean `rua` reports, move DMARC to `p=quarantine`, then `p=reject` |
 | No HSTS, CSP, X-Frame-Options or Permissions-Policy (GitHub Pages can't send custom headers) | Low | hackertarget headers for https://tebscribe.com/ | Recommendation (infra): put CloudFront or Cloudflare in front with a response-headers policy, or move to S3+CloudFront like tebchart. The site has no logins or forms that carry PHI, so the clickjacking/XSS impact is low |
 | TLS grade B | Low | SSL Labs endpoint 185.199.108.153: B, TLS 1.2/1.3 only, no HSTS | Comes from GitHub's shared edge and is not fixable in the repo; same infra fix as above |
-| Google Fonts fetched before consent (visitor IP reaches Google) | Low (privacy) | `index.html:145-147`, `apps/tebrounds.html:18-20`, `products-by-dr-c/index.html:30-32`, `tebcapture/index.html:25-27`, `bellody/*`, `free-*/index.html` | Self-host the font files and drop the preconnects (a visual change, so it needs a separate brief) |
+| No Referrer-Policy (header or meta) | Low | no referrer meta on any of the 22 pages before this branch | **Fixed on this branch:** `<meta name="referrer" content="strict-origin-when-cross-origin">` on all 22 pages, guarded by `tests/check-referrer.mjs` (in `DEPLOY.md` checks). The header-level gaps (HSTS, CSP, XFO) still need the infra fix above |
+| `.gitignore` did not block secrets, dumps or logs (repo root = public site) | Low | the old `.gitignore` had 3 lines. `git ls-files` shows no such files committed today | **Fixed on this branch:** `.env*`, `*.sql(.gz)`, `*.zip`, `*.tar.gz`, `*.bak`, `*.log`, `*.pem`, `*.key` ignored; `tests/check-publish-safety.mjs` catches any that get force-added |
+| Google Fonts fetched before consent (visitor IP reaches Google) | Low (privacy) | `fonts.googleapis.com` stylesheet on every page, checked by grep 2026-10-25: `index.html:148`, `404.html:21`, `classic.html:82`, `apps.html:21`, `products.html:39`, `3d/index.html:142`, `apps/{tebiq,tebchart,tebdictate,tebrounds,tebcapture,tebintake,promotions}.html:21`, `products-by-dr-c/index.html:33`, `free-dictation/index.html:33`, `free-medical-tools/index.html:33`, `tebcapture/index.html:28`, `bellody/classic.html:15`, `bellody/{index,support/index,privacy/index}.html:14` (preconnects sit on the two lines above each) | Self-host the font files and drop the preconnects (a visual change, so it needs a separate brief) |
+| `tebcapture` relay origin `capture.tebdictate.com` does not resolve | Info | `tebcapture/index.html:485`; DoH NXDOMAIN | Not a takeover risk (our own zone, no CNAME). Create the record before that feature ships |
 | Analytics gated by consent | OK | `tb-consent.js:39-41`, `:64-73`; `tests/check-consent.mjs` passes (22 pages) | none |
 | Whole repo is public, and everything outside `_`-prefixed folders is served (e.g. `/docs/evidence/*.png`, `/DEPLOY.md` return 200; `/_research/…` returns 404) | Info | github.com/TebSinAI/tebscribe-site is public; fetches above | Keep internal notes in `_`-prefixed folders or in a private repo. **This report is public too once it lands.** It holds no secrets, and every finding can be seen from outside, but the founder may prefer to keep it private |
 | IndexNow key file and key in `DEPLOY.md` | Info | `95ec06effaa430ffd3984f7f087bfe3b.txt` | Public by design (IndexNow needs it public); none |
@@ -80,6 +93,7 @@ Severity: High = exploitable now; Medium = real abuse path; Low = hardening; Inf
 | CSP is **Report-Only**, so it does not block anything, and it allows `'unsafe-inline'` scripts | Low–Medium | `content-security-policy-report-only:` header on https://tebiq.com/ | Recommendation (tebIQ repo; touches the PHI app shell): once reports are clean, switch to the enforcing `Content-Security-Policy`; move inline scripts to files or nonces and drop `'unsafe-inline'` |
 | DMARC `p=none` | Medium | `_dmarc.tebiq.com` TXT | Recommendation (DNS): move to `p=quarantine`, then `p=reject` after reviewing reports |
 | Dangling CNAME `api-dev.tebiq.com` → deleted App Runner service | Low | dns.google: CNAME `mmfv7mkp3g.us-east-2.awsapprunner.com`, target NXDOMAIN | Recommendation (Route 53): delete the record. App Runner names are random, so an attacker can't claim this one, but stale records are what takeover scanners look for |
+| CT-logged leftovers `dev.tebiq.com`, `newapp.tebiq.com` | Info | both resolve to live CloudFront (3.168.x); `beta`, `kb`, `api`, `api.app`, `pulsemd` → NXDOMAIN | Inventory `dev`/`newapp` (possibly legacy hosts) in a separate, founder-approved check. The zone may sit in a legacy account: the founder decides who edits it |
 | Third-party scripts before consent | Not verified | my fetch tool strips `<script>` tags; the CSP allows `googletagmanager.com` and `fonts.googleapis.com` | Check in the tebIQ repo that gtag loads only after opt-in (same pattern as `tb-consent.js` here) |
 
 ### v2.tebiq.com (tebIQ app)
@@ -115,6 +129,8 @@ Not audited, because the URL could not be found (see the sites table). Send the 
 
 ## Done on this branch
 - `tests/check-publish-safety.mjs` (new) and a line in `DEPLOY.md`: GitHub Pages publishes every committed file, so the check stops the most common AI-scanner wins (`.env`, `.php`, `.sql`, backup archives, keys) from ever being committed. It also blocks any static third-party `<script src>` that would load before consent. It passes on the current tree (90 files, 22 pages).
+- `<meta name="referrer" content="strict-origin-when-cross-origin">` on all 22 pages, guarded by `tests/check-referrer.mjs` (also in `DEPLOY.md`).
+- `.gitignore` now ignores `.env*`, `*.sql(.gz)`, `*.zip`, `*.tar.gz`, `*.bak`, `*.log`, `*.pem`, `*.key`.
 
 ## For the other repos / infra (recommendations only)
 1. DNS: fix tebscribe.com SPF and DKIM; add SPF `-all`, DMARC `p=reject` and a null MX to tebchart.com, tebdictate.com and tebrounds.com; move tebiq.com and tebscribe.com DMARC towards `p=reject`; delete `api-dev.tebiq.com`.
