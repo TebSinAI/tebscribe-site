@@ -7,6 +7,8 @@ Static site on GitHub Pages (repo root = site root). The landing-train orchestra
     node --check tb-consent.js && node --check tb-beacon.js
     node tests/check-consent.mjs
     node tests/check-jsonld.mjs
+    node tests/check-publish-safety.mjs
+    node tests/check-referrer.mjs
 
 ## After deploy
 
