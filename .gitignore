@@ -1,3 +1,13 @@
 .DS_Store
 .gstack/
 .dispatch/
+# Never publish secrets, dumps or backups (repo root = public site root)
+.env
+.env.*
+*.sql
+*.sql.gz
+*.zip
+*.tar.gz
+*.bak
+*.pem
+*.key
