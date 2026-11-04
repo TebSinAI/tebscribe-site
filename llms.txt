@@ -1,6 +1,6 @@
 # TebScribe
 
-> TebScribe LLC is a New York limited liability company founded by Dr. Mohammad Chelehmalzadeh, a practicing emergency medicine physician. Built by an ER doctor, it makes tebIQ (an AI medical scribe for clinical documentation), tebDictate (a free medical dictation app) and tebChart (a discharge instructions app for iPhone), plus Bellody (a family organizer) and tebCapture (send video from your phone to your computer, encrypted). Encrypted in transit and at rest (AES). Never used for training. Never sold.
+> TebScribe LLC is a New York limited liability company founded by Dr. Mohammad Chelehmalzadeh, a practicing emergency medicine physician. Built by an ER doctor, it makes tebIQ (an ambient AI medical scribe for ER doctors, hospitalists and clinics), tebDictate (a free medical dictation app), tebChart (a discharge instructions app for iPhone), a free IMG roadmap for foreign medical graduates, free medical calculators, and more. The clinician reviews and signs every note. Encrypted in transit and at rest (AES). Never used for training. Never sold.
 
 ## tebIQ — AI medical scribe
 
@@ -8,8 +8,10 @@ tebIQ is an AI medical scribe, also called an ambient scribe or AI scribe for do
 
 - Website: https://tebiq.com
 - App Store: https://apps.apple.com/app/id6756632709
+- Google Play: https://play.google.com/store/apps/details?id=com.tebscribe.tebiq
 - Pricing: https://tebiq.com/pricing
 - Security: https://tebiq.com/security
+- [tebRounds](https://tebscribe.com/apps/tebrounds.html): the hospitalist view of tebIQ, with a rounding board, discharge gating and a discharge summary drafted for a physician to review and sign (in pilot).
 
 ## tebDictate — free medical dictation app
 
@@ -17,6 +19,7 @@ tebDictate is a free medical dictation app and dictation app. Open tebdictate.co
 
 - Website: https://tebdictate.com
 - App Store: https://apps.apple.com/app/id6790673075
+- [How free dictation works](https://tebscribe.com/free-dictation/)
 
 ## tebChart — discharge instructions app
 
@@ -25,20 +28,30 @@ tebChart is a discharge instructions app and medication list app for iPhone, a h
 - Website: https://tebchart.com
 - App Store: https://apps.apple.com/app/id6782081865
 
+## For international medical graduates
+
+- [IMG roadmap](https://tebscribe.com/IMG/): a free 10-part guide from foreign medical graduate to U.S. residency: ECFMG certification, USMLE, OET, U.S. clinical experience, ERAS and the Match, what to do if you do not match, practicing without repeating residency, visas and a master checklist. Requirements change; confirm with ECFMG, NRMP and USCIS.
+
+## Free tools
+
+- [Free medical tools](https://tebscribe.com/free-medical-tools/): clinical score calculators (HEART, Wells, CURB-65, NEWS2), tebCalc for ChatGPT and Claude (coming soon), free dictation and free educational GPTs.
+- [Free medical dictation](https://tebscribe.com/free-dictation/): your phone is the microphone; the words appear on any computer. Free.
+
 ## Other products
 
-- [Bellody](https://tebscribe.com/bellody/): keeps your family's schedule, school, chores, co-parenting and caregiver info on your iPhone.
-- [tebCapture](https://tebscribe.com/tebcapture/): your phone is an encrypted camera; send video to your computer.
+- [tebIntake](https://tebscribe.com/apps/tebintake.html): an offline, multilingual patient-intake kiosk for front desks; not yet released.
+- [tebCapture](https://tebscribe.com/apps/tebcapture.html): your phone is an encrypted camera; send video to your computer. Web tool live, iPhone app in testing.
+- [Bellody](https://tebscribe.com/bellody/): a private family organizer for iPhone (schedule, school, chores, co-parenting, caregiver info). No account, no ads, no tracking.
 
 ## Company and links
 
 TebScribe LLC, New York. Founded and led by a practicing emergency medicine physician.
 
+- [Home: overview and FAQ](https://tebscribe.com/): AI medical scribe, free medical dictation, discharge instructions app, IMG roadmap and free calculators.
 - [Apps by Dr. C](https://tebscribe.com/products-by-dr-c/): every TebScribe app in one place.
-- [Free medical dictation](https://tebscribe.com/free-dictation/): your phone is the microphone; the words appear on any computer. Free.
-- [Free medical tools](https://tebscribe.com/free-medical-tools/): clinical score calculators, tebCalc for ChatGPT and Claude, and free dictation.
 - [All products](https://tebscribe.com/products.html): the TebScribe product hub with frequently asked questions.
-- [Full text for AI engines](https://tebscribe.com/llms-full.txt): the visible text of the home page and product hub.
+- [All apps](https://tebscribe.com/apps.html): every app, live and coming.
+- [Full text for AI engines](https://tebscribe.com/llms-full.txt): the visible text of the home page, product hub and product pages.
 - [Privacy](https://tebiq.com/privacy): privacy policy.
 - [Support](https://tebiq.com/support): tebIQ support.
 - [Bellody support](https://tebscribe.com/bellody/support/): help for the Bellody app.

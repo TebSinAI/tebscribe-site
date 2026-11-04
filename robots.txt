@@ -1,15 +1,49 @@
 # tebscribe.com — robots.txt
-# Served from the root of TebSinAI/tebscribe-site (GitHub Pages serves repo-root
-# files as-is).
+# Served from the root of TebSinAI/tebscribe-site (GitHub Pages serves repo-root files as-is).
 #
-# Deliberately permissive: AI answer engines are a primary discovery channel for
-# us and nothing here blocks GPTBot, ClaudeBot, PerplexityBot, or Google-Extended.
-# The explicit Allow lines below are documentation of that intent, not a
-# restriction — a crawler not listed still matches "User-agent: *".
+# Deliberately permissive: search engines and AI answer engines are a primary discovery channel
+# and nothing here blocks any of them. Every named group below is an explicit Allow that restates
+# what "User-agent: *" already grants; a crawler not listed still matches the * group.
+# Each token was checked against the operator's own documentation on 2026-11-04 (see
+# docs/seo-audit-2026-11-04.md). noindex pages (/3d/, /classic.html, /bellody/classic.html,
+# /tebcapture/, /404.html) are kept out of the index with a robots meta tag, not by blocking
+# them here: a crawler has to fetch a page to see its noindex.
+# YouTube / Google video: Google's video indexing is done by Googlebot-Video (listed below);
+# there is no separate YouTube crawler to allow.
 
 User-agent: *
 Allow: /
 
+# Search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Google / Apple AI-use control tokens (they gate use of crawled content for AI, they are not separate crawlers)
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# OpenAI (ChatGPT search and browsing)
 User-agent: GPTBot
 Allow: /
 
@@ -19,19 +53,34 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
+# Anthropic (Claude)
 User-agent: ClaudeBot
 Allow: /
 
 User-agent: Claude-User
 Allow: /
 
+User-agent: Claude-SearchBot
+Allow: /
+
+# Perplexity
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: Google-Extended
+User-agent: Perplexity-User
 Allow: /
 
-User-agent: Applebot-Extended
+# Other AI and web-corpus crawlers
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: MistralAI-User
 Allow: /
 
 Sitemap: https://tebscribe.com/sitemap.xml

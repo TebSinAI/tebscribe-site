@@ -109,6 +109,17 @@
   var host, root, tog, panel, lang;
   var path = (location.pathname.replace(/index\.html$/, "") || "/");
 
+  // UTM campaign slug for the outbound "Try tebIQ" button: same page slugs as the static links
+  // (docs/UTM-PLAYBOOK.md). Lower-case [a-z0-9_-], max 32, the beacon collector's accepted shape.
+  var SLUGS = { "/": "home", "/products.html": "products", "/apps.html": "apps", "/img/": "img", "/products-by-dr-c/": "apps_by_dr_c" };
+  function utmSlug() {
+    var p = path.toLowerCase();
+    if (SLUGS[p]) return SLUGS[p];
+    p = p.replace(/^\/+|\/+$/g, "").replace(/\.html$/, "");
+    if (p.indexOf("apps/") === 0) p = "app_" + p.slice(5);
+    return (p.replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "") || "home").slice(0, 32);
+  }
+
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
 
   function render(code) {
@@ -122,7 +133,7 @@
     });
     var desk = items.map(function (x) { return '<a href="' + x.it.href + '"' + x.cur + (x.it.hl ? ' class="hl"' : "") + ">" + x.txt + "</a>"; }).join("");
     var mob = items.map(function (x) { return '<a class="i' + (x.it.hl ? " hl" : "") + '" href="' + x.it.href + '"' + x.cur + ">" + x.txt + "</a>"; }).join("");
-    var cta = '<a class="cta" href="https://tebiq.com" target="_blank" rel="noopener">' + esc(t.cta) + " <span aria-hidden=\"true\">" + (RTL[lang] ? "←" : "→") + "</span></a>";
+    var cta = '<a class="cta" href="https://tebiq.com/?utm_source=tebscribe&amp;utm_medium=nav&amp;utm_campaign=' + utmSlug() + '&amp;utm_content=tebiq" target="_blank" rel="noopener">' + esc(t.cta) + " <span aria-hidden=\"true\">" + (RTL[lang] ? "←" : "→") + "</span></a>";
     var moved = root.querySelector(".langslot > select");
     if (moved) moved.remove();
     root.innerHTML = "<style>" + CSS + "</style>" +
