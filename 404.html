@@ -9,7 +9,9 @@
 <meta name="robots" content="noindex" />
 <script>
 /* GitHub Pages paths are case-sensitive: /img (any case but /IMG/) is not a file, so land here and forward to /IMG/. */
-(function(){var p=location.pathname;if(/^\/img\/?$/i.test(p)){location.replace("/IMG/"+location.search+location.hash);}})();
+(function(){var p=location.pathname;if(/^\/img\/?$/i.test(p)){location.replace("/IMG/"+location.search+location.hash);}
+/* Same for /Bellody (any case): forward to the lowercase /bellody/ page. */
+if(/^\/bellody\/?$/i.test(p)){location.replace("/bellody/"+location.search+location.hash);}})();
 </script>
 <link rel="canonical" href="https://tebscribe.com/404.html" />
 <meta name="theme-color" content="#06070C" />
